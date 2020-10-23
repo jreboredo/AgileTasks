@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'frontend';
+
+  public notes: Object[] = [];
+  public description: Text;
+  public color: string;
+  public showModalB: boolean = false;
+  
+  addNewNote(): void {
+    this.notes.push({text: this.description, color:this.color});
+    this.description = null;
+    this.color = null;
+  }
+
+  showModal(): void{
+    this.showModalB = true;
+  }
 }
+
