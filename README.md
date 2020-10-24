@@ -1,10 +1,10 @@
 # AgileTasks
 
-## User Stories Mapping:
+## Product backlog:
 - https://miro.com/app/board/o9J_kh0ud3Q=/
 
-## Tablero Kanban:
-- https://github.com/SebastianCuccorese/AgileTasks/projects/2
+### Sprint backlog: 
+- https://miro.com/app/board/o9J_kh9xjmk=/
 
-## Doc con boceto de US/Epicas: 
-- https://docs.google.com/document/d/1KSdeanvZGcIvrQCbfcShDDFEWbKDnkan/edit
+## Tablero Kanban:
+- https://github.com/SebastianCuccorese/AgileTasks/projects/
