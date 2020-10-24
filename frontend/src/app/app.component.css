@@ -9,8 +9,8 @@
 
 .list{
   display: grid;
-  padding-top: 50px;
-  grid-template-columns: repeat(auto-fit,250px)
+  padding-top: 80px;
+  grid-template-columns: repeat(auto-fit,260px)
 }
 
 .icon--add {
@@ -36,4 +36,9 @@
 
 .form-group{
   padding: 20px;
+}
+
+.btn-add-note:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }

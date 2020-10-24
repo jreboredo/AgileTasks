@@ -1,5 +1,8 @@
-<div class="noteContainer">
-    <div class="note note--{{color}}">
-        <p class="text">{{text}}</p>
+<div>
+    <div class="noteContainer">
+        <div class="note note--{{color}}" (click)="open()">
+            <h3>{{title}}</h3>
+            <p class="text">{{text}}</p>
+        </div>
     </div>
 </div>

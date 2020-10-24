@@ -1,12 +1,13 @@
 .note {
     background-color: var(--color-orange);
     padding: 10px;
-    height: 10rem;
+    height: 14rem;
+    width: 14rem;
     transition: all .3s;
     box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
   .text {
-    font-size:large;
+    font-size: small;
     text-align: justify;
   }
 

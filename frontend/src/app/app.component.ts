@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NewNoteModal } from './components/modal/modalNewNote/modalNewNote.component';
+import { Notes } from './notes_mock';
 
 @Component({
   selector: 'app-root',
@@ -6,20 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  public notes: Object[] = [];
-  public description: Text;
+  public notes: Object[] = Notes;
+  public noteTitle: string;
+  public description: string;
   public color: string;
-  public showModalB: boolean = false;
   
-  addNewNote(): void {
-    this.notes.push({text: this.description, color:this.color});
-    this.description = null;
-    this.color = null;
+  constructor(private modalService: NgbModal){}
+
+  addNewNotes(notes): void {
+    this.notes = notes;
   }
 
-  showModal(): void{
-    this.showModalB = true;
+  openModal(){
+    const modalRef = this.modalService.open(NewNoteModal)
+    modalRef.componentInstance.notes = this.notes;
+    modalRef.componentInstance.addNote = this.addNewNotes
   }
 }
 
