@@ -1,0 +1,32 @@
+.container {
+  padding: 5rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 30rem);
+  grid-gap: 6rem;
+  justify-content: center;
+}
+
+.btn-add-note {
+  position: fixed;
+  bottom: 5rem;
+  right: 6rem;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 50%;
+  box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.icon--add {
+  cursor: pointer;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: opacity(.6);
+  transition: all .2s;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.btn-add-note:hover{
+    background-color:bisque;
+}
