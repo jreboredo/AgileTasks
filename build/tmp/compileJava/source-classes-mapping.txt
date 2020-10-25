@@ -1,6 +1,0 @@
-Elementos/Ing/AgileTasks/AgileTasksApplication.java
- Elementos.Ing.AgileTasks.AgileTasksApplication
-modelo/Note.java
- modelo.Note
-modelo/AgileTask.java
- modelo.AgileTask

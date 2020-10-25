@@ -1,6 +1,0 @@
-modelo/AgileTaskTest.java
- modelo.AgileTaskTest
-Elementos/Ing/AgileTasks/AgileTasksApplicationTests.java
- Elementos.Ing.AgileTasks.AgileTasksApplicationTests
-modelo/NoteTest.java
- modelo.NoteTest
