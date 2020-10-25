@@ -6,34 +6,60 @@
     box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
   }
   
-  .note--orange {
-    background-color: var(--color-orange);
-  }
+.note--orange {
+  background-color: var(--color-orange);
+}
+
+.note--blue {
+  background-color: var(--color-blue);
+}
+
+.note--yellow {
+  background-color: var(--color-yellow);
+}
+
+.note--pink {
+  background-color: var(--color-pink);
+}
+
+.note--green {
+  background-color: var(--color-green);
+}
+
+.note:hover {
+  transform: scale(1.2);
+  box-shadow: 10px 15px 15px 0px rgba(0, 0, 0, 0.5);
+}
   
-  .note--blue {
-    background-color: var(--color-blue);
-  }
-  
-  .note--yellow {
-    background-color: var(--color-yellow);
-  }
-  
-  .note--pink {
-    background-color: var(--color-pink);
-  }
-  
-  .note--green {
-    background-color: var(--color-green);
-  }
-  
-  .note:hover {
-    transform: scale(1.2);
-    box-shadow: 10px 15px 15px 0px rgba(0, 0, 0, 0.5);
-  }
-  
-  .text {
-    line-height: 2.5rem;
-    font-size: 1.6rem;
-    text-align: justify;
-    overflow-wrap: break-word;
-  }
+.text {
+  line-height: 2.5rem;
+  font-size: 1.6rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+.icon {
+  cursor: pointer;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: opacity(.6);
+  transition: all .2s;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-column-gap: 10px;
+  justify-content: end;
+  visibility: hidden;
+}
+
+.note:hover .actions {
+  visibility: visible;
+}
+
+
+.icon:hover {
+  filter: none
+}
