@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
  import { Modal,Button } from 'react-bootstrap'
  
  export default function ModalNote({selectedNote,show,handleClose,addNoteIfNotExist}){
@@ -7,7 +7,9 @@ import React, { useState} from 'react';
           text: selectedNote? selectedNote.text : "",
           id: selectedNote? selectedNote.id : undefined,
           title: selectedNote? selectedNote.title: ""
-      };  
+      };
+      
+    const colors = ["Yellow","Pink","Green","Blue","Orange"] 
     const [textNote,setText] = useState(note.text);
     const [titleNote,setTitle] = useState(note.title);
     const [colorNote,setColor] = useState(note.color);
@@ -26,12 +28,15 @@ import React, { useState} from 'react';
         addNoteIfNotExist({id:note.id,title:titleNote,text:textNote,color:colorNote});
         clearFieldsAndClose()
     }
+    const isAColor = color => {
+      return color.toLowerCase() === colorNote.toLowerCase()
+    } 
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={clearFieldsAndClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>{note.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <form>
@@ -55,10 +60,9 @@ import React, { useState} from 'react';
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Colors</label>
                 <select class="form-control" id="exampleFormControlSelect1">
-                  <option onClick={() => setColor('yellow')}>Yellow</option>
-                  <option onClick={() => setColor('pink')}>Pink</option>
-                  <option onClick={() => setColor('green')}>Green</option>
-                  <option onClick={() => setColor('orange')}>Orange</option>
+                  {colors.map((color) => (
+                     <option selected={isAColor(color)}  onClick={() => setColor(color.toLowerCase())}>{color}</option>
+                  ))}
                 </select>
               </div>
         </form>

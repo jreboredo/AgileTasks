@@ -9,19 +9,13 @@ import add from './img/add.svg'
 export default function App() {
   const [notes,setNotes] = useState(mockNotes);
   const [show, setShow] = useState(false);
-  const [selectedNote, setSelectedNote] = useState(null);
 
-  const handleClose = () => { setShow(false); setSelectedNote(null)};
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const removeNote = id => {
     const newNotes = notes.filter(note => note.id !== id);
     setNotes(newNotes);
-  }
-
-  const editNote = note => {
-     setSelectedNote(note);
-     handleShow();
   }
 
   const addNoteIfNotExist = note => {
@@ -38,18 +32,17 @@ export default function App() {
       newNotes = [{ ...note, id: notes.length + 1 }, ...notes];
     }
     setNotes(newNotes);
-    setSelectedNote(null);
   }
 
   return (
     <>
     <div className="container">
-      {notes.map(note => <Note key={note.id} note={note} addNoteIfNotExist={addNoteIfNotExist} removeNote={removeNote}/>)}
+      {notes.map((note) => (<Note key={note.id} note={note} addNoteIfNotExist={addNoteIfNotExist} removeNote={removeNote}/>))}
     </div>
     <div className="btn-add-note">
       <img src={add} alt="add new note" className="icon--add" onClick={handleShow}/>
     </div>
-    <ModalNote selectedNote={selectedNote} show={show} handleClose={handleClose} addNoteIfNotExist={addNoteIfNotExist}/>
+    <ModalNote selectedNote={null} show={show} handleClose={handleClose} addNoteIfNotExist={addNoteIfNotExist}/>
   </>
   )
 }
