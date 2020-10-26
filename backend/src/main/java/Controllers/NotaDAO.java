@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 
 public class NotaDAO implements DAO<Nota> {
@@ -60,4 +60,4 @@ public class NotaDAO implements DAO<Nota> {
             throw e;
         }
     }
-}
+
