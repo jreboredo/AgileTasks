@@ -1,0 +1,15 @@
+:root {
+  font-size: 60%;
+  --color-orange: #ff7455;
+  --color-blue: #1ba8b1;
+  --color-yellow: #ffeb3b;
+  --color-pink: #ff0079;
+  --color-green: #aeea00;
+  --color-background: #FAFAFA;
+}
+
+body {
+  background-image: url('./img/Cypress.jpg');
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
