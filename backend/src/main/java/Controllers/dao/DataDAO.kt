@@ -1,6 +1,6 @@
 package Controllers.dao
 
-interface DataDAO {
+interface DataDAO<T> {
     fun clear()
 
 }

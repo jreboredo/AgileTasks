@@ -2,7 +2,7 @@ package Controllers.dao
 
 import Controllers.runner.HibernateTransaction
 
-open class HibernateDataDAO : DataDAO {
+open class HibernateDataDAO : DataDAO<Any?> {
 
     override fun clear() {
         val session = HibernateTransaction.currentSession
