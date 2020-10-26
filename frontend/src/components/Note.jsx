@@ -17,7 +17,7 @@ export default function Note({note,removeNote,addNoteIfNotExist}) {
           <img src={edit} alt="edit" className="icon" onClick={handleShow}/>
           <img src={remove} alt="edit" className="icon" onClick={() => removeNote(id)}/>
         </div>
-        <h3>{title}</h3>
+        <h3 className="title">{title}</h3>
         <p className="text">{text}</p>
         <ModalNote show={show} handleClose={handleClose} selectedNote={note} addNoteIfNotExist={addNoteIfNotExist}/>
       </div>

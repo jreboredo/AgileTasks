@@ -38,6 +38,13 @@
   overflow-wrap: break-word;
 }
 
+.title{
+  font-weight: bolder;
+  font-size: large;
+  font-style: italic;
+  padding-bottom: 3px;
+}
+
 .icon {
   cursor: pointer;
   padding: .3rem;

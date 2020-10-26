@@ -9,9 +9,7 @@
 }
 
 body {
+  background-image: url('./img/Cypress.jpg');
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: var(--color-background);
   font-family: 'Roboto', sans-serif;
 }
