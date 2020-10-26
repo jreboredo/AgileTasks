@@ -1,19 +1,19 @@
 import React, { useEffect, useState} from 'react';
  import { Modal,Button } from 'react-bootstrap'
- 
+
  export default function ModalNote({selectedNote,show,handleClose,addNoteIfNotExist}){
-      let note = { 
+      let note = {
           color: selectedNote? selectedNote.color : "yellow",
           text: selectedNote? selectedNote.text : "",
           id: selectedNote? selectedNote.id : undefined,
           title: selectedNote? selectedNote.title: ""
       };
-      
-    const colors = ["Yellow","Pink","Green","Blue","Orange"] 
+
+    const colors = ["Yellow","Pink","Green","Blue","Orange"]
     const [textNote,setText] = useState(note.text);
     const [titleNote,setTitle] = useState(note.title);
     const [colorNote,setColor] = useState(note.color);
-    
+
     const handleContentChange = event => setText(event.target.value);
     const handleTitleChange = event => setTitle(event.target.value);
 
@@ -30,7 +30,7 @@ import React, { useEffect, useState} from 'react';
     }
     const isAColor = color => {
       return color.toLowerCase() === colorNote.toLowerCase()
-    } 
+    }
 
   return (
     <>
@@ -40,26 +40,26 @@ import React, { useEffect, useState} from 'react';
         </Modal.Header>
         <Modal.Body>
             <form>
-              <div class="form-group">
+              <div className="form-group">
                 <label>Title</label>
-                <input 
-                  class="form-control" 
-                  type="text" placeholder="Title" 
-                  value={titleNote} 
+                <input
+                  className="form-control"
+                  type="text" placeholder="Title"
+                  value={titleNote}
                   onChange={handleTitleChange}
                   />
                 <label for="exampleFormControlTextarea1">Content</label>
-                <textarea 
-                class="form-control" 
-                id="exampleFormControlTextarea1" 
-                rows="3" value={textNote} 
+                <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3" value={textNote}
                 onChange={handleContentChange}
                 placeholder="Content"
                 />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="exampleFormControlSelect1">Colors</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select className="form-control" id="exampleFormControlSelect1">
                   {colors.map((color) => (
                      <option selected={isAColor(color)}  onClick={() => setColor(color.toLowerCase())}>{color}</option>
                   ))}

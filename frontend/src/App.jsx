@@ -1,9 +1,10 @@
 import './App.css';
 import mockNotes from './mock-notes.json'
 import Note from './components/Note'
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ModalNote from './components/ModalNote'
 import add from './img/add.svg'
+import NavBar from "./components/NavBar";
 
 
 export default function App() {
@@ -21,7 +22,7 @@ export default function App() {
   const addNoteIfNotExist = note => {
     let newNotes;
 
-    if(note.id != undefined) {
+    if(note.id) {
       newNotes = notes.map(n => {
         if (n.id === note.id) {
           return { ...note }
@@ -36,6 +37,7 @@ export default function App() {
 
   return (
     <>
+      <NavBar />
     <div className="container">
       {notes.map((note) => (<Note key={note.id} note={note} addNoteIfNotExist={addNoteIfNotExist} removeNote={removeNote}/>))}
     </div>

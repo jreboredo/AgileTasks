@@ -13,7 +13,7 @@
   background-color: #fff;
   padding: 3rem;
   border-radius: 50%;
-  box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 .icon--add {
@@ -29,4 +29,11 @@
 
 .btn-add-note:hover{
     background-color:bisque;
+}
+
+.logo{
+  font-family: fantasy;
+  font-style: italic;
+  font-weight: 400;
+  color: #C0392B;
 }
