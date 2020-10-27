@@ -12,7 +12,7 @@ class DataServiceImpl {
     fun crearDatosDummy(){
         this.crearUserAdmin()
         var nota1 = Nota()
-        nota1.setUser(UserDAO.recuperar(1).id.toInt())
+        nota1.setUser(UserDAO.recuperar(1))
         nota1.setTitulo("Dummy1")
         nota1.setDescripcion("Test de Nota")
         NotaDAO.guardar(nota1)

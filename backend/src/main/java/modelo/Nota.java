@@ -13,9 +13,8 @@ public class Nota {
     private String titulo;
     @Column(name="descr")
     private String descrpicion;
-    @Column(name="user_id")
-    @JoinTable(name = "usuarios", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")})
-    private int user_id;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    private Usuario user;
     //private String task;
 
     public Nota(){}
@@ -36,5 +35,5 @@ public class Nota {
         return descrpicion;
     }
 
-    public void setUser(int id) {this.user_id = id;}
+    public void setUser(Usuario user) {this.user = user;}
 }
