@@ -17,11 +17,6 @@ class NotaServiceImpl: NotaService {
             notaDAO.actualizar(nota)
         }
     }
-
-    override fun asignarNotaAUser(nota: Nota) {
-        TODO("Not yet implemented")
-    }
-
     override fun asignarNotaATarea(nota: Nota) {
         TODO("Not yet implemented")
     }
