@@ -10,7 +10,7 @@ export default function App() {
     <div className= "home">
       <BrowserRouter>
         <Switch>
-            <Route exact path="/home" component={Home}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/notes" component={NotesView}/>
             <Route path="/tasks"/>
             <Route path="/calender"/>
