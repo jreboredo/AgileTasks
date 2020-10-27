@@ -5,11 +5,18 @@
   --color-yellow: #ffeb3b;
   --color-pink: #ff0079;
   --color-green: #aeea00;
-  --color-background: #FAFAFA;
+  --img-background-notes: url('./img/stockvault-wood-background124529.jpg');
+  --img-background-home: url('./img/Cypress.jpg');
 }
 
 body {
-  background-image: url('./img/Cypress.jpg');
+  background-image: var(--img-background-home);
+  width: 180;
+  height: 180;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+.background--notes{
+  background-image: var(--img-background-notes);
 }

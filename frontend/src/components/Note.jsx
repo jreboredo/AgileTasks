@@ -3,10 +3,12 @@ import './Note.css'
 import edit from '../img/edit.svg'
 import remove from '../img/delete.svg'
 import ModalNote from './ModalNote';
+import { useHistory } from 'react-router-dom';
 
 export default function Note({note,removeNote,addNoteIfNotExist}) {
     const { title,id,text, color } = note;
     const [show,setShow] = useState(false);
+    const history = useHistory();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

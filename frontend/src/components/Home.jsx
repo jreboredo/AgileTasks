@@ -1,49 +1,40 @@
-import mockNotes from '../mock-notes.json'
-import Note from './Note'
-import React, { useState } from 'react';
-import ModalNote from './ModalNote'
-import add from '../img/add.svg'
-import NavBar from "./NavBar";
+import React from 'react'
+import './Home.css'
+import {Figure} from 'react-bootstrap'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
+import Notes from '../img/Notes.jpg'
+import Tasks from '../img/Tasks.jpg'
+import Calender from '../img/Calender.jpg'
+import NavBar from './NavBar'
 
 
-export default function App() {
-    const [notes,setNotes] = useState(mockNotes);
-    const [show, setShow] = useState(false);
+export default function Home(){
+    const history = useHistory();
+    const images = [Calender,Tasks,Notes]
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const removeNote = id => {
-        const newNotes = notes.filter(note => note.id !== id);
-        setNotes(newNotes);
-    }
-
-    const addNoteIfNotExist = note => {
-        let newNotes;
-
-        if(note.id) {
-            newNotes = notes.map(n => {
-                if (n.id === note.id) {
-                    return { ...note }
-                }
-                return n;
-            });
-        } else {
-            newNotes = [{ ...note, id: notes.length + 1 }, ...notes];
-        }
-        setNotes(newNotes);
-    }
-
-    return (
+    return(
         <>
-            <NavBar />
-            <div className="container">
-                {notes.map((note) => (<Note key={note.id} note={note} addNoteIfNotExist={addNoteIfNotExist} removeNote={removeNote}/>))}
-            </div>
-            <div className="btn-add-note">
-                <img src={add} alt="add new note" className="icon--add" onClick={handleShow}/>
-            </div>
-            <ModalNote selectedNote={null} show={show} handleClose={handleClose} addNoteIfNotExist={addNoteIfNotExist}/>
+        <NavBar/>
+        <div className="homeContainer">
+            {['Notes','Tasks','Calender'].map((text) => ( 
+                    <Figure>
+                    <div className="figureContainer"> 
+                    <Figure.Image
+                        width={180}
+                        height={180}
+                        alt="180x180"
+                        src={images.pop()}
+                        onClick={() => history.push('/' + text.toLowerCase())}
+                        className="figure"
+                    />
+                    </div>
+                    <Figure.Caption>
+                        <h2 className="figureTitle" onClick={() => history.push('/' + text.toLowerCase())}>{text}</h2>
+                    </Figure.Caption> 
+                    </Figure>
+            ))}
+        </div>
+
         </>
     )
 }

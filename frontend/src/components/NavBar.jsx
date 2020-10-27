@@ -10,7 +10,7 @@ export default function NavBar() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item text-light active">
-                        <a className="col-4 text-warning" href="/"><h3 className="text-capitalize">Notas</h3></a>
+                        <a className="col-4 text-warning" href="/home"><h3 className="text-capitalize">Home</h3></a>
                     </li>
                 </ul>
             </div>
