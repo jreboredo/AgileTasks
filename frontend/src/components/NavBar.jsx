@@ -11,6 +11,9 @@ export default function NavBar() {
                 <h1 className='text-light p-3 mx-5 '>
                     <span className='logo' onClick={() => history.push('/')}> Agile Tasks</span></h1>
             </div>
+            <div>
+                <h3 className='text-light' onClick={() => history.push('/')}> Log out</h3>
+            </div>
         </nav>
         </>
     );

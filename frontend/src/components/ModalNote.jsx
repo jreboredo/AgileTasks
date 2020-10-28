@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, {useState} from 'react';
  import { Modal,Button } from 'react-bootstrap'
 
  export default function ModalNote({selectedNote,show,handleClose,addNoteIfNotExist}){
@@ -48,7 +48,7 @@ import React, { useEffect, useState} from 'react';
                   value={titleNote}
                   onChange={handleTitleChange}
                   />
-                <label for="exampleFormControlTextarea1">Content</label>
+                <label>Content</label>
                 <textarea
                 className="form-control"
                 id="exampleFormControlTextarea1"
@@ -58,7 +58,7 @@ import React, { useEffect, useState} from 'react';
                 />
               </div>
               <div className="form-group">
-                <label for="exampleFormControlSelect1">Colors</label>
+                <label>Colors</label>
                 <select className="form-control" id="exampleFormControlSelect1">
                   {colors.map((color) => (
                      <option selected={isAColor(color)}  onClick={() => setColor(color.toLowerCase())}>{color}</option>
