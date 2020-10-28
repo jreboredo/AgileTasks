@@ -13,13 +13,13 @@ export default function Note({note,removeNote,addNoteIfNotExist}) {
     const handleShow = () => setShow(true);
 
     return (
-      <div className={`note note--${color}`}>  
+      <div className={`note note--${color}`}>
       <img src={pin} className="pin"/>
         <div className="actions">
           <img src={edit} alt="edit" className="icon" onClick={handleShow}/>
           <img src={remove} alt="edit" className="icon" onClick={() => removeNote(id)}/>
         </div>
-       
+
         <h3 className="title">{title}</h3>
         <p className="text">{text}</p>
         <ModalNote show={show} handleClose={handleClose} selectedNote={note} addNoteIfNotExist={addNoteIfNotExist}/>

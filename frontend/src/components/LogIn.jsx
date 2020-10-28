@@ -19,14 +19,14 @@ export default function LogIn() {
 
     return (
         <>
-            <div className='bg-dark rounded-lg'>
-                <h1 className='text-light p-3 mx-5 '>Simple, fast, funny. Welcome to
-                    <span className='logo' onClick={() => history.push('/')}> Agile Tasks</span></h1>
-            </div>
             <form className="card rounded-lg bg-light col-auto m-5 p-3 " onSubmit={handleSubmit}>
-                <h1>Log in!</h1>
+                <div className='bg-dark rounded-lg mb-3'>
+                    <h1 className='text-light p-3 mx-5 '>Simple, fast, funny. Welcome to
+                        <span className='logo' onClick={() => history.push('/')}> Agile Tasks</span></h1>
+                </div>
+                <h1 className='text-center font-italic font-weight-bold'>Log in!</h1>
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username" className='font-weight-bolder'>Username</label>
                     <input type="text"
                            value={username}
                            className="form-control"
@@ -38,10 +38,10 @@ export default function LogIn() {
                            }}/>
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className='font-weight-bolder mt-4'>Password</label>
                     <input type="password"
                            value={password}
-                           className="form-control"
+                           className="form-control mb-4"
                            placeholder="Password"
                            autoComplete="current-password"
                            onChange={(ev) => {

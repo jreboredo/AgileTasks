@@ -1,5 +1,4 @@
-import React from "react";
-const users = [
+let users = [
     {
         username: 'chester',
         password:'123456789'
@@ -12,3 +11,7 @@ const users = [
 
 export const login = (username, password) =>
     users.some(user => user.username===username && user.password ===password)
+
+export const register = (username, password) =>{
+    users = [{ username: username, password: password }, ...users];
+}
