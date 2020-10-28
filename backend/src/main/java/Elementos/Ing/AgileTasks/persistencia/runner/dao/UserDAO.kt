@@ -1,7 +1,7 @@
-package Controllers.dao
+package Elementos.Ing.AgileTasks.persistencia.runner.dao
 
-import Controllers.runner.HibernateTransaction
-import modelo.Usuario
+import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
+import Elementos.Ing.AgileTasks.modelo.Usuario
 
 class UserDAO: HibernateDAO<Usuario>(Usuario::class.java){
     fun recuperarPorUserName(userName: String): Long{

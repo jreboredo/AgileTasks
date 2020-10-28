@@ -1,9 +1,8 @@
 package services.impl
 
-import Controllers.dao.UserDAO
-import Controllers.runner.TransactionRunner.runTrx
-import modelo.Usuario
-import org.apache.catalina.User
+import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO
+import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
+import Elementos.Ing.AgileTasks.modelo.Usuario
 import services.UsuarioService
 
 class UsuarioServiceImpl: UsuarioService {

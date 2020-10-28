@@ -1,10 +1,7 @@
-package services.Rest
+package Elementos.Ing.AgileTasks.Controllers.Rest
 
-import modelo.Usuario
-import org.springframework.web.bind.annotation.*
-import services.impl.UsuarioServiceImpl
-
-@ServiceRest
+/*
+@RestController
 @RequestMapping("/users")
 class UsuarioController(private val usuarioServiceImpl: UsuarioServiceImpl) {
 
@@ -27,4 +24,4 @@ class UsuarioController(private val usuarioServiceImpl: UsuarioServiceImpl) {
     fun validarUsuario(usuario: Usuario): Boolean {
         return usuarioServiceImpl.validateUser(usuario)
     }
-}
+}*/

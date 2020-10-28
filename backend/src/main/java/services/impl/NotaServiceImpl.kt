@@ -1,9 +1,9 @@
 package services.impl
 
-import Controllers.runner.TransactionRunner.runTrx
-import modelo.Nota
+import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
+import Elementos.Ing.AgileTasks.modelo.Nota
 import services.NotaService
-import Controllers.dao.NotaDAO
+import Elementos.Ing.AgileTasks.persistencia.runner.dao.NotaDAO
 
 class NotaServiceImpl: NotaService {
     val notaDAO: NotaDAO = NotaDAO()
@@ -13,9 +13,9 @@ class NotaServiceImpl: NotaService {
         }
     }
 
-    override fun recuperarPorId(id: Long) {
-        runTrx {
-            notaDAO.recuperar(id.toInt())
+    override fun recuperarPorId(id: Int): Nota {
+       return runTrx {
+            notaDAO.recuperar(id)
         }
     }
 

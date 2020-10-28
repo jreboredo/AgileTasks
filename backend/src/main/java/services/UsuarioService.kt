@@ -1,6 +1,6 @@
 package services
 
-import modelo.Usuario
+import Elementos.Ing.AgileTasks.modelo.Usuario
 
 
 interface UsuarioService {

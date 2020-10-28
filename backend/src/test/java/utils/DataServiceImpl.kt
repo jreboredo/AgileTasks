@@ -1,9 +1,9 @@
 package utils
 
-import Controllers.dao.NotaDAO
-import Controllers.dao.UserDAO
-import modelo.Nota
-import modelo.Usuario
+import agiletasks.dao.NotaDAO
+import agiletasks.dao.UserDAO
+import agiletasks.dao.modelo.Nota
+import agiletasks.dao.modelo.Usuario
 
 
 class DataServiceImpl {

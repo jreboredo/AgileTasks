@@ -1,6 +1,6 @@
-package Controllers.dao
+package Elementos.Ing.AgileTasks.persistencia.runner.dao
 
-import Controllers.runner.HibernateTransaction
+import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
 
 open class HibernateDataDAO : DataDAO<Any?> {
 

@@ -1,4 +1,4 @@
-package modelo;
+package Elementos.Ing.AgileTasks.modelo;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private long id;
+    private int id;
     @Column(name="titulo")
     private String titulo;
     @Column(name="descr")

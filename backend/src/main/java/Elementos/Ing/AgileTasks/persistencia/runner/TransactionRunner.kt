@@ -1,4 +1,4 @@
-package Controllers.runner
+package Elementos.Ing.AgileTasks.persistencia.runner
 
 object TransactionRunner {
     private var transactions:List<Transaction> = listOf(HibernateTransaction())

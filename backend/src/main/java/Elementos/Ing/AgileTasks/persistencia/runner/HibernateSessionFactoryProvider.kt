@@ -1,4 +1,4 @@
-package Controllers.runner
+package Elementos.Ing.AgileTasks.persistencia.runner
 
 import org.hibernate.Session
 import org.hibernate.SessionFactory

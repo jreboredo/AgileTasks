@@ -17,11 +17,11 @@
 
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
-        <mapping class="modelo.Nota"/>
-        <mapping class="modelo.Usuario"/>
-        <!--mapping class="ar.edu.unq.eperdemic.modelo.Mutacion"/>
-        <mapping class="ar.edu.unq.eperdemic.modelo.Ubicacion"/>
-        <mapping class="ar.edu.unq.eperdemic.modelo.Vector"/>-->
+        <mapping class="Elementos.Ing.AgileTasks.modelo.Nota"/>
+        <mapping class="Elementos.Ing.AgileTasks.modelo.Usuario"/>
+        <!--mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Mutacion"/>
+        <mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Ubicacion"/>
+        <mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Vector"/>-->
 
     </session-factory>
 </hibernate-configuration>

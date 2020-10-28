@@ -1,4 +1,4 @@
-package modelo;
+package Elementos.Ing.AgileTasks.modelo;
 
 import javax.persistence.*;
 import java.util.List;

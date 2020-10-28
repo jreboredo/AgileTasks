@@ -1,8 +1,8 @@
-package Controllers.dao
+package Elementos.Ing.AgileTasks.persistencia.runner.dao
 
-import Controllers.excepciones.DuplicatedTypeException
-import Controllers.excepciones.NotFoundException
-import Controllers.runner.HibernateTransaction
+import Elementos.Ing.AgileTasks.excepciones.DuplicatedTypeException
+import Elementos.Ing.AgileTasks.excepciones.NotFoundException
+import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
 import java.sql.SQLIntegrityConstraintViolationException
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
