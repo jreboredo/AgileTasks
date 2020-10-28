@@ -12,6 +12,13 @@ class NotaServiceImpl: NotaService {
             notaDAO.guardar(nota)
         }
     }
+
+    override fun recuperarPorId(id: Long) {
+        runTrx {
+            notaDAO.recuperar(id.toInt())
+        }
+    }
+
     override fun modificarNota(nota: Nota) {
         runTrx {
             notaDAO.actualizar(nota)
@@ -28,4 +35,5 @@ class NotaServiceImpl: NotaService {
         }
         return ret
     }
+
 }
