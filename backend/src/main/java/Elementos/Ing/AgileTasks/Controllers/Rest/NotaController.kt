@@ -18,7 +18,7 @@ class NotaController()  {
 
 
     @GetMapping("/getId")
-    fun getNotaId(@RequestParam id : Int): Nota {
+    fun getNotaId(@RequestBody id : Int): Nota {
         return notaService.recuperarPorId(id)
     }
 

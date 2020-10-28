@@ -1,6 +1,6 @@
-package services
+/*package services
 
-import Elementos.Ing.AgileTasks.excepciones.Controllers.runner.TransactionRunner.runTrx
+import Elementos.Ing.AgileTasks.services*
 import org.junit.jupiter.api.Test
 import services.impl.NotaServiceImpl
 
@@ -21,4 +21,4 @@ class NotaServiceImplTest{
         //TODO("NOT IMPLEMENTED YET")
 
     }
-}
+}*/
