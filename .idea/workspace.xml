@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="27793fca-8469-4bad-9bf9-dea758e8acb1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ModalNote.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ModalNote.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Note.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Note.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Note.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Note.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/WoodChips-3465.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/img/stockvault-wood-background124529.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Nicolas Martinez\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jT07pzjrrltzE0f72rPJJ4Ctm0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="27793fca-8469-4bad-9bf9-dea758e8acb1" name="Default Changelist" comment="" />
+      <created>1603812609796</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603812609796</updated>
+      <workItem from="1603812611232" duration="148000" />
+      <workItem from="1603898103060" duration="727000" />
+      <workItem from="1603899061964" duration="9000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="128" y="55" width="1088" height="618" key="DiffContextDialog" timestamp="1603899048587">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state x="128" y="55" width="1088" height="618" key="DiffContextDialog/0.0.1360.738@0.0.1360.738" timestamp="1603899048587" />
+    <state x="440" y="71" key="RollbackChangesDialog" timestamp="1603898124346">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state x="440" y="71" key="RollbackChangesDialog/0.0.1360.738@0.0.1360.738" timestamp="1603898124346" />
+    <state x="272" y="101" key="Vcs.Push.Dialog.v2" timestamp="1603812673796">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state x="272" y="101" key="Vcs.Push.Dialog.v2/0.0.1360.738@0.0.1360.738" timestamp="1603812673796" />
+    <state x="497" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603898133833">
+      <screen x="0" y="0" width="1360" height="738" />
+    </state>
+    <state x="497" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1360.738@0.0.1360.738" timestamp="1603898133833" />
+  </component>
+</project>
