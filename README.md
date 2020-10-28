@@ -7,7 +7,7 @@
 #### Sprint 1:
 - https://docs.google.com/document/d/1NgGKU1las_KbVbMjdFwW8uTgpQpcZz3xLjZAYfKmdGQ/edit?usp=sharing
 #### Sprint 2:
-- En Desarollo
+- https://docs.google.com/document/d/1cVmCdnaINom3-7H9KWollrCh7RGxlFT5oaQg2pi7Scs/edit?usp=sharing
 #### Sprint 3:
 - Sin Comenzar
 #### Sprint 4:
