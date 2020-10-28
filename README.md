@@ -1,13 +1,28 @@
 # AgileTasks
 
+### MVP:
+- https://docs.google.com/document/d/1Bq5WT696KAJfwZJUw3vWXYvopp4cu3p_rVJ2Dw0BYpE/edit?usp=sharing
+
 ### Reportes: 
+#### Sprint 1:
 - https://docs.google.com/document/d/1NgGKU1las_KbVbMjdFwW8uTgpQpcZz3xLjZAYfKmdGQ/edit?usp=sharing
+#### Sprint 2:
+- En Desarollo
+#### Sprint 3:
+- Sin Comenzar
+#### Sprint 4:
+- Sin Comenzar
+#### Sprint 5:
+- Sin Comenzar
 
-### Product backlog:
-- https://miro.com/app/board/o9J_kh0ud3Q=/
+### Kanban con Planificacion de Proyecto
+- https://trello.com/b/aUIRPgbv
 
-### Sprint backlog: 
-- https://miro.com/app/board/o9J_kh9xjmk=/
+### Meet de Reunion:
+- https://meet.google.com/jwm-bgkp-mb
 
-### Tablero Kanban:
-- https://github.com/SebastianCuccorese/AgileTasks/projects/
+### Repositorio: 
+- https://github.com/SebastianCuccorese/AgileTasks
+
+### Producto:
+- Aun no se encuentra publicado
