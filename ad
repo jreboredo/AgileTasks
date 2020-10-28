@@ -1,0 +1,110 @@
+[33mcommit 1c5a83eff64b2b6b602618d9384db9bc1c1a11ff[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m)[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Tue Oct 27 12:20:12 2020 -0300
+
+    Agrego home + diseño y separacion de componentes en el front
+
+[33mcommit f7bb9d7c672475d27b948847f8d24c213bd6d2e9[m
+Merge: 7375dbd 31fd00b
+Author: nicolasmartinez0510 <63024336+nicolasmartinez0510@users.noreply.github.com>
+Date:   Mon Oct 26 18:42:43 2020 -0300
+
+    Merge pull request #1 from SebastianCuccorese/inicio-front-end
+    
+    Inicio front end
+
+[33mcommit 31fd00b99919612ba2ac894079b948ecd2fe6c14[m[33m ([m[1;31morigin/inicio-front-end[m[33m, [m[1;32minicio-front-end[m[33m)[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Mon Oct 26 13:21:25 2020 -0300
+
+    Agrega logo y elimina archivos que no se usan
+
+[33mcommit 10cd30afcb335c2ba2428356fa945c9e70e2293a[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Mon Oct 26 13:15:53 2020 -0300
+
+    Agrega routing y background
+
+[33mcommit 740836e3e83dc18fae2bf5ab0ce7c4533978939e[m
+Author: fagustin07 <federico.sandoval@alu.unq.edu.ar>
+Date:   Mon Oct 26 00:50:27 2020 -0300
+
+    Agrego primer Navbar
+
+[33mcommit f7e44c7e06348c771d076fcf81a78c90d0eb7f7a[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Sun Oct 25 19:34:48 2020 -0300
+
+    Refactor de la modal + elimino codigo que no se usa
+
+[33mcommit 3e6ef14d30ee3d11919f164c95acfc4b47ce0b69[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Sun Oct 25 17:18:24 2020 -0300
+
+    Elimina archivos no necesarios del repo
+
+[33mcommit 96c90697d200b5ff98891cbc1b18a64cd38f846a[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Sun Oct 25 17:12:25 2020 -0300
+
+    Agrega funcionalidad de remover una nota y editarla, terminado CRUD de notas
+
+[33mcommit 7375dbd981eb9a1745ff017a059a9879df25f140[m
+Author: seba.cuccorese@gmail.com <lea123seba>
+Date:   Sun Oct 25 15:50:27 2020 -0300
+
+    Se crearon los DAOs, se levanto la DB en un compose de docker, se agrego travis, y gradlewrapper,
+
+[33mcommit d189df94efba093968b198a2074afcd6ef232bd3[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Sun Oct 25 11:16:12 2020 -0300
+
+    Cambio de framework, se agrega diseño + funcionalidad de agregar una nota nueva
+
+[33mcommit 452d91f7bdf930db99678310aed8de1fc95e76a9[m
+Author: seba.cuccorese@gmail.com <lea123seba>
+Date:   Sat Oct 24 17:08:04 2020 -0300
+
+    Se removio la carpeta .idea por ser un archivo de configuracion y no del proyecto
+
+[33mcommit 49757b4c3203dd6ea2e0eb10014e7a0dc1b78c6b[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Fri Oct 23 23:39:53 2020 -0300
+
+    Se agrega posibilidad de editar notas y falta fixear agregar nuevas notas + vista
+
+[33mcommit cd0467b3f19590e0e35aff906e7e5a794389ab03[m
+Author: ignacio mendez <ignacio.mendez0000@gmail.com>
+Date:   Fri Oct 23 17:18:53 2020 -0300
+
+    modelo base
+
+[33mcommit 702e32cb55b0f80431ac91d4aa51e44fea12f275[m
+Author: Nicolas Martinez <martinez.nicolas0510@gmail.com>
+Date:   Fri Oct 23 14:15:33 2020 -0300
+
+    Agrega inicio de front-end
+
+[33mcommit 8fd939b1bec940f572dd25b155c4d175702bb494[m
+Author: Fede Sandoval <federico.sandoval@alu.unq.edu.ar>
+Date:   Fri Oct 23 12:27:22 2020 -0300
+
+    Update README.md
+
+[33mcommit 60ca51855b2ebd6b72cbdd2a554f3f5ed82e6749[m
+Author: Fede Sandoval <federico.sandoval@alu.unq.edu.ar>
+Date:   Fri Oct 23 12:27:01 2020 -0300
+
+    Create README.md
+
+[33mcommit 86bdb1ef433859ebd7fe0c9a3e909d4406a18d61[m
+Author: fagustin07 <federico.sandoval@alu.unq.edu.ar>
+Date:   Thu Oct 22 23:40:18 2020 -0300
+
+    carpeta de front y back
+
+[33mcommit 3a1d01f441602e5d697a145b45eb7058d7ebb52b[m
+Author: seba.cuccorese@gmail.com <lea123seba>
+Date:   Sun Oct 18 18:20:34 2020 -0300
+
+    Init proyecto

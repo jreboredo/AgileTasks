@@ -5,18 +5,18 @@
   --color-yellow: #ffeb3b;
   --color-pink: #ff0079;
   --color-green: #aeea00;
-  --img-background-notes: url('./img/stockvault-wood-background124529.jpg');
+  --img-background-notes: url('./img/decorative-background-of-cork-detai.jpg');
   --img-background-home: url('./img/Cypress.jpg');
 }
 
 body {
   background-image: var(--img-background-home);
-  width: 180;
-  height: 180;
+  background-size: contain;
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
 
 .background--notes{
   background-image: var(--img-background-notes);
+  background-size: contain;
 }

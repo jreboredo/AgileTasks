@@ -4,6 +4,7 @@ import React from 'react';
 import NotesView from './components/NotesView'
 import Home  from './components/Home'
 import LogIn from "./components/LogIn";
+import CalendarApp from './components/CalendarApp'
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
             <Route path="/home" component={Home}/>
             <Route path="/notes" component={NotesView}/>
             <Route path="/tasks"/>
-            <Route path="/calender"/>
+            <Route path="/calender" component={CalendarApp}/>
         </Switch>
       </BrowserRouter>
     </div>
