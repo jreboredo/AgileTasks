@@ -44,5 +44,10 @@ open class HibernateDAO<T>(private val entityType: Class<T>) {
         return session.createQuery(criteria).resultList
     }
 
+    fun eliminar(item: T){
+        val session = HibernateTransaction.currentSession
+        session.delete(item)
+    }
+
 
 }

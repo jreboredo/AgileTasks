@@ -8,5 +8,5 @@ interface NotaService {
     fun modificarNota(nota: Nota)
     fun asignarNotaATarea(nota: Nota)
     fun recuperarTodas() : List<Nota>
-
+    fun eliminar(nota : Nota)
 }

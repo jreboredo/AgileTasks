@@ -4,12 +4,15 @@ import Elementos.Ing.AgileTasks.modelo.Nota
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
 import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
+import Elementos.Ing.AgileTasks.persistencia.runner.dao.DataDAO
+import Elementos.Ing.AgileTasks.persistencia.runner.dao.HibernateDataDAO
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.NotaDAO
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO
 
 class DataServiceImpl : DataService{
     var NotaDAO: NotaDAO = NotaDAO()
     var UserDAO: UserDAO = UserDAO()
+    val dataDAO = HibernateDataDAO()
 
     override fun crearDatosDummy(){
         this.crearUserAdmin()
@@ -28,18 +31,7 @@ class DataServiceImpl : DataService{
 
     override fun deleteAll() {
         runTrx {
-            val session = HibernateTransaction.currentSession
-            val nombreDeTablas = session.createNativeQuery("show tables").resultList
-            session.createNativeQuery("SET FOREIGN_KEY_CHECKS=0;").executeUpdate()
-            nombreDeTablas.forEach { result ->
-                var tabla = ""
-                when (result) {
-                    is String -> tabla = result
-                    is Array<*> -> tabla = result[0].toString()
-                }
-                session.createNativeQuery("truncate table $tabla").executeUpdate()
-            }
-            session.createNativeQuery("SET FOREIGN_KEY_CHECKS=1;").executeUpdate()
+            dataDAO.clear()
         }
     }
 }

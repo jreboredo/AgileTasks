@@ -36,4 +36,10 @@ class NotaServiceImpl: NotaService {
         return ret
     }
 
+    override fun eliminar(nota : Nota) {
+       runTrx {
+           notaDAO.eliminar(nota)
+       }
+    }
+
 }

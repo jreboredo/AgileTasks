@@ -13,7 +13,7 @@ public class Nota {
     private String titulo;
     @Column(name="descr")
     private String descrpicion;
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(optional = false)
     private Usuario user;
     //private String task;
 

@@ -115,6 +115,22 @@ class NotaServiceImplTest{
         Assert.assertEquals(notaRecuperada.id, nuevaNota.id)
     }
 
+    @Test
+
+    fun eliminarNotaTest(){
+
+        notaService.eliminar(nota1)
+        notaService.eliminar(nota2)
+
+        val notas = notaService.recuperarTodas()
+
+        Assert.assertEquals(notas.size, 1)
+
+        Assertions.assertThrows(NotFoundException::class.java){
+            notaService.recuperarPorId(nota1.id)
+        }
+    }
+
     @AfterEach
     fun afterEach(){
         dataServiceImpl.deleteAll()
