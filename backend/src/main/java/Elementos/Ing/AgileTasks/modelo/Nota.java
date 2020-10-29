@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name="notas")
 public class Nota {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     @Column(name="titulo")
@@ -36,4 +36,6 @@ public class Nota {
     }
 
     public void setUser(Usuario user) {this.user = user;}
+
+    public int getId() { return id; }
 }

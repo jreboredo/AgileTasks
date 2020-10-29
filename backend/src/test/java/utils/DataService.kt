@@ -1,6 +1,6 @@
 package utils
 
 interface DataService {
-    fun crearSetDatosIniciales()
+    fun crearDatosDummy()
     fun deleteAll()
 }
