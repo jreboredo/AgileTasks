@@ -26,9 +26,10 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'io.cucumber:cucumber-java:6.7.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 	runtimeOnly("mysql:mysql-connector-java")
+	testImplementation 'io.cucumber:cucumber-java:6.8.1'
+	testImplementation 'io.cucumber:cucumber-junit:6.8.1'
 }
 
 configurations {

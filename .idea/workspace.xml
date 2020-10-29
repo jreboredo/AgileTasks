@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27793fca-8469-4bad-9bf9-dea758e8acb1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/modelo/NotaTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AgileTasks.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AgileTasks.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/Elementos/Ing/AgileTasks/modelo/Nota.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/Elementos/Ing/AgileTasks/modelo/Nota.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/Elementos/Ing/AgileTasks/modelo/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/Elementos/Ing/AgileTasks/modelo/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/services/NotaServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/services/NotaServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/utils/DataService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/utils/DataService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/utils/DataServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/utils/DataServiceImpl.kt" afterDir="false" />
-    </list>
+    <list default="true" id="27793fca-8469-4bad-9bf9-dea758e8acb1" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
