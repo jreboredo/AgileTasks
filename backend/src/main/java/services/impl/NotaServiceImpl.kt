@@ -19,6 +19,12 @@ class NotaServiceImpl: NotaService {
         }
     }
 
+    override fun recuperarPorUserId(id: Int): List<Nota> {
+        return runTrx {
+            notaDAO.recuperarPorUserId(id)
+        }
+    }
+
     override fun modificarNota(nota: Nota) {
         runTrx {
             notaDAO.actualizar(nota)

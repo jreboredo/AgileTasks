@@ -15,18 +15,24 @@ class UsuarioController() {
         usuarioServiceImpl.nuevoUsuario(usuario)
     }
 
-    @PutMapping("/modificarUser")
-    fun ModificarUser(@RequestBody userName: String, @RequestBody password : String) {
-        var userId = usuarioServiceImpl.getId(userName)
-        var usuario : Usuario = Usuario()
-        usuario.userName = userName
-        usuario.password = password
-        usuarioServiceImpl.modificarUsuario(usuario)
+    @PutMapping("/modificarUser/{id}")
+    fun ModificarUser(@PathVariable id: Int, @RequestBody userNuevo : Usuario) {
+        val userViejo : Usuario = buscarUsuarioPorId(id)
+        userViejo.userName = userNuevo.userName
+        userViejo.password = userNuevo.password
+
+        usuarioServiceImpl.modificarUsuario(userViejo)
     }
 
-    @GetMapping("/userName")
-    fun buscarUsuarioPorNombre(@RequestBody nombre: String): Long {
-        return usuarioServiceImpl.getId(nombre)
+    @GetMapping("/userById/{id}")
+    fun buscarUsuarioPorId(@PathVariable id: Int): Usuario {
+        return usuarioServiceImpl.getId(id)
+    }
+
+    @PostMapping("/DeleteUser/{id}")
+    fun deleteUser(@PathVariable id: Int) {
+        val usuario : Usuario = buscarUsuarioPorId(id)
+        usuarioServiceImpl.eliminarUsuario(usuario)
     }
 
     @GetMapping("/validateUser")

@@ -16,22 +16,40 @@ class NotaController()  {
     @RequestMapping(value=["/allnotes"], method = [(RequestMethod.GET)])
      fun getAllNotas(): List<Nota> = notaService.recuperarTodas()
 
-
-    @GetMapping("/getId")
-    fun getNotaId(@RequestBody id : Int): Nota {
+    //Recupera una nota por Id de la nota
+    @GetMapping("/get/{id}")
+    fun getNotaId(@PathVariable id: Int): Nota {
         return notaService.recuperarPorId(id)
     }
+
+    //Recupera todas las notas por Id del usuario
+    @GetMapping("/getByUser/{id}")
+    fun buscarPorUsuario(@PathVariable id : Int) : List<Nota> {
+        return  notaService.recuperarPorUserId(id)
+    }
+
 
     //Te permite agregar una nota nueva
     @PostMapping("/NuevaNota")
         fun agregarNota(@RequestBody nota : Nota) {
-           // return notaServiceImpl.agregarNota(nota)
+            notaService.agregarNota(nota)
+    }
+
+    //Te permite eliminar una nota
+    @PostMapping("/DeleteNota/{id}")
+    fun borrarNota(@PathVariable id : Int) {
+        val nota : Nota = this.getNotaId(id)
+
+        notaService.eliminar(nota)
     }
 
     //Editar notas
-    @PutMapping("/EditarNota")
-     fun editarNota(@RequestBody nota : Nota) {
-        //return notaServiceImpl.modificarNota(nota)
+    @PutMapping("/EditarNota/{id}")
+     fun editarNota(@PathVariable id: Int, @RequestBody nota : Nota) {
+        var notaVieja : Nota = getNotaId(id)
+        notaVieja.setTitulo(nota.titulo)
+        notaVieja.setDescripcion(nota.descrpicion)
+        notaService.modificarNota(notaVieja)
     }
 }
 
