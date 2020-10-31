@@ -62,7 +62,7 @@ class UsuarioControllerTest {
 
     @Test
     fun validadUsuarioTest(){
-        Assert.assertTrue(userController.validarUsuario(usuario))
+        Assert.assertEquals(userController.validarUsuario(usuario), usuario.userName)
         Assertions.assertThrows(NotFoundException::class.java){
             userController.validarUsuario(Usuario())
         }

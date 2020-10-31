@@ -13,8 +13,10 @@ public class UsuarioTest {
     public void usuarioTest(){
         usuario.setPassword("1234");
         usuario.setUserName("admin");
+        usuario.setEmail("email");
 
         assertEquals(usuario.getUserName(), "admin");
         assertEquals(usuario.getPassword(), "1234");
+        assertEquals(usuario.getEmail(), "email");
     }
 }

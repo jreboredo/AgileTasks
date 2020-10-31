@@ -23,6 +23,7 @@ class UsuarioServiceImplTest {
     fun before(){
         usuario.password = "1234"
         usuario.userName = "user"
+        usuario.email = "email"
 
         userService.nuevoUsuario(usuario)
     }
@@ -32,6 +33,8 @@ class UsuarioServiceImplTest {
         val usuarioNuevo = Usuario()
         usuarioNuevo.password = "1234"
         usuarioNuevo.userName = "usuario"
+        usuarioNuevo.email = "email"
+
 
         userService.nuevoUsuario(usuarioNuevo)
 
@@ -41,6 +44,7 @@ class UsuarioServiceImplTest {
 
         Assert.assertEquals(usuarioNuevo.userName, usuarioRecuperado.userName)
         Assert.assertEquals(usuarioNuevo.password, usuarioRecuperado.password)
+        Assert.assertEquals(usuarioNuevo.email, usuarioRecuperado.email)
         Assert.assertEquals(usuarioNuevo.id, usuarioRecuperado.id)
     }
 
@@ -48,6 +52,7 @@ class UsuarioServiceImplTest {
     fun modificarUsuarioTest(){
         usuario.password = "otraPassword"
         usuario.userName = "modificado"
+        usuario.email = "otro"
 
         userService.modificarUsuario(usuario)
 
@@ -57,6 +62,7 @@ class UsuarioServiceImplTest {
 
         Assert.assertEquals(usuario.userName, usuarioRecuperado.userName)
         Assert.assertEquals(usuario.password, usuarioRecuperado.password)
+        Assert.assertEquals(usuario.email, usuarioRecuperado.email)
         Assert.assertEquals(usuario.id, usuarioRecuperado.id)
     }
 
@@ -67,6 +73,7 @@ class UsuarioServiceImplTest {
         Assert.assertEquals(user.id, usuario.id)
         Assert.assertEquals(user.userName, usuario.userName)
         Assert.assertEquals(user.password, usuario.password)
+        Assert.assertEquals(user.email, usuario.email)
 
         Assertions.assertThrows(NotFoundException::class.java){
             userService.getUsuarioById(-1)
@@ -82,6 +89,7 @@ class UsuarioServiceImplTest {
         val usuarioNoPersistido = Usuario()
         usuarioNoPersistido.userName = "random"
         usuarioNoPersistido.password = "1234"
+        usuarioNoPersistido.email = "email"
 
         Assertions.assertThrows(NotFoundException::class.java){
             userService.validateUser(usuarioNoPersistido)
