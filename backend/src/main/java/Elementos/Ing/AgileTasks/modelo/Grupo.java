@@ -21,7 +21,7 @@ public class Grupo {
 
     public Grupo() {
     }
-    /*
+
     public long getId() {
         return id;
     }
@@ -41,6 +41,4 @@ public class Grupo {
     public void setIntegrantes(List<Usuario> integrantes) {
         this.integrantes = integrantes;
     }
-
-     */
 }

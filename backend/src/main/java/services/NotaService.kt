@@ -10,4 +10,5 @@ interface NotaService {
     fun asignarNotaATarea(nota: Nota)
     fun recuperarTodas() : List<Nota>
     fun eliminar(nota : Nota)
+    fun recuperarPorUserName(string: String): List<Nota>
 }

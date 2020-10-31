@@ -48,4 +48,10 @@ class NotaServiceImpl: NotaService {
        }
     }
 
+     override fun recuperarPorUserName(userName: String): List<Nota> {
+      return runTrx {
+             notaDAO.recuperarPorUserName(userName)
+       }
+    }
+
 }

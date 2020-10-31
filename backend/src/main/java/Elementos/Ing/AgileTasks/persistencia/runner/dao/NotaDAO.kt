@@ -11,4 +11,12 @@ import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
             query.setParameter("pId", id)
             return query.list()
      }
-    }
+
+     fun recuperarPorUserName(userName: String) : List<Nota> {
+         val session = HibernateTransaction.currentSession
+         val hql = "select u from Nota u where lower(u.user.userName) = :puserName"
+         val query = session.createQuery(hql, Nota::class.java)
+         query.setParameter("puserName", userName.toLowerCase())
+         return query.list()
+     }
+ }

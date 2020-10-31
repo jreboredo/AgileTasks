@@ -1,15 +1,18 @@
 package Elementos.Ing.AgileTasks.modelo;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
+    @Id
     @Column(name = "username")
     private  String userName;
     @Column(name="pass")
@@ -35,7 +38,11 @@ public class Usuario {
         return password;
     }
 
-/*
+    public void setId(int id) {
+        this.id = id; }
+
+
+    /*
     public List<Tarea> getTareas() {
         return tareas;
     }
@@ -44,9 +51,7 @@ public class Usuario {
         return grupos;
     }
 */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    public void setUserName(String userName) { this.userName = userName; }
 
     public void setPassword(String password) {
         this.password = password;

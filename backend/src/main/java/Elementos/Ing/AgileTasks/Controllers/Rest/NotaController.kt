@@ -11,11 +11,10 @@ import services.impl.NotaServiceImpl
 
 @RestController
 @RequestMapping(value = ["/notes"])
-class NotaController()  {
+class NotaController() {
+    private val notaService: NotaServiceImpl = NotaServiceImpl()
 
-    private val  notaService: NotaServiceImpl = NotaServiceImpl()
-
-    @RequestMapping(value=["/allnotes"], method = [(RequestMethod.GET)])
+    @RequestMapping(value = ["/allnotes"], method = [(RequestMethod.GET)])
     fun getAllNotas(): List<Nota> = notaService.recuperarTodas()
 
     //Recupera una nota por Id de la nota
@@ -26,29 +25,35 @@ class NotaController()  {
 
     //Recupera todas las notas por Id del usuario
     @GetMapping("/getByUser/{id}")
-    fun buscarPorUsuario(@PathVariable id : Int) : List<Nota> {
-        return  notaService.recuperarPorUserId(id)
+    fun buscarPorUsuario(@PathVariable id: Int): List<Nota> {
+        return notaService.recuperarPorUserId(id)
     }
 
 
     //Te permite agregar una nota nueva
     @PostMapping("/NuevaNota")
-    fun agregarNota(@RequestBody nota : Nota) {
+    fun agregarNota(@RequestBody nota: Nota) {
         notaService.agregarNota(nota)
     }
 
     //Te permite eliminar una nota
     @PostMapping("/DeleteNota/{id}")
-    fun borrarNota(@PathVariable id : Int) {
-        val nota : Nota = this.getNotaId(id)
+    fun borrarNota(@PathVariable id: Int) {
+        val nota: Nota = this.getNotaId(id)
 
         notaService.eliminar(nota)
     }
 
+    //Buscar por userName
+    @GetMapping("/getByUserName/{userName}")
+    fun buscarPorNombreUsuario(@PathVariable userName : String) : List<Nota> {
+        return notaService.recuperarPorUserName(userName)
+    }
+
     //Editar notas
     @PutMapping("/EditarNota/{id}")
-     fun editarNota(@PathVariable id: Int, @RequestBody nota : Nota) {
-        var notaVieja : Nota = getNotaId(id)
+    fun editarNota(@PathVariable id: Int, @RequestBody nota: Nota) {
+        var notaVieja: Nota = getNotaId(id)
         notaVieja.setTitulo(nota.titulo)
         notaVieja.setDescripcion(nota.descrpicion)
         notaService.modificarNota(notaVieja)

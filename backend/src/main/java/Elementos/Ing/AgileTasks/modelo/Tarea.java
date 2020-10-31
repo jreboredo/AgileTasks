@@ -34,7 +34,7 @@ public class Tarea {
 
     public Tarea() {
     }
-    /*
+
     public long getId() {
         return id;
     }
@@ -78,6 +78,4 @@ public class Tarea {
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
     }
-
-     */
 }

@@ -9,6 +9,7 @@ class UsuarioServiceImpl: UsuarioService {
     private val UserDAO = UserDAO()
     override fun nuevoUsuario(user: Usuario) {
         runTrx{
+            user.setId(UserDAO.getNextId())
             UserDAO.guardar(user)
         }
     }
@@ -26,15 +27,21 @@ class UsuarioServiceImpl: UsuarioService {
     }
 
 
-    override fun getUsuarioById(id: Int): Usuario {
+    override fun getId(id: Int): Usuario {
         return runTrx {
-            UserDAO.recuperar(id)
+            UserDAO.recuperarPorUserName(id)
         }
     }
 
     override fun validateUser(user: Usuario): Boolean {
         return runTrx {
             UserDAO.validateUser(user)
+        }
+    }
+
+    override fun getUserByName(userName: String): Usuario {
+        return runTrx {
+            UserDAO.getUserByName(userName)
         }
     }
 }
