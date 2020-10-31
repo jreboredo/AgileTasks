@@ -10,6 +10,7 @@ import services.impl.NotaServiceImpl
 
 
 @RestController
+@CrossOrigin(origins= ["http://localhost:3000"])
 @RequestMapping(value = ["/notes"])
 class NotaController() {
     private val notaService: NotaServiceImpl = NotaServiceImpl()

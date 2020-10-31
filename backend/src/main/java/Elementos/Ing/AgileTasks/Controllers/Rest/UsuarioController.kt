@@ -7,6 +7,7 @@ import kotlin.Exception
 
 
 @RestController
+@CrossOrigin(origins= ["http://localhost:3000"])
 @RequestMapping("/users")
 class UsuarioController() {
     private val usuarioServiceImpl: UsuarioServiceImpl = UsuarioServiceImpl()
