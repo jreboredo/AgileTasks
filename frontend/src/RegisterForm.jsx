@@ -2,7 +2,7 @@ import React from "react";
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {useHistory} from 'react-router-dom';
-import * as API from "./API";
+import * as Api from "./components/ApiRest";
 
 export default function RegisterForm() {
     const history = useHistory();
@@ -13,9 +13,15 @@ export default function RegisterForm() {
                 initialValues={{email: '', username: '', password: '', passwordConfirmation: ''}}
                 onSubmit={(values, {setSubmitting}) => {
                     setTimeout(() => {
-                        const {username, password} = values
-                        API.register(username, password);
-                        history.push(`/successful/${username}`);
+                        const {username, email, password} = values
+                        Api.register(username, email, password)
+                            .then(response => {
+                                    if (response.status>=200 && response.status<300) {
+                                        history.push(`/successful/${username}`)
+                                    }
+                                }
+                            )
+                            .catch(() => "Boom")
                         setSubmitting(false);
                     }, 500);
                 }}

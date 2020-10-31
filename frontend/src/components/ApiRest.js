@@ -5,9 +5,9 @@ const url = 'http://localhost:8080/'
 /* USER */
 export const login = async (userName, password) => {
     const endpoint = 'users/validateUser'
-    return axios.post(url + endpoint, {
-        userName: userName,
-        password: password
+    return axios.post(url + endpoint,{
+            userName : userName,
+            password : password
     })
 }
 

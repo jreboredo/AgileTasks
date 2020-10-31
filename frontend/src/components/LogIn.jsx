@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import * as API from "../API";
+import * as Api from "./ApiRest";
 
 export default function LogIn() {
     const [username, setUsername] = useState('');
@@ -8,17 +8,24 @@ export default function LogIn() {
     const [error, setError] = useState('');
     const history = useHistory();
 
-    useEffect( () => {
-        document.body.style="background-image: var(--img-background-home);" + 
-                            "background-size: auto;"
-    }) 
+    useEffect(() => {
+        document.body.style = "background-image: var(--img-background-home);" +
+            "background-size: auto;"
+    })
+
     const handleSubmit = (ev) => {
         ev.preventDefault();
-        if (API.login(username, password)) {
-            history.push('/home')
-        } else {
-            setError('Invalid email or password, please, try again.');
-        }
+        Api.login(username, password)
+            .then(response => {
+                if (response.status === 200) {
+                    localStorage.setItem('userid', response.data.id)
+                    localStorage.setItem('userName', response.data.userName)
+                    localStorage.setItem('email', response.data.email)
+                    localStorage.setItem('password', response.data.password)
+                    history.push('/home')
+                }
+            })
+            .catch(() => setError("Invalid username or password. Please, try again"))
     }
 
     return (
