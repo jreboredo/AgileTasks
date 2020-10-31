@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './Home.css'
 import {Figure} from 'react-bootstrap'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
@@ -14,7 +14,11 @@ export default function Home(){
     const images = [Calender,Tasks,Notes]
     const [showCalendar,setShowCalendar] = useState(false)
 
-    const handleShow = () => setShowCalendar(true)
+    useEffect( () => {
+        document.body.style="background-image: var(--img-background-home);" + 
+                                "background-size: auto;"
+    }) 
+
 
     return(
         <>
