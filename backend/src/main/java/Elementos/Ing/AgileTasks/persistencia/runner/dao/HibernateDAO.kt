@@ -26,6 +26,10 @@ open class HibernateDAO<T>(private val entityType: Class<T>) {
         }
     }
 
+    fun recuperar(id: String): T {
+        val session = HibernateTransaction.currentSession
+        return session.get(entityType, id) ?: throw NotFoundException("Id no encontrado para Clase: " + this.entityType)
+    }
     fun recuperar(id: Int): T {
         val session = HibernateTransaction.currentSession
         return session.get(entityType, id) ?: throw NotFoundException("Id no encontrado para Clase: " + this.entityType)

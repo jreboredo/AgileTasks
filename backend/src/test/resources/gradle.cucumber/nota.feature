@@ -25,6 +25,7 @@ Feature: Nota
     When Actualizo el titulo con "panaderia"
     Then Se actualizo el titulo con "panaderia"
 
+
   Scenario: Eliminar una Nota
 
     Given una nota con titulo "estudiar", descripcion "matematica"

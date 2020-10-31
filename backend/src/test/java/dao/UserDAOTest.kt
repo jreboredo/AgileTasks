@@ -1,6 +1,5 @@
 package dao
 
-import Elementos.Ing.AgileTasks.excepciones.DuplicatedTypeException
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
@@ -37,7 +36,7 @@ class UserDAOTest {
 
         val usuarioRecuperado = runTrx {
             userDAO.guardar(newUsuario)
-            userDAO.recuperar(newUsuario.id.toInt())
+            userDAO.recuperar(newUsuario.userName)
         }
 
 
@@ -51,7 +50,7 @@ class UserDAOTest {
     @Test
     fun recuperarTest(){
         val usuarioRecuperado = runTrx {
-            userDAO.recuperar(usuario.id.toInt())
+            userDAO.recuperar(usuario.userName)
         }
 
         Assert.assertEquals(usuario.password, usuarioRecuperado.password)
@@ -63,12 +62,12 @@ class UserDAOTest {
     @Test
     fun actualizarTest(){
 
-        usuario.userName = "cambiado"
+        usuario.email = "cambiado"
         usuario.password = "5555"
 
         val usuarioRecuperado = runTrx{
             userDAO.actualizar(usuario)
-            userDAO.recuperar(usuario.id.toInt())
+            userDAO.recuperar(usuario.userName)
         }
 
         Assert.assertEquals(usuario.password, usuarioRecuperado.password)
@@ -85,7 +84,7 @@ class UserDAOTest {
 
         Assertions.assertThrows(NoResultException::class.java){
             runTrx {
-                userDAO.recuperarPorUserName(usuario.userName)
+                userDAO.getUserByName(usuario.userName)
             }
         }
     }
@@ -114,24 +113,20 @@ class UserDAOTest {
         usuarioMock.userName = "mock"
         usuarioMock.email = "mock"
 
-        Assertions.assertThrows(NotFoundException::class.java){
-            runTrx {
-                userDAO.validateUser(usuarioMock)
-            }
-        }
+        Assert.assertFalse(runTrx {
+            userDAO.validateUser(usuarioMock)
+        })
 
-        Assertions.assertThrows(NotFoundException::class.java){
-            runTrx{
-                userDAO.validateUser(Usuario())
-            }
-        }
+        Assert.assertFalse(runTrx {
+            userDAO.validateUser(Usuario())
+        })
     }
 
     @Test
     fun recuperarPorNombreTest(){
 
         val user = runTrx {
-            userDAO.recuperarPorUserName(usuario.userName)
+            userDAO.getUserByName(usuario.userName)
         }
 
         Assert.assertEquals(user.id, usuario.id)
@@ -141,7 +136,7 @@ class UserDAOTest {
 
         Assertions.assertThrows(NoResultException::class.java){
             runTrx {
-                userDAO.recuperarPorUserName("-1")
+                userDAO.getUserByName("-1")
             }
         }
     }

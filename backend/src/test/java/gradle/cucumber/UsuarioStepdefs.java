@@ -32,7 +32,7 @@ public class UsuarioStepdefs {
     @Then("el usuario está registrado")
     public void elUsuarioEstáRegistrado() {
 
-        Usuario usuarioRecuperado = usuarioService.getUsuarioById((int) usuario.getId());
+        Usuario usuarioRecuperado = usuarioService.getId((int) usuario.getId());
 
         assertEquals(usuarioRecuperado.getPassword(), usuario.getPassword());
         assertEquals(usuarioRecuperado.getUserName(), usuario.getUserName());

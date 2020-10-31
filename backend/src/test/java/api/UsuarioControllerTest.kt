@@ -6,6 +6,7 @@ import Elementos.Ing.AgileTasks.modelo.Usuario
 import org.junit.Assert
 import org.junit.jupiter.api.*
 import utils.DataServiceImpl
+import javax.persistence.NoResultException
 
 class UsuarioControllerTest {
 
@@ -42,7 +43,7 @@ class UsuarioControllerTest {
         nuevoUsuario.password = "otraPassword"
         nuevoUsuario.userName = "otroUserName"
 
-        userController.ModificarUser(usuario.id.toInt(), nuevoUsuario)
+        userController.ModificarUser(usuario.userName, nuevoUsuario)
 
         val usuarioRecuperado = userController.buscarUsuarioPorId(usuario.id.toInt())
 
@@ -55,7 +56,7 @@ class UsuarioControllerTest {
     fun eliminarUsuarioTest(){
         userController.deleteUser(usuario.id.toInt())
 
-        Assertions.assertThrows(NotFoundException::class.java){
+        Assertions.assertThrows(NoResultException::class.java){
             userController.buscarUsuarioPorId(usuario.id.toInt())
         }
     }
@@ -63,7 +64,7 @@ class UsuarioControllerTest {
     @Test
     fun validadUsuarioTest(){
         Assert.assertEquals(userController.validarUsuario(usuario), usuario.userName)
-        Assertions.assertThrows(NotFoundException::class.java){
+        Assertions.assertThrows(NoResultException::class.java){
             userController.validarUsuario(Usuario())
         }
     }
@@ -76,7 +77,7 @@ class UsuarioControllerTest {
         Assert.assertEquals(usuario.password, usuarioRecuperado.password)
         Assert.assertEquals(usuario.userName, usuarioRecuperado.userName)
 
-        Assertions.assertThrows(NotFoundException::class.java){
+        Assertions.assertThrows(NoResultException::class.java){
             userController.buscarUsuarioPorId(-1)
         }
     }

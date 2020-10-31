@@ -37,6 +37,10 @@ class NotaServiceImplTest{
         nota2.setDescripcion("Descripcion2")
         nota3.setDescripcion("Descripcion3")
 
+        user.userName = "userName"
+        user.password = "password"
+        user.email = "email"
+
         userService.nuevoUsuario(user)
 
         nota1.setUser(user)

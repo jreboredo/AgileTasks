@@ -39,7 +39,7 @@ class UsuarioServiceImplTest {
         userService.nuevoUsuario(usuarioNuevo)
 
         val usuarioRecuperado = runTrx{
-            userDAO.recuperar(usuarioNuevo.id.toInt())
+            userDAO.recuperar(usuarioNuevo.userName)
         }
 
         Assert.assertEquals(usuarioNuevo.userName, usuarioRecuperado.userName)
@@ -51,13 +51,12 @@ class UsuarioServiceImplTest {
     @Test
     fun modificarUsuarioTest(){
         usuario.password = "otraPassword"
-        usuario.userName = "modificado"
         usuario.email = "otro"
 
         userService.modificarUsuario(usuario)
 
         val usuarioRecuperado = runTrx{
-            userDAO.recuperar(usuario.id.toInt())
+            userDAO.recuperar(usuario.userName)
         }
 
         Assert.assertEquals(usuario.userName, usuarioRecuperado.userName)
@@ -68,15 +67,15 @@ class UsuarioServiceImplTest {
 
     @Test
     fun getUserByIdTest(){
-        val user = userService.getUsuarioById(usuario.id.toInt())
+        val user = userService.getId(usuario.id.toInt())
 
         Assert.assertEquals(user.id, usuario.id)
         Assert.assertEquals(user.userName, usuario.userName)
         Assert.assertEquals(user.password, usuario.password)
         Assert.assertEquals(user.email, usuario.email)
 
-        Assertions.assertThrows(NotFoundException::class.java){
-            userService.getUsuarioById(-1)
+        Assertions.assertThrows(NoResultException::class.java){
+            userService.getId(-1)
         }
 
     }
@@ -91,11 +90,11 @@ class UsuarioServiceImplTest {
         usuarioNoPersistido.password = "1234"
         usuarioNoPersistido.email = "email"
 
-        Assertions.assertThrows(NotFoundException::class.java){
+        Assertions.assertThrows(NoResultException::class.java){
             userService.validateUser(usuarioNoPersistido)
         }
 
-        Assertions.assertThrows(NotFoundException::class.java){
+        Assertions.assertThrows(NoResultException::class.java){
             userService.validateUser(Usuario())
         }
     }
@@ -104,8 +103,8 @@ class UsuarioServiceImplTest {
     fun eliminarUsuarioTest(){
         userService.eliminarUsuario(usuario)
 
-        Assertions.assertThrows(NotFoundException::class.java){
-            userService.getUsuarioById(usuario.id.toInt())
+        Assertions.assertThrows(NoResultException::class.java){
+            userService.getId(usuario.id.toInt())
         }
     }
 

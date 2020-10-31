@@ -3,6 +3,7 @@ package gradle.cucumber;
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException;
 import Elementos.Ing.AgileTasks.modelo.Nota;
 import Elementos.Ing.AgileTasks.modelo.Usuario;
+import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,6 +18,7 @@ public class NotaSetpDef {
     private Nota nota;
     private NotaService notaService = new NotaServiceImpl();
     private UsuarioService userService = new UsuarioServiceImpl();
+    private UserDAO userDAO = new UserDAO();
     private Usuario user = new Usuario();
 
     @Given("Nota vacia")
@@ -47,6 +49,9 @@ public class NotaSetpDef {
     @Given("una nota con titulo {string}, descripcion {string}")
     public void unaNotaConTituloDescripcion(String titulo, String descripcion) {
         nota = new Nota();
+        user.setPassword("password");
+        user.setEmail("email");
+        user.setUserName(titulo);
         userService.nuevoUsuario(user);
         nota.setTitulo(titulo);
         nota.setDescripcion(descripcion);
