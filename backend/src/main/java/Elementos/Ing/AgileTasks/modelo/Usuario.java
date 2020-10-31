@@ -14,7 +14,11 @@ public class Usuario {
     private  String userName;
     @Column(name="pass")
     private String password;
-    /*@OneToMany
+    @Column(name="email")
+    private String email;
+
+
+/*@OneToMany
     private List<Tarea> tareas;
     @ManyToMany
     private List<Grupo> grupos;*/
@@ -46,6 +50,14 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 /*

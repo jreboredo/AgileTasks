@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  */
 
 @Entity
-public class Tarea extends Text{
+public class Tarea {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
