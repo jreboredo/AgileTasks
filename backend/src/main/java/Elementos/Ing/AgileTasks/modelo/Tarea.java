@@ -34,7 +34,7 @@ public class Tarea extends Text{
 
     public Tarea() {
     }
-
+    /*
     public long getId() {
         return id;
     }
@@ -78,4 +78,6 @@ public class Tarea extends Text{
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
     }
+
+     */
 }

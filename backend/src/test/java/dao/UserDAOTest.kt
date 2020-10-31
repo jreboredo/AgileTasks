@@ -1,6 +1,7 @@
 package dao
 
 import Elementos.Ing.AgileTasks.excepciones.DuplicatedTypeException
+import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO
@@ -106,13 +107,13 @@ class UserDAOTest {
         usuarioMock.password = "mock"
         usuarioMock.userName = "mock"
 
-        Assertions.assertThrows(NoResultException::class.java){
+        Assertions.assertThrows(NotFoundException::class.java){
             runTrx {
                 userDAO.validateUser(usuarioMock)
             }
         }
 
-        Assertions.assertThrows(NullPointerException::class.java){
+        Assertions.assertThrows(NotFoundException::class.java){
             runTrx{
                 userDAO.validateUser(Usuario())
             }
@@ -122,11 +123,13 @@ class UserDAOTest {
     @Test
     fun recuperarPorNombreTest(){
 
-        val id = runTrx {
+        val user = runTrx {
             userDAO.recuperarPorUserName(usuario.userName)
         }
 
-        Assert.assertEquals(id, usuario.id)
+        Assert.assertEquals(user.id, usuario.id)
+        Assert.assertEquals(user.password, usuario.password)
+        Assert.assertEquals(user.userName, usuario.userName)
 
         Assertions.assertThrows(NoResultException::class.java){
             runTrx {

@@ -4,16 +4,15 @@ import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
 import Elementos.Ing.AgileTasks.modelo.Usuario
 
 class UserDAO: HibernateDAO<Usuario>(Usuario::class.java){
-    fun recuperarPorUserName(id: Int): Usuario{
+    fun recuperarPorUserName(userName: String): Usuario{
         val session = HibernateTransaction.currentSession
-        val hql = "select u from Usuario u where u.id = :pId"
+        val hql = "select u from Usuario u where u.userName = :pUserName"
         val query = session.createQuery(hql, Usuario::class.java)
-        query.setParameter("pId", id)
+        query.setParameter("pUserName", userName)
         return query.singleResult
     }
     fun validateUser(user: Usuario): Boolean{
-        val userId = this.recuperarPorUserName(user.id.toInt())
-        val userDB = this.recuperar(userId.id.toInt())
+        val userDB = this.recuperar(user.id.toInt())
         return (userDB.userName == user.userName && userDB.password == user.password)
     }
 }

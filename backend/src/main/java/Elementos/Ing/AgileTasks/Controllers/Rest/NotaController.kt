@@ -12,9 +12,11 @@ import services.impl.NotaServiceImpl
 @RestController
 @RequestMapping(value = ["/notes"])
 class NotaController()  {
+
     private val  notaService: NotaServiceImpl = NotaServiceImpl()
+
     @RequestMapping(value=["/allnotes"], method = [(RequestMethod.GET)])
-     fun getAllNotas(): List<Nota> = notaService.recuperarTodas()
+    fun getAllNotas(): List<Nota> = notaService.recuperarTodas()
 
     //Recupera una nota por Id de la nota
     @GetMapping("/get/{id}")
@@ -31,8 +33,8 @@ class NotaController()  {
 
     //Te permite agregar una nota nueva
     @PostMapping("/NuevaNota")
-        fun agregarNota(@RequestBody nota : Nota) {
-            notaService.agregarNota(nota)
+    fun agregarNota(@RequestBody nota : Nota) {
+        notaService.agregarNota(nota)
     }
 
     //Te permite eliminar una nota

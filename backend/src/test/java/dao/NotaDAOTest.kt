@@ -104,6 +104,18 @@ class NotaDAOTest {
         Assert.assertEquals(notas[0].titulo, nota.titulo)
         Assert.assertEquals(notas[0].id, nota.id)
     }
+    
+    @Test
+    fun recuperarPorUserIdTest(){
+        val notas = runTrx {
+            notaDAO.recuperarPorUserId(usuario.id.toInt())
+        }
+
+        Assert.assertEquals(notas.size, 1)
+        Assert.assertEquals(notas[0].descrpicion, nota.descrpicion)
+        Assert.assertEquals(notas[0].titulo, nota.titulo)
+        Assert.assertEquals(notas[0].id, nota.id)
+    }
 
     @AfterEach
     fun after(){

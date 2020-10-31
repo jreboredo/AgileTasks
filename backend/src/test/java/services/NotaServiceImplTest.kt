@@ -131,6 +131,16 @@ class NotaServiceImplTest{
         }
     }
 
+    @Test
+    fun recuperarPorUserIdTest(){
+        val notas = notaService.recuperarPorUserId(user.id.toInt())
+
+        Assert.assertEquals(notas.size, 3)
+        Assert.assertEquals(notas[0].descrpicion, nota1.descrpicion)
+        Assert.assertEquals(notas[0].titulo, nota1.titulo)
+        Assert.assertEquals(notas[0].id, nota1.id)
+    }
+
     @AfterEach
     fun afterEach(){
         dataServiceImpl.deleteAll()

@@ -61,13 +61,15 @@ class UsuarioServiceImplTest {
     }
 
     @Test
-    fun getIdTest(){
-        val id = userService.getId(usuario.userName)
+    fun getUserByIdTest(){
+        val user = userService.getUsuarioById(usuario.id.toInt())
 
-        Assert.assertEquals(id, usuario.id)
+        Assert.assertEquals(user.id, usuario.id)
+        Assert.assertEquals(user.userName, usuario.userName)
+        Assert.assertEquals(user.password, usuario.password)
 
-        Assertions.assertThrows(NoResultException::class.java){
-            userService.getId("-1")
+        Assertions.assertThrows(NotFoundException::class.java){
+            userService.getUsuarioById(-1)
         }
 
     }
@@ -81,12 +83,21 @@ class UsuarioServiceImplTest {
         usuarioNoPersistido.userName = "random"
         usuarioNoPersistido.password = "1234"
 
-        Assertions.assertThrows(NoResultException::class.java){
+        Assertions.assertThrows(NotFoundException::class.java){
             userService.validateUser(usuarioNoPersistido)
         }
 
-        Assertions.assertThrows(NullPointerException::class.java){
+        Assertions.assertThrows(NotFoundException::class.java){
             userService.validateUser(Usuario())
+        }
+    }
+
+    @Test
+    fun eliminarUsuarioTest(){
+        userService.eliminarUsuario(usuario)
+
+        Assertions.assertThrows(NotFoundException::class.java){
+            userService.getUsuarioById(usuario.id.toInt())
         }
     }
 

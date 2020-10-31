@@ -26,7 +26,7 @@ class UsuarioController() {
 
     @GetMapping("/userById/{id}")
     fun buscarUsuarioPorId(@PathVariable id: Int): Usuario {
-        return usuarioServiceImpl.getId(id)
+        return usuarioServiceImpl.getUsuarioById(id)
     }
 
     @PostMapping("/DeleteUser/{id}")

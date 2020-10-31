@@ -7,6 +7,6 @@ interface UsuarioService {
     fun nuevoUsuario(user: Usuario)
     fun modificarUsuario(user: Usuario)
     fun eliminarUsuario(user: Usuario)
-    fun getId(id : Int): Usuario
+    fun getUsuarioById(id : Int): Usuario
     fun validateUser(user: Usuario): Boolean
 }
