@@ -1,14 +1,15 @@
 import mockNotes from '../mock-notes.json'
 import Note from './Note'
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import ModalNote from './ModalNote'
 import add from '../img/add.svg'
 import NavBar from "./NavBar";
 import './Home.css'
+import * as Api from './ApiRest'
 
 
 export default function App() {
-    const [notes,setNotes] = useState(mockNotes);
+    const [notes,setNotes] = useState([]);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -18,6 +19,18 @@ export default function App() {
         const newNotes = notes.filter(note => note.id !== id);
         setNotes(newNotes);
     }
+
+    useEffect( () => (
+        document.body.style="background-image: var(--img-background-notes)"
+     )) 
+
+     useEffect(()=>{
+        Api.getNotes()
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
+    },[]);
+
+
 
     const addNoteIfNotExist = note => {
         let newNotes;

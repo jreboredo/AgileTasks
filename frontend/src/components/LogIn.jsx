@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import * as API from "../API";
 
@@ -8,6 +8,10 @@ export default function LogIn() {
     const [error, setError] = useState('');
     const history = useHistory();
 
+    useEffect( () => {
+        document.body.style="background-image: var(--img-background-home);" + 
+                            "background-size: auto;"
+    }) 
     const handleSubmit = (ev) => {
         ev.preventDefault();
         if (API.login(username, password)) {
