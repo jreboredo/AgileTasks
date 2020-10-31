@@ -1,5 +1,6 @@
 package dao
 
+import Elementos.Ing.AgileTasks.Controllers.Rest.UsuarioValidacion
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
@@ -106,19 +107,16 @@ class UserDAOTest {
 
     @Test
     fun validarUsuarioTest(){
-        Assert.assertTrue(runTrx { userDAO.validateUser(usuario) })
+        Assert.assertNotNull(runTrx { userDAO.validateUser(usuario.userName,usuario.password) })
 
-        val usuarioMock = Usuario()
-        usuarioMock.password = "mock"
-        usuarioMock.userName = "mock"
-        usuarioMock.email = "mock"
+        val passwordMock = "mock"
 
-        Assert.assertFalse(runTrx {
-            userDAO.validateUser(usuarioMock)
+        Assert.assertNull(runTrx {
+            userDAO.validateUser(usuario.userName, passwordMock)
         })
 
-        Assert.assertFalse(runTrx {
-            userDAO.validateUser(Usuario())
+        Assert.assertNull(runTrx {
+            userDAO.validateUser(usuario.userName,"")
         })
     }
 

@@ -7,8 +7,7 @@ import io.cucumber.java.en.When;
 import services.UsuarioService;
 import services.impl.UsuarioServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UsuarioStepdefs {
 
@@ -42,7 +41,7 @@ public class UsuarioStepdefs {
 
     @Then("el usuario está logeado")
     public void elUsuarioEstáLogeado() {
-        assertTrue(usuarioService.validateUser(usuario));
+        assertNotNull(usuarioService.validateUser(usuario.getUserName(),usuario.getPassword()));
     }
 
     @Given("un usuario registrado con userName {string}, password {string} y email {string}")

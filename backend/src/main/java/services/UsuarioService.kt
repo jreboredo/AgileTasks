@@ -8,6 +8,6 @@ interface UsuarioService {
     fun modificarUsuario(user: Usuario)
     fun eliminarUsuario(user: Usuario)
     fun getId(id : Int): Usuario
-    fun validateUser(user: Usuario): Boolean
+    fun validateUser(userName: String, password: String): Usuario?
     fun getUserByName(userName: String): Usuario
 }

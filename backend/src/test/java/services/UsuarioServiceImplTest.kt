@@ -1,6 +1,5 @@
 package services
 
-import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import Elementos.Ing.AgileTasks.persistencia.runner.TransactionRunner.runTrx
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO
@@ -15,12 +14,12 @@ import javax.persistence.NoResultException
 
 class UsuarioServiceImplTest {
 
-    val userService : UsuarioService = UsuarioServiceImpl()
-    val userDAO : UserDAO = UserDAO()
-    val usuario : Usuario = Usuario()
+    val userService: UsuarioService = UsuarioServiceImpl()
+    val userDAO: UserDAO = UserDAO()
+    val usuario: Usuario = Usuario()
 
     @BeforeEach
-    fun before(){
+    fun before() {
         usuario.password = "1234"
         usuario.userName = "user"
         usuario.email = "email"
@@ -29,7 +28,7 @@ class UsuarioServiceImplTest {
     }
 
     @Test
-    fun nuevoUsuarioTest(){
+    fun nuevoUsuarioTest() {
         val usuarioNuevo = Usuario()
         usuarioNuevo.password = "1234"
         usuarioNuevo.userName = "usuario"
@@ -38,7 +37,7 @@ class UsuarioServiceImplTest {
 
         userService.nuevoUsuario(usuarioNuevo)
 
-        val usuarioRecuperado = runTrx{
+        val usuarioRecuperado = runTrx {
             userDAO.recuperar(usuarioNuevo.userName)
         }
 
@@ -49,13 +48,13 @@ class UsuarioServiceImplTest {
     }
 
     @Test
-    fun modificarUsuarioTest(){
+    fun modificarUsuarioTest() {
         usuario.password = "otraPassword"
         usuario.email = "otro"
 
         userService.modificarUsuario(usuario)
 
-        val usuarioRecuperado = runTrx{
+        val usuarioRecuperado = runTrx {
             userDAO.recuperar(usuario.userName)
         }
 
@@ -66,7 +65,7 @@ class UsuarioServiceImplTest {
     }
 
     @Test
-    fun getUserByIdTest(){
+    fun getUserByIdTest() {
         val user = userService.getId(usuario.id.toInt())
 
         Assert.assertEquals(user.id, usuario.id)
@@ -74,42 +73,42 @@ class UsuarioServiceImplTest {
         Assert.assertEquals(user.password, usuario.password)
         Assert.assertEquals(user.email, usuario.email)
 
-        Assertions.assertThrows(NoResultException::class.java){
+        Assertions.assertThrows(NoResultException::class.java) {
             userService.getId(-1)
         }
 
     }
 
     @Test
-    fun validateUserTest(){
+    fun validateUserTest() {
 
-        Assert.assertTrue(userService.validateUser(usuario))
+        Assert.assertNotNull(userService.validateUser(usuario.userName, usuario.password))
 
         val usuarioNoPersistido = Usuario()
         usuarioNoPersistido.userName = "random"
         usuarioNoPersistido.password = "1234"
         usuarioNoPersistido.email = "email"
 
-        Assertions.assertThrows(NoResultException::class.java){
-            userService.validateUser(usuarioNoPersistido)
+        Assertions.assertThrows(NoResultException::class.java) {
+            userService.validateUser(usuarioNoPersistido.userName, usuarioNoPersistido.password)
         }
 
-        Assertions.assertThrows(NoResultException::class.java){
-            userService.validateUser(Usuario())
+        Assertions.assertThrows(NoResultException::class.java) {
+            userService.validateUser("", "")
         }
     }
 
     @Test
-    fun eliminarUsuarioTest(){
+    fun eliminarUsuarioTest() {
         userService.eliminarUsuario(usuario)
 
-        Assertions.assertThrows(NoResultException::class.java){
+        Assertions.assertThrows(NoResultException::class.java) {
             userService.getId(usuario.id.toInt())
         }
     }
 
     @AfterEach
-    fun after(){
+    fun after() {
         DataServiceImpl().deleteAll()
     }
 }
