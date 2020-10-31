@@ -8,7 +8,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import services.NotaService;
 import services.UsuarioService;
 import services.impl.NotaServiceImpl;
