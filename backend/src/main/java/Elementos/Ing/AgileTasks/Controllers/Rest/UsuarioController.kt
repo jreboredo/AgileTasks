@@ -3,6 +3,7 @@ package Elementos.Ing.AgileTasks.Controllers.Rest
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import org.springframework.web.bind.annotation.*
 import services.impl.UsuarioServiceImpl
+import kotlin.Exception
 
 
 @RestController
@@ -19,6 +20,7 @@ class UsuarioController() {
     fun ModificarUser(@PathVariable id: Int, @RequestBody userNuevo : Usuario) {
         val userViejo : Usuario = buscarUsuarioPorId(id)
         userViejo.userName = userNuevo.userName
+        userViejo.email = userNuevo.email
         userViejo.password = userNuevo.password
 
         usuarioServiceImpl.modificarUsuario(userViejo)
@@ -36,7 +38,10 @@ class UsuarioController() {
     }
 
     @GetMapping("/validateUser")
-    fun validarUsuario(@RequestBody usuario: Usuario): Boolean {
-        return usuarioServiceImpl.validateUser(usuario)
+    fun validarUsuario(@RequestBody usuario: Usuario): String {
+        if (usuarioServiceImpl.validateUser(usuario)) {
+            return usuario.userName
+        }
+        else {throw Exception("No existe este usuario")}
     }
 }
