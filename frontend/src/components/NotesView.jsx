@@ -1,4 +1,3 @@
-import mockNotes from '../mock-notes.json'
 import Note from './Note'
 import React, { useState,useEffect } from 'react';
 import ModalNote from './ModalNote'
@@ -26,7 +25,7 @@ export default function App() {
 
      useEffect(()=>{
         Api.getNotes()
-        .then(response => console.log(response.data))
+        .then(response => setNotes(response.data))
         .catch(error => console.log(error))
     },[]);
 

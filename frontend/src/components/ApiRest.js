@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8181/'
+const url = 'http://localhost:8080/'
 
 /* USER */
 export const login = async (userName, password) => {
@@ -31,7 +31,7 @@ export const changePassword = async (oldPassword, newPassword) => {
 
 /* NOTES */
 export const getNotes = async () => {
-    const endpoint = 'notes/allNotes'
+    const endpoint = 'notes/allnotes'
     return axios.get(url + endpoint,
         {
             params: {
@@ -40,19 +40,29 @@ export const getNotes = async () => {
         });
 }
 
-export const createNote = async (titulo, descripcion) =>
+export const createNote = async (titulo, descripcion,color) =>
     axios.post(url + '/notes/NuevaNota', {
         titulo: titulo,
         descripcion: descripcion,
-        userId: localStorage.getItem('id'),
+        color: color,
+        user: {
+            id: localStorage.getItem('userid'),
+            userName: localStorage.getItem('userName'),
+            password:localStorage.getItem('password')
+        }
     });
 
-export const modifyNote = async (noteId, titulo, descripcion) =>
+export const modifyNote = async (noteId, titulo, descripcion,color) =>
     axios.post(url + '/notes/EditarNota', {
         noteId: noteId,
         titulo: titulo,
         descripcion: descripcion,
-        userId: localStorage.getItem('id'),
+        color: color,
+        user: {
+            id: localStorage.getItem('userid'),
+            userName: localStorage.getItem('userName'),
+            password:localStorage.getItem('password')
+        }
     });
 
 export const deleteNote = async (noteId) => {

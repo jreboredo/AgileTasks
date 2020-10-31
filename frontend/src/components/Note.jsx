@@ -6,11 +6,12 @@ import ModalNote from './ModalNote';
 import pin from '../img/pin.png'
 
 export default function Note({note,removeNote,addNoteIfNotExist}) {
-    const { title,id,text, color } = note;
+    const { titulo,id,color,descrpicion } = note;  // No "descrpicion" no es un error de otrografia, esta asi en el objeto
     const [show,setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
     return (
       <div className={`note note--${color}`}>
@@ -20,8 +21,8 @@ export default function Note({note,removeNote,addNoteIfNotExist}) {
           <img src={remove} alt="edit" className="icon" onClick={() => removeNote(id)}/>
         </div>
 
-        <h3 className="title">{title}</h3>
-        <p className="text">{text}</p>
+        <h3 className="title">{titulo}</h3>
+        <p className="text">{descrpicion}</p>
         <ModalNote show={show} handleClose={handleClose} selectedNote={note} addNoteIfNotExist={addNoteIfNotExist}/>
       </div>
     );
