@@ -56,6 +56,7 @@ class NotaController() {
         var notaVieja: Nota = getNotaId(id)
         notaVieja.setTitulo(nota.titulo)
         notaVieja.setDescripcion(nota.descrpicion)
+        notaVieja.setColor(nota.color)
         notaService.modificarNota(notaVieja)
     }
 }

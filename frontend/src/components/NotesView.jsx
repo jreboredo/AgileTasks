@@ -56,6 +56,7 @@ export default function NotesView() {
     }
 
     const editNote = note => {
+        console.log(note)
         Api.modifyNote(selectedNote.id, note.title, note.text, note.color)
             .then(() => notesApi())
             .catch(e => console.log(e))

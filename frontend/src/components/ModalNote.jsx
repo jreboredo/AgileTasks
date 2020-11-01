@@ -1,26 +1,12 @@
 import React, {useState} from 'react';
 import {Modal, Button} from 'react-bootstrap'
+import * as methods from './ModalMethods'
 
 export default function ModalNote({addNote, showModalInsertar, closeModalInsertar}) {
 
-    const colors = ["yellow", "pink", "green", "blue", "orange"]
     const [textNote, setText] = useState('');
     const [titleNote, setTitle] = useState('');
     const [colorNote, setColor] = useState('yellow');
-
-    const handleContentChange = event => setText(event.target.value);
-    const handleTitleChange = event => setTitle(event.target.value);
-
-    const clearFields = () => {
-        setText("");
-        setTitle("");
-        setColor("");
-    }
-
-
-    const isAColor = color => {
-        return color.toLowerCase() === colorNote.toLowerCase()
-    }
 
     function agregarNota() {
         addNote({
@@ -28,7 +14,12 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
             text: textNote,
             color: colorNote
         })
-        clearFields()
+        methods.clearFields(setText,setTitle,setColor)
+    }
+
+    const closeAndClean = () => {
+        closeModalInsertar()
+        methods.clearFields(setText,setTitle,setColor)
     }
 
     return (
@@ -45,22 +36,22 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                                 className="form-control"
                                 type="text" placeholder="Title"
                                 value={titleNote}
-                                onChange={handleTitleChange}
+                                onChange={(event) => methods.handleTitleChange(event,setTitle)}
                             />
                             <label>Content</label>
                             <textarea
                                 className="form-control"
                                 id="exampleFormControlTextarea1"
                                 rows="3" value={textNote}
-                                onChange={handleContentChange}
+                                onChange={(event) => methods.handleContentChange(event,setText)}
                                 placeholder="Content"
                             />
                         </div>
                         <div className="form-group">
                             <label>Colors</label>
                             <select className="form-control" id="exampleFormControlSelect1">
-                                {colors.map((color) => (
-                                    <option selected={isAColor(color)}
+                                {methods.colors.map((color) => (
+                                    <option selected={methods.isAColor(color,colorNote)}
                                             onClick={() => setColor(color.toLowerCase())}>{color}</option>
                                 ))}
                             </select>
@@ -68,7 +59,7 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModalInsertar}>
+                    <Button variant="secondary" onClick={closeAndClean}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={agregarNota}>
