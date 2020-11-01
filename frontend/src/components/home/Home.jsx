@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import './Home.css'
 import {Figure} from 'react-bootstrap'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import Notes from '../img/Notes.jpg'
-import Tasks from '../img/Tasks.jpg'
-import Calender from '../img/Calender.jpg'
-import NavBar from './NavBar'
+import Notes from '../../img/Notes.jpg'
+import Tasks from '../../img/Tasks.jpg'
+import Calender from '../../img/Calender.jpg'
+import NavBar from '../NavBar'
 
 export default function Home(){
     const history = useHistory();

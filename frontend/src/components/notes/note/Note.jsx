@@ -1,8 +1,8 @@
 import React from 'react'
 import './Note.css'
-import edit from '../img/edit.svg'
-import remove from '../img/delete.svg'
-import pin from '../img/pin.png'
+import edit from '../../../img/edit.svg'
+import remove from '../../../img/delete.svg'
+import pin from '../../../img/pin.png'
 
 export default function Note({note, removeNote, editNote}) {
     const {titulo, color, descrpicion} = note;  // No "descrpicion" no es un error de otrografia, esta asi en el objeto

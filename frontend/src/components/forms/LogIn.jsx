@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
-import * as Api from "./ApiRest";
+import * as Api from "../ApiRest";
 
 export default function LogIn() {
     const [username, setUsername] = useState('');

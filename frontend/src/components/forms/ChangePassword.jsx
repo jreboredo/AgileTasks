@@ -1,10 +1,10 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import NavBar from "./NavBar";
+import NavBar from "../NavBar";
 import {Formik} from "formik";
-import * as Api from "./ApiRest";
+import * as Api from "../ApiRest";
 import * as Yup from "yup";
-import NotFound from "./NotFound";
+import NotFound from "../NotFound";
 
 export default function ChangePassword() {
     const history = useHistory();

@@ -1,15 +1,15 @@
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import React from 'react';
-import NotesView from './components/NotesView'
-import Home  from './components/Home'
-import LogIn from "./components/LogIn";
-import RegisterForm from "./RegisterForm";
-import RegistrationSuccessful from "./components/RegistrationSuccessful";
+import NotesView from './components/notes/noteView/NotesView'
+import Home  from './components/home/Home'
+import LogIn from "./components/forms/LogIn";
+import RegisterForm from "./components/forms/RegisterForm";
+import RegistrationSuccessful from "./components/forms/RegistrationSuccessful";
 import NotFound from "./components/NotFound";
-import CalendarApp from './components/CalendarApp'
-import TasksView from './components/TasksView';
-import ChangePassword from "./components/ChangePassword";
+import CalendarApp from './components/calendar/CalendarApp'
+import TasksView from './components/tasks/TasksView';
+import ChangePassword from "./components/forms/ChangePassword";
 
 export default function App() {
 
@@ -24,7 +24,6 @@ export default function App() {
             <Route path="/tasks" component={TasksView}/>
             <Route path="/changePassword" component={ChangePassword}/>
             <Route path="/calender" component={CalendarApp}/>
-            <Route path="/calender"/>
             <Route path='/successful/:username' component={RegistrationSuccessful} />
             <Route path="*" component={NotFound} />
         </Switch>

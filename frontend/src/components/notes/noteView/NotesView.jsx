@@ -1,12 +1,12 @@
-import Note from './Note'
+import Note from '../note/Note'
 import React, {useState, useEffect} from 'react';
-import add from '../img/add.svg'
-import NavBar from "./NavBar";
-import './Home.css'
-import * as Api from './ApiRest'
+import add from '../../../img/add.svg'
+import NavBar from "../../NavBar";
+import '../../home/Home.css'
+import * as Api from '../../ApiRest'
 import {Modal, ModalBody, ModalFooter} from "react-bootstrap";
-import ModalNote from "./ModalNote";
-import ModalNoteEdit from "./ModalNoteEdit";
+import ModalNote from "../modal/ModalNote";
+import ModalNoteEdit from "../modal/ModalNoteEdit";
 
 
 export default function NotesView() {
@@ -56,7 +56,6 @@ export default function NotesView() {
     }
 
     const editNote = note => {
-        console.log(note)
         Api.modifyNote(selectedNote.id, note.title, note.text, note.color)
             .then(() => notesApi())
             .catch(e => console.log(e))
