@@ -31,14 +31,14 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                 <Modal.Body>
                     <form>
                         <div className="form-group">
-                            <label>Title</label>
+                            <label className='font-weight-bolder'>Title</label>
                             <input
                                 className="form-control"
                                 type="text" placeholder="Title"
                                 value={titleNote}
                                 onChange={(event) => methods.handleTitleChange(event,setTitle)}
                             />
-                            <label>Content</label>
+                            <label className='font-weight-bolder'>Content</label>
                             <textarea
                                 className="form-control"
                                 id="exampleFormControlTextarea1"
@@ -47,14 +47,14 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                                 placeholder="Content"
                             />
                         </div>
-                        <div className="form-group">
-                            <label>Colors</label>
-                            <select className="form-control" id="exampleFormControlSelect1">
-                                {methods.colors.map((color) => (
-                                    <option selected={methods.isAColor(color,colorNote)}
-                                            onClick={() => setColor(color.toLowerCase())}>{color}</option>
-                                ))}
-                            </select>
+                        <div>
+                            <label className='d-block font-weight-bolder'>Color</label>
+                            {methods.colors.map(c => (
+                                <div key={c} className={`d-inline`} onClick={() => setColor(c)}>
+                                    | <span className={`pointer ${c === colorNote && 'font-italic font-weight-bolder'}`}>
+                                        {c.toLocaleUpperCase()}</span> |
+                                </div>
+                            ))}
                         </div>
                     </form>
                 </Modal.Body>

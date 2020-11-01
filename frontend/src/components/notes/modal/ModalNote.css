@@ -1,8 +1,6 @@
 .textarea__container {
     padding: 3rem;
-    padding: 0 2rem;
-    padding-top: 3rem;
-  }
+}
   
 textarea {
 background-color: transparent;

@@ -48,15 +48,14 @@ export default function ModalNoteEdit({note,editNote, showModalEditar, closeModa
                                 placeholder="Content"
                             />
                         </div>
-                        <div className="form-group">
-                            <label>Colors</label>
-                            <select className="form-control" id="exampleFormControlSelect1">
-                                {methods.colors.map((color) => (
-                                    <option selected={methods.isAColor(color,colorNote)}
-                                            onClick={() => {setColor(color.toLowerCase());
-                                                            console.log(color)}}>{color}</option>
-                                ))}
-                            </select>
+                        <div>
+                            <label className='d-block font-weight-bolder'>Color</label>
+                            {methods.colors.map(c => (
+                                <div key={c} className={`d-inline`} onClick={() => setColor(c)}>
+                                    | <span className={`pointer ${c === colorNote && 'font-italic font-weight-bolder'}`}>
+                                        {c.toLocaleUpperCase()}</span> |
+                                </div>
+                            ))}
                         </div>
                     </form>
                 </Modal.Body>
