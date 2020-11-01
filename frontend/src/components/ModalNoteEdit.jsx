@@ -35,7 +35,7 @@ export default function ModalNoteEdit({note,editNote, showModalEditar, closeModa
         <>
             <Modal show={showModalEditar}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edita tu nueva!</Modal.Title>
+                    <Modal.Title>Edita tu nota!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>

@@ -18,7 +18,11 @@ export default function NotesView() {
 
     function notesApi() {
         Api.getNotes()
-            .then(response => setNotes(response.data))
+            .then(response => {
+                const newNotes = response.data
+                newNotes.reverse()
+                setNotes(newNotes)
+            })
             .catch(error => console.log(error))
     }
 
@@ -46,7 +50,7 @@ export default function NotesView() {
 
     const addNote = note => {
         Api.createNote(note.title, note.text, note.color)
-            .then(response => setNotes(note => [...note, response.data]))
+            .then(() => notesApi())
             .catch(error => console.log(error))
         closeModalInsertar()
     }
@@ -82,9 +86,8 @@ export default function NotesView() {
                         <Note key={note.id} note={note} editNote={showEditNote}
                               removeNote={showRemoveNote}/>))}
                 </div>
-                <div className="btn-add-note">
-                    <img src={add} alt="add new note" className="icon--add"
-                         onClick={() => setModalAgregar(true)}/>
+                <div className="btn-add-note pointer" onClick={() => setModalAgregar(true)}>
+                    <img src={add} alt="add new note" className="icon--add"/>
                 </div>
 
                 <ModalNote addNote={addNote} showModalInsertar={modalAgregar}
@@ -96,7 +99,7 @@ export default function NotesView() {
 
                 <Modal show={modalEliminar}>
                     <ModalBody>
-                        Estás Seguro que deseas eliminar la nota {selectedNote && selectedNote.titulo}
+                        Estás Seguro que deseas eliminar la nota <span className="font-italic font-weight-bolder">"{selectedNote && selectedNote.titulo}" ? </span>
                     </ModalBody>
                     <ModalFooter>
                         <button className="btn btn-danger" onClick={removeNote}>
