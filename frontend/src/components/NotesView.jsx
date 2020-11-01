@@ -1,59 +1,115 @@
 import Note from './Note'
-import React, { useState,useEffect } from 'react';
-import ModalNote from './ModalNote'
+import React, {useState, useEffect} from 'react';
 import add from '../img/add.svg'
 import NavBar from "./NavBar";
 import './Home.css'
 import * as Api from './ApiRest'
+import {Modal, ModalBody, ModalFooter} from "react-bootstrap";
+import ModalNote from "./ModalNote";
+import ModalNoteEdit from "./ModalNoteEdit";
 
 
-export default function App() {
-    const [notes,setNotes] = useState([]);
-    const [show, setShow] = useState(false);
-    const [selectedNote,setSelectedNote] = useState(null)
+export default function NotesView() {
+    const [notes, setNotes] = useState([]);
+    const [selectedNote, setSelectedNote] = useState(null)
+    const [modalAgregar, setModalAgregar] = useState(false);
+    const [modalEditar, setModalEditar] = useState(false);
+    const [modalEliminar, setModalEliminar] = useState(false)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    const removeNote = id => {
-        Api.deleteNote(id)
-        .then(() => window.location.reload())
-        .catch( error => console.log(error))
+    function notesApi() {
+        Api.getNotes()
+            .then(response => setNotes(response.data))
+            .catch(error => console.log(error))
     }
 
-    useEffect( () => (
-        document.body.style="background-image: var(--img-background-notes)"
-     )) 
+    function showRemoveNote(note) {
+        setSelectedNote(note)
+        setModalEliminar(true)
+    }
 
-     useEffect(()=>{
-        Api.getNotes()
-        .then(response => setNotes(response.data))
-        .catch(error => console.log(error))
-    },[]);
+    function showEditNote(note) {
+        setSelectedNote(note)
+        setModalEditar(true)
+    }
+
+    const removeNote = () => {
+        Api.deleteNote(selectedNote.id)
+            .then(() => notesApi())
+            .catch(error => console.log(error))
+        closeModalEliminar()
+    }
+
+    useEffect(() => {
+        document.body.style = "background-image: var(--img-background-notes)"
+        notesApi();
+    }, []);
+
+    const addNote = note => {
+        Api.createNote(note.title, note.text, note.color)
+            .then(response => setNotes(note => [...note, response.data]))
+            .catch(error => console.log(error))
+        closeModalInsertar()
+    }
 
     const editNote = note => {
-        setSelectedNote(note);
-        handleShow()
+        Api.modifyNote(selectedNote.id, note.title, note.text, note.color)
+            .then(() => notesApi())
+            .catch(e => console.log(e))
+        closeModalEditar()
     }
 
-    const addNoteIfNotExist = note => {
-        Api.createNote(note.title,note.text,note.color)
-        .then(response => setNotes(note => [...note,response.data]))
-        .catch(error => console.log(error))
+    function closeModalInsertar() {
+        setSelectedNote(undefined)
+        setModalAgregar(false)
     }
 
+    function closeModalEliminar() {
+        setSelectedNote(undefined)
+        setModalEliminar(false)
+    }
+
+    function closeModalEditar() {
+        setModalEditar(false)
+        setSelectedNote(undefined)
+    }
 
     return (
         <>
             <div className={`body background--notes`}>
-            <NavBar />
-            <div className="container">
-                {notes.map((note) => (<Note key={note.id} note={note} editNote={() => editNote(note)} removeNote={removeNote}/>))}
-            </div>
-            <div className="btn-add-note">
-                <img src={add} alt="add new note" className="icon--add" onClick={handleShow}/>
-            </div>
-            <ModalNote selectedNote={selectedNote} show={show} handleClose={handleClose} addNoteIfNotExist={addNoteIfNotExist}/>
+                <NavBar/>
+                <div className="container">
+                    {notes.map((note) => (
+                        <Note key={note.id} note={note} editNote={showEditNote}
+                              removeNote={showRemoveNote}/>))}
+                </div>
+                <div className="btn-add-note">
+                    <img src={add} alt="add new note" className="icon--add"
+                         onClick={() => setModalAgregar(true)}/>
+                </div>
+
+                <ModalNote addNote={addNote} showModalInsertar={modalAgregar}
+                           closeModalInsertar={closeModalInsertar}/>
+
+                {selectedNote &&
+                <ModalNoteEdit note={selectedNote} editNote={editNote} showModalEditar={modalEditar}
+                                closeModalEditar={closeModalEditar}/>}
+
+                <Modal show={modalEliminar}>
+                    <ModalBody>
+                        Estás Seguro que deseas eliminar la nota {selectedNote && selectedNote.titulo}
+                    </ModalBody>
+                    <ModalFooter>
+                        <button className="btn btn-danger" onClick={removeNote}>
+                            Sí
+                        </button>
+                        <button
+                            className="btn btn-secondary"
+                            onClick={closeModalEliminar}
+                        >
+                            No
+                        </button>
+                    </ModalFooter>
+                </Modal>
             </div>
         </>
     )

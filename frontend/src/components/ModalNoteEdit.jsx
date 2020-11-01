@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Modal, Button} from 'react-bootstrap'
 
-export default function ModalNote({addNote, showModalInsertar, closeModalInsertar}) {
+export default function ModalNoteEdit({note,editNote, showModalEditar, closeModalEditar}) {
 
     const colors = ["yellow", "pink", "green", "blue", "orange"]
-    const [textNote, setText] = useState('');
-    const [titleNote, setTitle] = useState('');
-    const [colorNote, setColor] = useState('yellow');
+    const [textNote, setText] = useState(note.descrpicion);
+    const [titleNote, setTitle] = useState(note.titulo);
+    const [colorNote, setColor] = useState(note.color);
 
     const handleContentChange = event => setText(event.target.value);
     const handleTitleChange = event => setTitle(event.target.value);
@@ -22,8 +22,8 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
         return color.toLowerCase() === colorNote.toLowerCase()
     }
 
-    function agregarNota() {
-        addNote({
+    function editarNota() {
+        editNote({
             title: titleNote,
             text: textNote,
             color: colorNote
@@ -33,9 +33,9 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
 
     return (
         <>
-            <Modal show={showModalInsertar}>
+            <Modal show={showModalEditar}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Crea tu nueva nota!</Modal.Title>
+                    <Modal.Title>Edita tu nueva!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
@@ -68,10 +68,10 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModalInsertar}>
+                    <Button variant="secondary" onClick={closeModalEditar}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={agregarNota}>
+                    <Button variant="primary" onClick={editarNota}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

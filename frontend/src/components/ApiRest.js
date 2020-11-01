@@ -52,7 +52,7 @@ export const createNote = async (titulo, descripcion, color) =>
     });
 
 export const modifyNote = async (noteId, titulo, descripcion, color) =>
-    axios.post(url + '/notes/EditarNota', {
+    axios.put(url + '/notes/EditarNota/' + noteId , {
         noteId: noteId,
         titulo: titulo,
         descripcion: descripcion,
