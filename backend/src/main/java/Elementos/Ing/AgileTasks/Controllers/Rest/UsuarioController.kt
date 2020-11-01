@@ -42,11 +42,15 @@ class UsuarioController() {
         usuarioServiceImpl.eliminarUsuario(usuario)
     }
 
-    @GetMapping("/validateUser")
-    fun validarUsuario(@RequestBody usuario: Usuario): String {
-        if (usuarioServiceImpl.validateUser(usuario)) {
-            return usuario.userName
+    @PostMapping("/validateUser")
+    fun validarUsuario(@RequestBody usuario: UsuarioValidacion): Usuario? {
+        val usuarioObtenido = usuarioServiceImpl.validateUser(usuario.userName, usuario.password)
+        if ( usuarioObtenido != null) {
+            return usuarioObtenido
         }
         else {throw Exception("No existe este usuario")}
     }
+
 }
+
+data class UsuarioValidacion(val userName: String, val password: String)

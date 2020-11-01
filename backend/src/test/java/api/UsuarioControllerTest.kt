@@ -1,6 +1,7 @@
 package api
 
 import Elementos.Ing.AgileTasks.Controllers.Rest.UsuarioController
+import Elementos.Ing.AgileTasks.Controllers.Rest.UsuarioValidacion
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.modelo.Usuario
 import org.junit.Assert
@@ -62,10 +63,12 @@ class UsuarioControllerTest {
     }
 
     @Test
-    fun validadUsuarioTest(){
-        Assert.assertEquals(userController.validarUsuario(usuario), usuario.userName)
+    fun validarUsuarioTest(){
+        val validacion = UsuarioValidacion( usuario.userName,usuario.password)
+        Assert.assertEquals(userController.validarUsuario(validacion)!!
+                .userName, usuario.userName)
         Assertions.assertThrows(NoResultException::class.java){
-            userController.validarUsuario(Usuario())
+            userController.validarUsuario(UsuarioValidacion("",""))
         }
     }
 

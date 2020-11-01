@@ -33,9 +33,9 @@ class UsuarioServiceImpl: UsuarioService {
         }
     }
 
-    override fun validateUser(user: Usuario): Boolean {
+    override fun validateUser(userName: String, password : String): Usuario? {
         return runTrx {
-            UserDAO.validateUser(user)
+            UserDAO.validateUser(userName, password)
         }
     }
 

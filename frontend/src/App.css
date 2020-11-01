@@ -49,3 +49,14 @@
 .pointer{
   cursor: pointer;
 }
+
+.username{
+  font-family: fantasy;
+  font-style: italic;
+  font-weight: 400;
+  color: #ffffff;
+}
+.username:hover{
+  color: #A0A0A0;
+  cursor: pointer;
+}
