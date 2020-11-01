@@ -9,9 +9,16 @@ export default function NavBar() {
         history.push('/')
     };
 
+    const changePassword = () =>{
+        history.push('/changePassword')
+    }
+
     return (
         <>
         <nav className="navbar navbar-expand-lg bg-dark rounded justify-content-between">
+            <div>
+                <h3 className='username' onClick={changePassword}>{localStorage.getItem('userName')}</h3>
+            </div>
             <div className='bg-dark rounded-lg mb-3'>
                 <h1 className='text-light p-3 mx-5 '>
                     <span className='logo' onClick={() => history.push('/home')}> Agile Tasks</span></h1>

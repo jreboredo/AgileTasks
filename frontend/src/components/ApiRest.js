@@ -5,9 +5,9 @@ const url = 'http://localhost:8080/'
 /* USER */
 export const login = async (userName, password) => {
     const endpoint = 'users/validateUser'
-    return axios.post(url + endpoint,{
-            userName : userName,
-            password : password
+    return axios.post(url + endpoint, {
+        userName: userName,
+        password: password
     })
 }
 
@@ -15,18 +15,22 @@ export const register = async (userName, email, password) => {
     const endpoint = 'users/addUser';
     return axios.post(url + endpoint, {
         userName: userName,
-        email : email,
-        password : password
+        email: email,
+        password: password
     });
 }
 
-export const changePassword = async (oldPassword, newPassword) => {
+export const changePassword = async (newPassword) => {
     const endpoint = 'users/modificarUser';
-    return axios.post(url + endpoint, {
-        userName : localStorage.getItem('userName'),
-        oldPassword : oldPassword,
-        newPassword : newPassword
-    });
+    const username = localStorage.getItem('userName')
+    return axios.put(url + endpoint + `/${username}`,
+        {
+            id: localStorage.getItem('userid'),
+            userName: username,
+            password: newPassword,
+            email: localStorage.getItem('email'),
+
+        });
 }
 
 /* NOTES */
@@ -40,7 +44,7 @@ export const getNotes = async () => {
         });
 }
 
-export const createNote = async (titulo, descripcion,color) =>
+export const createNote = async (titulo, descripcion, color) =>
     axios.post(url + '/notes/NuevaNota', {
         titulo: titulo,
         descripcion: descripcion,
@@ -48,11 +52,11 @@ export const createNote = async (titulo, descripcion,color) =>
         user: {
             id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
-            password:localStorage.getItem('password')
+            password: localStorage.getItem('password')
         }
     });
 
-export const modifyNote = async (noteId, titulo, descripcion,color) =>
+export const modifyNote = async (noteId, titulo, descripcion, color) =>
     axios.post(url + '/notes/EditarNota', {
         noteId: noteId,
         titulo: titulo,
@@ -61,7 +65,7 @@ export const modifyNote = async (noteId, titulo, descripcion,color) =>
         user: {
             id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
-            password:localStorage.getItem('password')
+            password: localStorage.getItem('password')
         }
     });
 

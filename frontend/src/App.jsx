@@ -9,6 +9,7 @@ import RegistrationSuccessful from "./components/RegistrationSuccessful";
 import NotFound from "./components/NotFound";
 import CalendarApp from './components/CalendarApp'
 import TasksView from './components/TasksView';
+import ChangePassword from "./components/ChangePassword";
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/register" component={RegisterForm}/>
             <Route path="/notes" component={NotesView}/>
             <Route path="/tasks" component={TasksView}/>
+            <Route path="/changePassword" component={ChangePassword}/>
             <Route path="/calender" component={CalendarApp}/>
             <Route path="/calender"/>
             <Route path='/successful/:username' component={RegistrationSuccessful} />
