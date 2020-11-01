@@ -13,6 +13,8 @@ public class Nota {
     private String titulo;
     @Column(name="descr")
     private String descripcion;
+    @Column(name="color")
+    private String color;
     @ManyToOne(optional = false)
     private Usuario user;
     //private String task;
@@ -38,4 +40,8 @@ public class Nota {
     public void setUser(Usuario user) {this.user = user;}
 
     public int getId() { return id; }
+
+    public String getColor() {return color; }
+
+    public void setColor(String color) {this.color = color; }
 }

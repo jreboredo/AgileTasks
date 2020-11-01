@@ -35,13 +35,8 @@ export const changePassword = async (newPassword) => {
 
 /* NOTES */
 export const getNotes = async () => {
-    const endpoint = 'notes/allnotes'
-    return axios.get(url + endpoint,
-        {
-            params: {
-                userName: localStorage.getItem('userName')
-            }
-        });
+    const endpoint = 'notes/getByUser/'
+    return axios.get(url + endpoint + localStorage.getItem('userid'));
 }
 
 export const createNote = async (titulo, descripcion, color) =>
@@ -70,12 +65,7 @@ export const modifyNote = async (noteId, titulo, descripcion, color) =>
     });
 
 export const deleteNote = async (noteId) => {
-    const endpoint = 'notes/deleteNote';
-    return axios.delete(url + endpoint,
-        {
-            params: {
-                noteId: noteId
-            }
-        });
+    const endpoint = 'notes/DeleteNota/';
+    return axios.delete(url + endpoint + noteId);
 }
 
