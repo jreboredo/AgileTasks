@@ -5,7 +5,7 @@
     grid-gap: 6rem;
     justify-content: center;
   }
-  
+
   .btn-add-note {
     position: fixed;
     bottom: 5rem;
@@ -15,7 +15,7 @@
     border-radius: 50%;
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
-  
+
   .icon--add {
     cursor: pointer;
     padding: .3rem;
@@ -26,18 +26,18 @@
     position: absolute;
     transform: translate(-50%, -50%);
   }
-  
+
   .btn-add-note:hover{
       background-color:bisque;
   }
-  
+
   .logo{
     font-family: fantasy;
     font-style: italic;
     font-weight: 400;
     color: #DA392B;
   }
-  
+
   .logo:hover{
     font-family: fantasy;
     font-style: italic;
@@ -45,7 +45,7 @@
     color: #9A392B;
     cursor: pointer;
   }
-  
+
   .pointer{
     cursor: pointer;
   }

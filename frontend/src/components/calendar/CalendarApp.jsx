@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Calendar } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 import CalenderModal from './CalendarModal'
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 import './Calendar.css'
 
 

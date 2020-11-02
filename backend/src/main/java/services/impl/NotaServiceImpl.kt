@@ -7,8 +7,8 @@ import Elementos.Ing.AgileTasks.persistencia.runner.dao.NotaDAO
 
 class NotaServiceImpl: NotaService {
     val notaDAO: NotaDAO = NotaDAO()
-    override fun agregarNota(nota: Nota) {
-        runTrx{
+    override fun agregarNota(nota: Nota):Nota {
+        return runTrx {
             notaDAO.guardar(nota)
         }
     }

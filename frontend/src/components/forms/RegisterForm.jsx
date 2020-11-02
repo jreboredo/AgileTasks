@@ -2,7 +2,7 @@ import React from "react";
 import {Formik} from "formik";
 import * as Yup from "yup";
 import {useHistory} from 'react-router-dom';
-import * as Api from "./components/ApiRest";
+import * as Api from "../ApiRest";
 
 export default function RegisterForm() {
     const history = useHistory();

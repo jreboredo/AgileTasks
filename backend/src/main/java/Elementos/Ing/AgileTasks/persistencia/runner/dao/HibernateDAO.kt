@@ -11,19 +11,20 @@ import javax.persistence.criteria.CriteriaQuery
 
 open class HibernateDAO<T>(private val entityType: Class<T>) {
 
-    fun guardar(item: T) {
+    fun guardar(item: T): T {
         val session = HibernateTransaction.currentSession
         try {
             session.save(item)
         }catch (e: Exception){
             var cause = e.cause
-            when(cause){
+            when(cause) {
                 is SQLIntegrityConstraintViolationException ->
                     throw DuplicatedTypeException("Tipo duplicado")
                 else ->
                     throw e
             }
         }
+        return item
     }
 
     fun recuperar(id: String): T {

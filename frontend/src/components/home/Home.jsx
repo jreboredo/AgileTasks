@@ -1,18 +1,15 @@
-import React, { useState,useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
 import {Figure} from 'react-bootstrap'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import Notes from '../img/Notes.jpg'
-import Tasks from '../img/Tasks.jpg'
-import Calender from '../img/Calender.jpg'
-import NavBar from './NavBar'
-import CalendarApp from './CalendarApp'
-
+import Notes from '../../img/Notes.jpg'
+import Tasks from '../../img/Tasks.jpg'
+import Calender from '../../img/Calender.jpg'
+import NavBar from '../NavBar'
 
 export default function Home(){
     const history = useHistory();
     const images = [Calender,Tasks,Notes]
-    const [showCalendar,setShowCalendar] = useState(false)
 
     useEffect( () => {
         document.body.style="background-image: var(--img-background-home);" + 
@@ -42,7 +39,6 @@ export default function Home(){
                     </Figure>
             ))}
         </div>
-        {showCalendar && <CalendarApp/>}
         </>
     )
 }

@@ -1,7 +1,6 @@
 package Elementos.Ing.AgileTasks.Controllers.Rest
 
 import Elementos.Ing.AgileTasks.modelo.Nota
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -33,12 +32,12 @@ class NotaController() {
 
     //Te permite agregar una nota nueva
     @PostMapping("/NuevaNota")
-    fun agregarNota(@RequestBody nota: Nota) {
-        notaService.agregarNota(nota)
+    fun agregarNota(@RequestBody nota: Nota): Nota {
+        return notaService.agregarNota(nota)
     }
 
     //Te permite eliminar una nota
-    @PostMapping("/DeleteNota/{id}")
+    @DeleteMapping("/DeleteNota/{id}")
     fun borrarNota(@PathVariable id: Int) {
         val nota: Nota = this.getNotaId(id)
 
@@ -57,6 +56,7 @@ class NotaController() {
         var notaVieja: Nota = getNotaId(id)
         notaVieja.setTitulo(nota.titulo)
         notaVieja.setDescripcion(nota.descrpicion)
+        notaVieja.setColor(nota.color)
         notaService.modificarNota(notaVieja)
     }
 }
