@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Modal, Button} from 'react-bootstrap'
 import * as methods from './ModalMethods'
+import check from '../../../img/check.svg'
+import './Modal.css'
 
 export default function ModalNote({addNote, showModalInsertar, closeModalInsertar}) {
 
@@ -48,13 +50,13 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                             />
                         </div>
                         <div>
-                            <label className='d-block font-weight-bolder'>Color</label>
-                            {methods.colors.map(c => (
-                                <div key={c} className={`d-inline`} onClick={() => setColor(c)}>
-                                    | <span className={`pointer ${c === colorNote && 'font-italic font-weight-bolder'}`}>
-                                        {c.toLocaleUpperCase()}</span> |
-                                </div>
-                            ))}
+                            <div className="colors">
+                                {methods.colors.map(c => (
+                                    <div key={c} className={`color color--${c}`} onClick={() => setColor(c)}>
+                                        <img className={`check ${methods.isAColor(c,colorNote) && 'check--showIcon'}`} src={check} alt="check" />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </form>
                 </Modal.Body>
