@@ -18,14 +18,15 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
         methods.clearFields(setText,setTitle,setColor)
     }
 
-    const closeAndClean = () => {
-        closeModalInsertar()
-        methods.clearFields(setText,setTitle,setColor)
-    }
-
     return (
         <>
-            <Modal show={showModalInsertar}>
+            <Modal show={showModalInsertar} 
+                   keyboard={false} 
+                   onHide={closeModalInsertar} 
+                   backdrop="static" 
+                   centered
+                   onExited={() => methods.clearFields(setText,setTitle,setColor)}
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>Crea tu nueva nota!</Modal.Title>
                 </Modal.Header>
@@ -55,7 +56,7 @@ export default function ModalNote({addNote, showModalInsertar, closeModalInserta
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeAndClean}>
+                    <Button variant="secondary" onClick={closeModalInsertar}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={agregarNota}>

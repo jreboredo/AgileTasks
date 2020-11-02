@@ -18,15 +18,16 @@ export default function ModalNoteEdit({note,editNote, showModalEditar, closeModa
         methods.clearFields(setText,setTitle,setColor)
     }
 
-    const closeAndClean = () => {
-        closeModalEditar()
-        methods.clearFields(setText,setTitle,setColor)
-    }
-
-
     return (
         <>
-            <Modal show={showModalEditar}>
+            <Modal 
+                show={showModalEditar}
+                keyboard={false} 
+                onHide={closeModalEditar} 
+                backdrop="static" 
+                centered
+                onExited={() => methods.clearFields(setText,setTitle,setColor)}
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>Edita tu nota!</Modal.Title>
                 </Modal.Header>
@@ -56,7 +57,7 @@ export default function ModalNoteEdit({note,editNote, showModalEditar, closeModa
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeAndClean}>
+                    <Button variant="secondary" onClick={closeModalEditar}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={editarNota}>
