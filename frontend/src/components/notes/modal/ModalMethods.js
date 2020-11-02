@@ -1,3 +1,18 @@
+import check from "../../../img/check.svg";
+import React from "react";
+
+export function showColors(colorNote, setColor) {
+    return(
+        <div className="colors">
+            {colors.map(c => (
+                <div key={c} className={`color color--${c} pointer`} onClick={() => setColor(c)}>
+                    <img className={`check ${isAColor(c,colorNote) && 'check--showIcon'}`} src={check} alt="check" />
+                </div>
+            ))}
+        </div>
+    )
+}
+
 export const colors = ["yellow", "pink", "green", "blue", "orange"]
 
 export const handleContentChange = (event,setText) => setText(event.target.value);
