@@ -1,0 +1,48 @@
+.check {
+  height: 1rem;
+  width: 1rem;
+  visibility: hidden;
+}
+
+.check--showIcon {
+  visibility: visible;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  grid-gap: 1rem;
+  justify-content: left;
+  align-items: center;
+}
+
+.color {
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color--orange {
+  background-color: var(--color-orange);
+}
+
+.color--blue {
+  background-color: var(--color-blue);
+}
+
+.color--yellow {
+  background-color: var(--color-yellow);
+}
+
+.color--pink {
+  background-color: var(--color-pink);
+}
+
+.color--green {
+  background-color: var(--color-green);
+}
+
+
+

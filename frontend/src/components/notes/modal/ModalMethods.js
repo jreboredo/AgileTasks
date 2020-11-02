@@ -8,8 +8,8 @@ export  const isAColor = (colorACompare,colorToCompare) => {
     return colorACompare.toLowerCase() === colorToCompare.toLowerCase()
 }
 
-export const clearFields = (field1,field2,field3) => {
-    field1("");
-    field2("");
-    field3("");
+export const clearFields = (title,text,color) => {
+    title("");
+    text("");
+    color("yellow");
 }

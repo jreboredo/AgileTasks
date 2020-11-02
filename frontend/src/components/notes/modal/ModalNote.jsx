@@ -6,9 +6,9 @@ import './Modal.css'
 
 export default function ModalNote({addNote, showModalInsertar, closeModalInsertar}) {
 
-    const [textNote, setText] = useState('');
-    const [titleNote, setTitle] = useState('');
-    const [colorNote, setColor] = useState('yellow');
+    const [textNote, setText] = useState("");
+    const [titleNote, setTitle] = useState("");
+    const [colorNote, setColor] = useState("yellow");
 
     function agregarNota() {
         addNote({
