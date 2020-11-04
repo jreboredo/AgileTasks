@@ -10,7 +10,7 @@ public class Tarea {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     @Column(name="titulo")
     private String titulo;
     @Column(name="descrip")
