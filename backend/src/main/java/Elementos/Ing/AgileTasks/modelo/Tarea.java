@@ -1,36 +1,31 @@
 package Elementos.Ing.AgileTasks.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * Se refactorea la clase para que sea aplicable a hibernate
- */
-
 @Entity
+@Table(name="tareas")
 public class Tarea {
 
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(name="titulo")
     private String titulo;
+    @Column(name="descrip")
     private String descripcion;
+    @Column(name="start_date")
     private LocalDateTime comienzo;
+    @Column(name="end_date")
     private LocalDateTime fin;
-   // private Prioridad prioridad;
+    @Column(name="priority")
     private Integer prioridad;
+    @Column(name="vencimiento")
+    private LocalDateTime vencimiento;
+    @ManyToOne(optional = false)
+    private Usuario user;
 
-
-    /*public Tarea(String _titulo, String _descripcion, LocalDateTime comienzo, LocalDateTime fin, Prioridad prioridad) {
-        this.comienzo = comienzo;
-        this.fin = fin;
-        this.descripcion = _descripcion;
-        this.titulo = _titulo;
-        this.prioridad = prioridad;
-    }*/
 
     public Tarea() {
     }

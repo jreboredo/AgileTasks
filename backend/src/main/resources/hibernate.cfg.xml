@@ -14,14 +14,11 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
-
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
 
         <mapping class="Elementos.Ing.AgileTasks.modelo.Nota"/>
-        <mapping class="Elementos.Ing.AgileTasks.modelo.Usuario"/>
-        <!--mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Mutacion"/>
-        <mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Ubicacion"/>
-        <mapping class="ar.edu.unq.eperdemic.Elementos.Ing.AgileTasks.modelo.Vector"/>-->
+        <mapping class="Elementos.Ing.AgileTasks.modelo.Usuario"/>>
+        <mapping class="Elementos.Ing.AgileTasks.modelo.Tarea"/>>
 
     </session-factory>
 </hibernate-configuration>
