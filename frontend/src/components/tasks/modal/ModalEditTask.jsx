@@ -1,37 +1,36 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap'
-import { enGB } from 'date-fns/locale'
-import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates'
-import 'react-nice-dates/build/style.css'
-import * as methods from './ModalMethods'
+import { Modal, Button, Form } from 'react-bootstrap';
+import { enGB } from 'date-fns/locale';
+import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates';
+import 'react-nice-dates/build/style.css';
+import * as methods from './ModalMethods';
 
-export default function ModalNote({ addTask, showModalInsertar, closeModalInsertar }) {
+export default function ModalNote({ task, editTask, showModalEditar, closeModalEditar }) {
 
-    const [textTask, setText] = useState("");
-    const [titleTask, setTitle] = useState("");
-    const [priority, setPriority] = useState('low');
-    const [beginDate, setBeginDate] = useState();
-    const [endDate, setEndDate] = useState();
+    const [textTask, setText] = useState(task.descripcion);
+    const [titleTask, setTitle] = useState(task.titulo);
+    const [priority, setPriority] = useState(task.prioridad);
+    const [beginDate, setBeginDate] = useState(new Date(task.comienzo));
+    const [endDate, setEndDate] = useState(new Date(task.fin));
 
-    function agregarTarea() {
-       addTask({
-           id: undefined,
+    function editarNota() {
+        editTask({
             titulo: titleTask,
             descripcion: textTask,
             prioridad: priority,
             inicio: beginDate,
             fin: endDate,
         })
-        methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)
+        methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)
     }
 
     return (
         <>
-            <Modal show={showModalInsertar}
+            <Modal show={showModalEditar}
                 keyboard={false}
-                onHide={closeModalInsertar}
+                onHide={closeModalEditar}
                 backdrop="static"
-                onExited={() => methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)}
+                onExited={() => methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Crea tu nueva tarea!</Modal.Title>
@@ -104,10 +103,10 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModalInsertar}>
+                    <Button variant="secondary" onClick={closeModalEditar}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={agregarTarea}>
+                    <Button variant="primary" onClick={editarNota}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

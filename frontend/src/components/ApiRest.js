@@ -52,7 +52,7 @@ export const createNote = async (titulo, descripcion, color) =>
     });
 
 export const modifyNote = async (noteId, titulo, descripcion, color) =>
-    axios.put(url + '/notes/EditarNota/' + noteId , {
+    axios.put(url + '/notes/EditarNota/' + noteId, {
         noteId: noteId,
         titulo: titulo,
         descripcion: descripcion,
@@ -70,23 +70,44 @@ export const deleteNote = async (noteId) => {
 }
 
 /* TASK */
-
 export const getTasks = async () => {
     const endpoint = 'tasks/getByUser/'
     return axios.get(url + endpoint + localStorage.getItem('userid'));
 }
 
-export const createTask = async (titulo, descripcion, prioridad,inicio,fin) =>
+export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
     axios.post(url + '/tasks/NuevaTarea', {
         titulo: titulo,
         descripcion: descripcion,
-        prioridad:prioridad,
-        inicio:inicio,
-        fin:fin,
+        comienzo: inicio.toJSON(),
+        fin: fin.toJSON(),
+        prioridad: prioridad,
         user: {
             id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
             password: localStorage.getItem('password')
         }
     });
+
+
+export const modifyTask = async (tareaId,titulo, descripcion, prioridad, inicio, fin) =>
+    axios.put(url + '/task/EditarTarea/' + tareaId, {
+        tareaId: tareaId,
+        titulo: titulo,
+        descripcion: descripcion,
+        comienzo: inicio.toJSON(),
+        fin: fin.toJSON(),
+        prioridad: prioridad,
+        user: {
+            id: localStorage.getItem('userid'),
+            userName: localStorage.getItem('userName'),
+            password: localStorage.getItem('password')
+        }
+    });
+
+
+export const deleteTask = async (taskId) => {
+    const endpoint = 'tasks/DeleteTarea/';
+    return axios.delete(url + endpoint + taskId);
+}
 
