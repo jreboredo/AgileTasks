@@ -22,7 +22,7 @@
 - https://meet.google.com/jwm-bgkp-mb
 
 ### Repositorio: 
-- https://github.com/SebastianCuccorese/AgileTasks
+- https://github.com/jreboredo/AgileTasks
 
 ### Producto:
 - Aun no se encuentra publicado

@@ -1,0 +1,16 @@
+:root {
+  font-size: 60%;
+  --color-orange: #ff7455;
+  --color-blue: #1ba8b1;
+  --color-yellow: #ffeb3b;
+  --color-pink: #ff0079;
+  --color-green: #aeea00;
+  --img-background-notes: url('./img/decorative-background-of-cork-detai.jpg');
+  --img-background-home: url('./img/Cypress.jpg');
+}
+
+body {
+  background-size: 500px;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
