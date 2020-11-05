@@ -4,7 +4,3 @@ jdk:
 script:
   - gradle check
   - gradle build
-after_success:
-  - mkdir build
-  - mv * build
-  - tar -czf package.tgz build
