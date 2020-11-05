@@ -1,7 +1,9 @@
 language: java
-os: windows
 jdk:
   - oraclejdk9
+cache:
+  directories:
+    - $HOME/.gradle
 script:
-  - gradlew check
-  - gradlew build
+  - .\gradlew check
+  - .\gradlew build
