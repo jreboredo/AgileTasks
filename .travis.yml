@@ -4,7 +4,7 @@ jdk:
 cache:
   directories:
     - $HOME/.gradle
-before_script:
+before_deploy:
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
   - export GRADLE_HOME=$PWD/gradle-6.6.1
