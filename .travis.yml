@@ -4,3 +4,6 @@ jdk:
 script:
   - ./gradlew check
   - ./gradlew build
+before_install:
+  - ./gradlew check
+  - ./gradlew build
