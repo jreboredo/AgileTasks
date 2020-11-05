@@ -4,7 +4,6 @@ jdk:
 cache:
   directories:
     - $HOME/.gradle
-
 before_script:
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
@@ -12,5 +11,6 @@ before_script:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
 script:
-  - .\gradlew check
-  - .\gradlew build
+  - ./gradle wrapper check
+  - ./gradle wrapper install -x check
+  - ./gradle wrapper codeCoverageReport --continue
