@@ -9,7 +9,7 @@
 #### Sprint 2:
 - https://docs.google.com/document/d/1cVmCdnaINom3-7H9KWollrCh7RGxlFT5oaQg2pi7Scs/edit?usp=sharing
 #### Sprint 3:
-- Sin Comenzar
+- https://docs.google.com/document/d/1dVDYLyzLYkBhCQcga3708huUqDgHtKvFyR8k0tghEWc/edit?usp=sharing
 #### Sprint 4:
 - Sin Comenzar
 #### Sprint 5:
