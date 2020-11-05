@@ -2,7 +2,8 @@ language: java
 jdk:
   - oraclejdk9
 script:
-  - gradlew check
-  - gradlew build
   - gradle check
   - gradle build
+before_install:
+  - gradlew check
+  - gradlew build
