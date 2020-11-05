@@ -2,9 +2,5 @@ language: java
 jdk:
   - oraclejdk9
 script:
-  - gradle check
-  - gradle build
-before_install:
-  - task wrapper(type: Wrapper) {
-      gradleVersion = '6.6.1'
-}
+  - ./gradlew check
+  - ./gradlew build
