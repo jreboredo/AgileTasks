@@ -9,7 +9,7 @@ public class Tarea {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name="titulo")
     private String titulo;
@@ -23,11 +23,19 @@ public class Tarea {
     private Integer prioridad;
     @Column(name="vencimiento")
     private LocalDateTime vencimiento;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     private Usuario user;
 
 
     public Tarea() {
+    }
+
+    public LocalDateTime getVencimiento() {
+        return vencimiento;
+    }
+
+    public void setVencimiento(LocalDateTime vencimiento) {
+        this.vencimiento = vencimiento;
     }
 
     public long getId() {

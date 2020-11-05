@@ -1,8 +1,10 @@
 package Elementos.Ing.AgileTasks.modelo;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -20,8 +22,7 @@ public class Usuario {
     @Column(name="email")
     private String email;
 
-
-/*@OneToMany
+  /*  @OneToMany(mappedBy = "tareas", cascade = CascadeType.ALL)
     private List<Tarea> tareas;
     @ManyToMany
     private List<Grupo> grupos;*/
