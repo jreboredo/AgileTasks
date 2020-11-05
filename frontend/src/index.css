@@ -5,6 +5,7 @@
   --color-yellow: #ffeb3b;
   --color-pink: #ff0079;
   --color-green: #aeea00;
+  --color-red: #f20d1b;
   --img-background-notes: url('./img/decorative-background-of-cork-detai.jpg');
   --img-background-home: url('./img/Cypress.jpg');
 }
@@ -14,3 +15,4 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+

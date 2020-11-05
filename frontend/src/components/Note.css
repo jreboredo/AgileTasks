@@ -1,0 +1,79 @@
+.note {
+    background-color: var(--color-yellow);
+    padding: 1.5rem;
+    height: 25rem;
+    transition: all .3s;
+    border-radius: 2%;
+    box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+
+.note--orange {
+  background-color: var(--color-orange);
+}
+
+.note--blue {
+  background-color: var(--color-blue);
+}
+
+.note--yellow {
+  background-color: var(--color-yellow);
+}
+
+.note--pink {
+  background-color: var(--color-pink);
+}
+
+.note--green {
+  background-color: var(--color-green);
+}
+
+.note:hover {
+  transform: scale(1.2);
+  box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+.text {
+  line-height: 2rem;
+  font-size: 1.6rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  line-height: 16px;
+}
+
+.title{
+  font-weight: bolder;
+  font-style: italic;
+  padding-bottom: 2px;
+}
+
+.icon {
+  cursor: pointer;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: opacity(.6);
+  transition: all .2s;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-column-gap: 10px;
+  justify-content: end;
+  visibility: hidden;
+}
+
+.note:hover .actions {
+  visibility: visible;
+}
+
+
+.icon:hover {
+  filter: none
+}
+
+.pin{
+  padding-bottom: 1px;
+  width: 3.8rem;
+  height: auto;
+}

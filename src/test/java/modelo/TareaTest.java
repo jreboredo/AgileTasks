@@ -18,11 +18,11 @@ public class TareaTest {
         tarea.setFin(localDate);
         tarea.setDescripcion("descripcion");
         tarea.setTitulo("titulo");
-        tarea.setPrioridad(1);
+        tarea.setPrioridad("high");
 
         assertEquals(tarea.getDescripcion(), "descripcion");
         assertEquals(tarea.getTitulo(), "titulo");
-        assertEquals(tarea.getPrioridad(), 1);
+        assertEquals(tarea.getPrioridad(), "high");
         assertEquals(tarea.getComienzo(), localDate);
         assertEquals(tarea.getFin(), localDate);
     }

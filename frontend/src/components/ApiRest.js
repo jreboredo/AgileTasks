@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/'
+const url = 'http://localhost:8181/'
 
 /* USER */
 export const login = async (userName, password) => {
@@ -68,4 +68,25 @@ export const deleteNote = async (noteId) => {
     const endpoint = 'notes/DeleteNota/';
     return axios.delete(url + endpoint + noteId);
 }
+
+/* TASK */
+
+export const getTasks = async () => {
+    const endpoint = 'tasks/getByUser/'
+    return axios.get(url + endpoint + localStorage.getItem('userid'));
+}
+
+export const createTask = async (titulo, descripcion, prioridad,inicio,fin) =>
+    axios.post(url + '/tasks/NuevaTarea', {
+        titulo: titulo,
+        descripcion: descripcion,
+        prioridad:prioridad,
+        inicio:inicio,
+        fin:fin,
+        user: {
+            id: localStorage.getItem('userid'),
+            userName: localStorage.getItem('userName'),
+            password: localStorage.getItem('password')
+        }
+    });
 
