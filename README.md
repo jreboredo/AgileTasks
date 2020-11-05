@@ -1,10 +1,28 @@
 # AgileTasks
 
-## User Stories Mapping:
-- https://miro.com/app/board/o9J_kh0ud3Q=/
+### MVP:
+- https://docs.google.com/document/d/1Bq5WT696KAJfwZJUw3vWXYvopp4cu3p_rVJ2Dw0BYpE/edit?usp=sharing
 
-## Tablero Kanban:
-- https://github.com/SebastianCuccorese/AgileTasks/projects/2
+### Reportes: 
+#### Sprint 1:
+- https://docs.google.com/document/d/1NgGKU1las_KbVbMjdFwW8uTgpQpcZz3xLjZAYfKmdGQ/edit?usp=sharing
+#### Sprint 2:
+- https://docs.google.com/document/d/1cVmCdnaINom3-7H9KWollrCh7RGxlFT5oaQg2pi7Scs/edit?usp=sharing
+#### Sprint 3:
+- Sin Comenzar
+#### Sprint 4:
+- Sin Comenzar
+#### Sprint 5:
+- Sin Comenzar
 
-## Doc con boceto de US/Epicas: 
-- https://docs.google.com/document/d/1KSdeanvZGcIvrQCbfcShDDFEWbKDnkan/edit
+### Kanban con Planificacion de Proyecto
+- https://trello.com/b/aUIRPgbv
+
+### Meet de Reunion:
+- https://meet.google.com/jwm-bgkp-mb
+
+### Repositorio: 
+- https://github.com/jreboredo/AgileTasks
+
+### Producto:
+- Aun no se encuentra publicado
