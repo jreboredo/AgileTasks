@@ -5,5 +5,4 @@ script:
   - gradle check
   - gradle build
 before_install:
-  - gradlew check
   - gradlew build
