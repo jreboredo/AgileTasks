@@ -5,4 +5,6 @@ script:
   - gradle check
   - gradle build
 before_install:
-  - gradlew build
+  - task wrapper(type: Wrapper) {
+      gradleVersion = '6.6.1'
+}
