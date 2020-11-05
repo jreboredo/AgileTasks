@@ -7,5 +7,8 @@ before_install:
   - export GRADLE_HOME=$PWD/gradle-6.6.1
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
+  - pip install --user codecov
 script:
   - gradle check
+after_success:
+  - codecov --file coverage/lcov.info --disable search
