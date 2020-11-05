@@ -11,6 +11,5 @@ before_install:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
 script:
-  - ./gradle wrapper check
-  - ./gradle wrapper install -x check
-  - ./gradle wrapper codeCoverageReport --continue
+  - gradle check
+  - gradle install
