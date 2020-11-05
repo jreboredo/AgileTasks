@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jreboredo/AgileTasks.png?branch=master)](https://travis-ci.org/jreboredo/AgileTasks)
 # AgileTasks
 
 ### MVP:
