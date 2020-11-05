@@ -1,9 +1,6 @@
 language: java
 jdk:
   - oraclejdk9
-cache:
-  directories:
-    - $HOME/.gradle
 before_install:
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
@@ -11,5 +8,5 @@ before_install:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
 script:
-  - .\gradle check
-  - .\gradle install
+  - gradle check
+  - gradle install
