@@ -1,33 +1,26 @@
 
 Feature: Nota
 
-  Scenario: Setear una Nota con un titulo y descripcion
+  Scenario: Agregar una nueva nota
 
-    Given Nota vacia
-    When Seteo el titulo con "Telefono-Abuela"
-    Then El titulo tiene "Telefono-Abuela"
-
-    Given Nota vacia
-    When Seteo la descripcion con "11-8811-3233"
-    Then La descripcion tiene "11-8811-3233"
-
-  Scenario: Guardar una Nota
-
-    Given una nota con titulo "wifi", descripcion "contraseña-wifi"
-    When Guardo la nota
-    Then La nota se guardó con su titulo y descripcion
+    Given Un usuario logeado con contraseña "asdbqwerty" y userName "Admin1"
+    And Nota vacia
+    When Seteo la descripcion con "contraseña-wifi"
+    And Seteo el titulo con "wifi"
+    And Guardo la nota
+    Then La nota se guardó con el titulo "wifi" y la descripcion "contraseña-wifi"
 
   Scenario: Actualizar una Nota
 
-    Given una nota con titulo "pizzeria", descripcion "11-9999-8888"
+    Given Un usuario logeado con contraseña "asdbqwerty" y userName "Admin2"
+    And una nota con titulo "pizzeria", descripcion "11-9999-8888"
     When Actualizo la descripcion con "11-7777-6666"
-    Then Se actualizo la descripcion con "11-7777-6666"
-    When Actualizo el titulo con "panaderia"
-    Then Se actualizo el titulo con "panaderia"
-
+    And Actualizo el titulo con "panaderia"
+    Then La nota se guardó con el titulo "panaderia" y la descripcion "11-7777-6666"
 
   Scenario: Eliminar una Nota
 
-    Given una nota con titulo "estudiar", descripcion "matematica"
+    Given Un usuario logeado con contraseña "asdbqwerty" y userName "Admin3"
+    And una nota con titulo "estudiar", descripcion "matematica"
     When elimino la nota
     Then la nota se eliminó

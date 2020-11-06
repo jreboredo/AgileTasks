@@ -63,4 +63,10 @@ public class UsuarioStepdefs {
 
         assertEquals(usuario.getPassword(), nuevaContraseña);
     }
+
+
+    @When("se logea el usuario con userName {string}, password {string}")
+    public void seLogeaElUsuarioConUserNamePassword(String userName, String password) {
+        usuarioService.validateUser(userName, password);
+    }
 }
