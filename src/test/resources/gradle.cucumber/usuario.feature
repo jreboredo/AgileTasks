@@ -7,6 +7,7 @@ Feature: Usuario
 
   Scenario: loguear usuario
     Given un usuario registrado con userName "Jorge12345", password "qwertyasdfghi" y email "joge@gmail.com"
+    When se logea el usuario con userName "Jorge12345", password "qwertyasdfghi"
     Then el usuario está logeado
 
   Scenario: cambiar contraseña de usuario
