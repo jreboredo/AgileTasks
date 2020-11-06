@@ -10,11 +10,12 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
     const [textTask, setText] = useState(task.descripcion);
     const [titleTask, setTitle] = useState(task.titulo);
     const [priority, setPriority] = useState(task.prioridad);
-    const [beginDate, setBeginDate] = useState(new Date(task.comienzo));
-    const [endDate, setEndDate] = useState(new Date(task.fin));
+    const [beginDate, setBeginDate] = useState(task.inicio);
+    const [endDate, setEndDate] = useState(task.fin);
 
     function editarNota() {
         editTask({
+            id:task.id,
             titulo: titleTask,
             descripcion: textTask,
             prioridad: priority,
@@ -33,7 +34,7 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                 onExited={() => methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Crea tu nueva tarea!</Modal.Title>
+                    <Modal.Title>Edita tu tarea!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form>
@@ -63,6 +64,7 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                                     type="radio"
                                     label={prio}
                                     inline
+                                    checked={methods.isAPriority(prio,priority)}
                                     name="formHorizontalRadios"
                                     id="formHorizontalRadios1"
                                     onClick={() => setPriority(prio)}
@@ -73,9 +75,34 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                         </Form.Group>
                     </form>
                     <div>
+                    <Form.Label as="legend">
+                            Start Date
+                        </Form.Label>
+                        <Form.Control
+                            type='date'
+                            name='start'
+                            value={beginDate}
+                            placeholder='Start date'
+                            onChange={(ev) => {
+                                setBeginDate(ev.target.value)
+                            }}
+                        >
+                        </Form.Control>
                         <Form.Label as="legend">
+                            End Date
+                        </Form.Label>
+                        <Form.Control
+                            type='date'
+                            name='start'
+                            value={endDate}
+                            placeholder='Start date'
+                            onChange={(ev) => {
+                                setEndDate(ev.target.value)
+                            }}
+                        ></Form.Control>
+                        {/* <Form.Label as="legend">
                             Start-End Dates
-                    </Form.Label>
+                        </Form.Label>
                         <DateRangePicker
                             startDate={beginDate}
                             endDate={endDate}
@@ -99,7 +126,7 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                                     />
                                 </div>
                             )}
-                        </DateRangePicker>
+                        </DateRangePicker> */}
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

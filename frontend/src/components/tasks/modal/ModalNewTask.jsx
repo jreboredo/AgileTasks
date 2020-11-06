@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
 import { enGB } from 'date-fns/locale'
 import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 import * as methods from './ModalMethods'
 
-export default function ModalNote({ addTask, showModalInsertar, closeModalInsertar }) {
 
+export default function ModalNote({ addTask, showModalInsertar, closeModalInsertar }) {
     const [textTask, setText] = useState("");
     const [titleTask, setTitle] = useState("");
     const [priority, setPriority] = useState('low');
-    const [beginDate, setBeginDate] = useState();
-    const [endDate, setEndDate] = useState();
+    const [beginDate, setBeginDate] = useState('');
+    const [endDate, setEndDate] = useState('');
 
     function agregarTarea() {
-       addTask({
-           id: undefined,
+        addTask({
+            id: undefined,
             titulo: titleTask,
             descripcion: textTask,
             prioridad: priority,
             inicio: beginDate,
             fin: endDate,
         })
-        methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)
+        methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)
     }
 
     return (
@@ -31,7 +31,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                 keyboard={false}
                 onHide={closeModalInsertar}
                 backdrop="static"
-                onExited={() => methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)}
+                onExited={() => methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Crea tu nueva tarea!</Modal.Title>
@@ -64,6 +64,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                                     type="radio"
                                     label={prio}
                                     inline
+                                    checked={methods.isAPriority(prio,priority)}
                                     name="formHorizontalRadios"
                                     id="formHorizontalRadios1"
                                     onClick={() => setPriority(prio)}
@@ -75,9 +76,31 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                     </form>
                     <div>
                         <Form.Label as="legend">
-                            Start-End Dates
-                    </Form.Label>
-                        <DateRangePicker
+                            Start Date
+                        </Form.Label>
+                        <Form.Control
+                            type='date'
+                            name='start'
+                            value={beginDate}
+                            placeholder='Start date'
+                            onChange={(ev) => {
+                                setBeginDate(ev.target.value)
+                            }}
+                        >
+                        </Form.Control>
+                        <Form.Label as="legend">
+                            End Date
+                        </Form.Label>
+                        <Form.Control
+                            type='date'
+                            name='start'
+                            placeholder='Start date'
+                            onChange={(ev) => {
+                                setEndDate(ev.target.value)
+                            }}
+                        >
+                        </Form.Control>
+                        {/* <DateRangePicker
                             startDate={beginDate}
                             endDate={endDate}
                             onStartDateChange={setBeginDate}
@@ -100,7 +123,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                                     />
                                 </div>
                             )}
-                        </DateRangePicker>
+                        </DateRangePicker> */}
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

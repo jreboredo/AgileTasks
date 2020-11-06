@@ -50,18 +50,9 @@ export default function TasksView() {
 
     const addTask = task => {
         console.log(task)
-        let newTasks = tasks
-
-        if (task.id) {
-            newTasks = tasks.map(t => {
-                if (t.id === task.id) {
-                    return { ...task }
-                }
-                return t;
-            });
-        } else {
-            newTasks = [{ ...task, id: tasks.length + 1 }, ...tasks];
-        }
+        let newTasks = tasks.push()
+        newTasks = [{ ...task, id: tasks.length + 1 }, ...tasks];
+        console.log(newTasks)
         newTasks.reverse()
         setTasks(newTasks)
         setSelectedTask(undefined)
@@ -73,6 +64,15 @@ export default function TasksView() {
 
     const editTask = task => {
         console.log(task);
+        let newTasks
+        newTasks = tasks.map(t => {
+            if (t.id === task.id) {
+                return { ...task }
+            }
+            return t;
+        });
+        newTasks.reverse()
+        setTasks(newTasks)
         // Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
         //     .then(() => tasksApi())
         //     .catch(error => console.log(error))

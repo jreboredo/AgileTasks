@@ -6,6 +6,10 @@ export const clearFields = (title,text,priority,begin,end) => {
     title("");
     text("");
     priority("low");
-    begin();
-    end()
+    begin('');
+    end('')
+}
+
+export const isAPriority = (prio1,prio2) => {
+    return prio1 === prio2
 }
