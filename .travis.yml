@@ -1,14 +1,10 @@
 language: java
-addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
-      - mysql-client
+services:
+  - mysql
 jdk:
   - oraclejdk9
 before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS AgileTasks_DB;'
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
   - export GRADLE_HOME=$PWD/gradle-6.6.1
