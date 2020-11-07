@@ -4,6 +4,7 @@ plugins {
 	id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
+apply plugin: 'jacoco'
 
 group = 'Elementos.Ing'
 version = '0.0.1-SNAPSHOT'
@@ -22,6 +23,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("mysql:mysql-connector-java")
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0")
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.1")
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.6.1'
 	implementation 'junit:junit:4.12'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -30,6 +34,30 @@ dependencies {
 	runtimeOnly("mysql:mysql-connector-java")
 	testImplementation 'io.cucumber:cucumber-java:6.8.1'
 	testImplementation 'io.cucumber:cucumber-junit:6.8.1'
+}
+
+
+test {
+	useJUnitPlatform()
+	jacoco {
+		destinationFile = file("${buildDir}/jacoco/test.exec")
+	}
+}
+test {
+	finalizedBy jacocoTestReport
+}
+
+jacoco {
+	// You may modify the Jacoco version here
+	toolVersion = "0.8.2"
+}
+
+jacocoTestReport {
+	// Adjust the output of the test report
+	reports {
+		xml.enabled true
+		csv.enabled true
+	}
 }
 
 configurations {
