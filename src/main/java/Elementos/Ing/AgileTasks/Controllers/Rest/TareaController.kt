@@ -19,6 +19,20 @@ class TareaController {
         return tareaService.recuperarPorUserId(id)
     }
 
+
+    @PutMapping("/editById/{id}")
+    fun editarTarea(@PathVariable id: Int, @RequestBody tareaNueva: Tarea) {
+        val tarea = getTareaId(id)
+        tarea.titulo = tareaNueva.titulo
+        tarea.comienzo = tareaNueva.comienzo
+        tarea.descripcion = tareaNueva.descripcion
+        tarea.fin = tareaNueva.fin
+        tarea.prioridad = tareaNueva.prioridad
+        tarea.fin = tareaNueva.fin
+
+        tareaService.modificarTarea(tarea)
+    }
+
     //Recupera una tarea por Id de la tarea
     @GetMapping("/get/{id}")
     fun getTareaId(@PathVariable id: Int): Tarea {
@@ -33,7 +47,7 @@ class TareaController {
     }
 
     //Te permite eliminar una tarea
-    @DeleteMapping("/DeleteTarea/{id}")
+    @PostMapping("/DeleteTarea/{id}")
     fun borrarTarea(@PathVariable id: Int) {
         val tarea: Tarea = this.getTareaId(id)
         tareaService.eliminar(tarea)

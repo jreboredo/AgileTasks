@@ -53,7 +53,7 @@ class NotaController() {
     //Editar notas
     @PutMapping("/EditarNota/{id}")
     fun editarNota(@PathVariable id: Int, @RequestBody nota: Nota) {
-        var notaVieja: Nota = getNotaId(id)
+        val notaVieja: Nota = getNotaId(id)
         notaVieja.setTitulo(nota.titulo)
         notaVieja.setDescripcion(nota.descrpicion)
         notaVieja.setColor(nota.color)
