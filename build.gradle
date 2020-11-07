@@ -43,6 +43,9 @@ test {
 		destinationFile = file("${buildDir}/jacoco/test.exec")
 	}
 }
+test {
+	finalizedBy jacocoTestReport
+}
 
 jacoco {
 	// You may modify the Jacoco version here
@@ -53,7 +56,7 @@ jacocoTestReport {
 	// Adjust the output of the test report
 	reports {
 		xml.enabled true
-		csv.enabled false
+		csv.enabled true
 	}
 }
 
