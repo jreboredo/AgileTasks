@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
