@@ -7,8 +7,7 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE AgileTasks_DB;'
   - sudo mysql -e 'select database();'
   - sudo mysql -e 'SHOW DATABASES;'
-  - sudo mysql -e 'USE AgileTasks_DB;'
-  - sudo mysql -e 'select database();'
+  - sudo mysql -e 'USE AgileTasks_DB; select database();'
   - sudo mysql --version
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
@@ -16,8 +15,6 @@ before_install:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
   - pip install --user codecov
-before_script:
-  - mysql -u root -e 'CREATE DATABASE AgileTasks_DB;'
 script:
   - gradle check
 after_success:
