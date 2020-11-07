@@ -79,7 +79,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                             Start Date
                         </Form.Label>
                         <Form.Control
-                            type='date'
+                            type='datetime-local'
                             name='start'
                             value={beginDate}
                             placeholder='Start date'
@@ -92,7 +92,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                             End Date
                         </Form.Label>
                         <Form.Control
-                            type='date'
+                            type='datetime-local'
                             name='start'
                             placeholder='Start date'
                             onChange={(ev) => {
