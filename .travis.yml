@@ -4,7 +4,6 @@ services:
 jdk:
   - oraclejdk9
 before_install:
-  - - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
   - export GRADLE_HOME=$PWD/gradle-6.6.1
@@ -12,7 +11,8 @@ before_install:
   - gradle wrapper
   - pip install --user codecov
 before_script:
-  - - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  - mysql -u root -e 'CREATE DATABASE AgileTasks_DB;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 script:
   - gradle check
 after_success:
