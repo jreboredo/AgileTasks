@@ -15,7 +15,7 @@ before_install:
   - gradle wrapper
   - pip install --user codecov
 before_script:
-  - mysql -u root -e "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" |
+  - sudo mysql -u root -e "USE mysql; UPDATE user SET password=PASSWORD('root') WHERE user='root'; FLUSH PRIVILEGES;" |
 script:
   - gradle check
 after_success:
