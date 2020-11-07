@@ -1,23 +1,23 @@
 .task {
-    background-color: var(--color-yellow);
+    background-color: #ffffff;
     padding: 1.5rem;
-    height: 25rem;
+    height: 15rem;
     transition: all .3s;
     border-radius: 2%;
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-.task--2 {
-  background-color: var(--color-green);
-}
+/*.task--2 {*/
+/*  background-color: var(--color-green);*/
+/*}*/
 
-.task--1 {
-  background-color: var(--color-yellow);
-}
+/*.task--1 {*/
+/*  background-color: var(--color-yellow);*/
+/*}*/
 
-.task--0 {
-  background-color: var(--color-red);
-}
+/*.task--0 {*/
+/*  background-color: var(--color-red);*/
+/*}*/
 
 .task:hover {
   transform: scale(1.2);
@@ -34,7 +34,23 @@
 .title{
   font-weight: bolder;
   font-style: italic;
+  font-size: 20px;
   padding-bottom: 2px;
+  transition: 0.3s;
+}
+
+.description{
+  font-size: 11px;
+  padding-bottom: 2px;
+}
+
+.modal-bg{
+  background-color:  rgba(0,0,0,.8)
+}
+
+.title:hover{
+  background-color: #DA392B;
+  color: white;
 }
 
 .icon {
