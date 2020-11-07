@@ -16,6 +16,6 @@ before_install:
   - gradle wrapper
   - pip install --user codecov
 script:
-  - gradle check --error
+  - gradle check --warning-mode all
 after_success:
   - codecov --file coverage/lcov.info --disable search
