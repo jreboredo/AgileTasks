@@ -20,7 +20,9 @@ public class Tarea {
     @Column(name="end_date")
     private LocalDateTime fin;
     @Column(name="priority")
-    private String prioridad;
+    private Integer prioridad;
+    @Column(name="vencimiento")
+    private LocalDateTime vencimiento;
     @ManyToOne(optional = false)
     private Usuario user;
 
@@ -56,7 +58,7 @@ public class Tarea {
         return fin;
     }
 
-    public String getPrioridad() {
+    public Integer getPrioridad() {
         return prioridad;
     }
 
@@ -76,7 +78,7 @@ public class Tarea {
         this.fin = fin;
     }
 
-    public void setPrioridad(String prioridad) {
+    public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
     }
 
