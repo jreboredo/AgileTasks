@@ -85,7 +85,28 @@ class TareaControllerTest {
     }
 
     @Test
+    fun editarTareaTest(){
+        val nuevaTarea = Tarea()
+        nuevaTarea.descripcion = "otraDescripcion"
+        nuevaTarea.titulo = "otroTitulo"
+        nuevaTarea.user = usuario
+        val localDate = LocalDateTime.now()
+        nuevaTarea.comienzo = localDate
+        nuevaTarea.fin = localDate
+        nuevaTarea.prioridad = 1
 
+        tareaController.editarTarea(tarea.id.toInt(), nuevaTarea)
+        val tareaRecuperada = tareaController.getTareaId(tarea.id.toInt())
+
+        Assert.assertEquals(tareaRecuperada.titulo, nuevaTarea.titulo)
+        Assert.assertEquals(tareaRecuperada.descripcion, nuevaTarea.descripcion)
+        Assert.assertEquals(tareaRecuperada.comienzo, nuevaTarea.comienzo)
+        Assert.assertEquals(tareaRecuperada.fin, nuevaTarea.fin)
+        Assert.assertEquals(tareaRecuperada.prioridad, nuevaTarea.prioridad)
+
+    }
+
+    @Test
     fun eliminarTareaTest(){
 
         tareaController.borrarTarea(tarea.id.toInt())

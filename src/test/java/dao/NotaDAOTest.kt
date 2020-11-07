@@ -117,6 +117,18 @@ class NotaDAOTest {
         Assert.assertEquals(notas[0].id, nota.id)
     }
 
+    @Test
+    fun recuperarPorUserNameTest(){
+        val notas = runTrx {
+            notaDAO.recuperarPorUserName(usuario.userName)
+        }
+
+        Assert.assertEquals(notas.size, 1)
+        Assert.assertEquals(notas[0].descrpicion, nota.descrpicion)
+        Assert.assertEquals(notas[0].titulo, nota.titulo)
+        Assert.assertEquals(notas[0].id, nota.id)
+    }
+
     @AfterEach
     fun after(){
         dataService.deleteAll()

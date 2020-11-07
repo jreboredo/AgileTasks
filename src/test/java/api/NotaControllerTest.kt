@@ -114,6 +114,15 @@ class NotaControllerTest {
         Assert.assertEquals(notas[0].id, nota.id)
     }
 
+    @Test
+    fun recuperarPorNombreTest(){
+        val notas = notaController.buscarPorNombreUsuario(usuario.userName)
+        Assert.assertEquals(notas.size, 1)
+        Assert.assertEquals(notas[0].descrpicion, nota.descrpicion)
+        Assert.assertEquals(notas[0].titulo, nota.titulo)
+        Assert.assertEquals(notas[0].id, nota.id)
+    }
+
     @AfterEach
     fun after(){
         DataServiceImpl().deleteAll()
