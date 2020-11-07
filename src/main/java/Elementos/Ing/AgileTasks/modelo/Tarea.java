@@ -9,7 +9,7 @@ public class Tarea {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name="titulo")
     private String titulo;
@@ -26,6 +26,14 @@ public class Tarea {
 
 
     public Tarea() {
+    }
+
+    public LocalDateTime getVencimiento() {
+        return vencimiento;
+    }
+
+    public void setVencimiento(LocalDateTime vencimiento) {
+        this.vencimiento = vencimiento;
     }
 
     public long getId() {
@@ -70,5 +78,13 @@ public class Tarea {
 
     public void setPrioridad(String prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }

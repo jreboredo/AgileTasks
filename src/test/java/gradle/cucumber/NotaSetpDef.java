@@ -4,6 +4,7 @@ import Elementos.Ing.AgileTasks.excepciones.NotFoundException;
 import Elementos.Ing.AgileTasks.modelo.Nota;
 import Elementos.Ing.AgileTasks.modelo.Usuario;
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,6 +25,7 @@ public class NotaSetpDef {
     @Given("Nota vacia")
     public void notaVacia() {
         nota = new Nota();
+        nota.setUser(user);
     }
 
     @When("Seteo el titulo con {string}")
@@ -31,28 +33,14 @@ public class NotaSetpDef {
         nota.setTitulo(titulo);
     }
 
-    @Then("El titulo tiene {string}")
-    public void elTituloTiene(String titulo) {
-        Assert.assertEquals(nota.getTitulo(), titulo);
-    }
-
     @When("Seteo la descripcion con {string}")
     public void seteoLaDescripcionCon(String descripcion) {
         nota.setDescripcion(descripcion);
     }
 
-    @Then("La descripcion tiene {string}")
-    public void laDescripcionTiene(String descripcion) {
-        Assert.assertEquals(nota.getDescrpicion(), descripcion);
-    }
-
     @Given("una nota con titulo {string}, descripcion {string}")
     public void unaNotaConTituloDescripcion(String titulo, String descripcion) {
         nota = new Nota();
-        user.setPassword("password");
-        user.setEmail("email");
-        user.setUserName(titulo);
-        userService.nuevoUsuario(user);
         nota.setTitulo(titulo);
         nota.setDescripcion(descripcion);
         nota.setUser(user);
@@ -64,37 +52,18 @@ public class NotaSetpDef {
         notaService.agregarNota(nota);
     }
 
-    @Then("La nota se guardó con su titulo y descripcion")
-    public void laNotaSeGuardóConSuTituloYDescripcion() {
-        Nota notarecuperada = notaService.recuperarPorId(nota.getId());
-
-        Assert.assertEquals(notarecuperada.getTitulo(), nota.getTitulo());
-        Assert.assertEquals(notarecuperada.getDescrpicion(), nota.getDescrpicion());
-        Assert.assertEquals(notarecuperada.getId(), nota.getId());
-    }
-
     @When("Actualizo la descripcion con {string}")
     public void actualizoLaDescripcionCon(String nuevaDescripcion) {
-        nota.setDescripcion(nuevaDescripcion);
-        notaService.modificarNota(nota);
+        Nota notaRecuperada = notaService.recuperarPorId(nota.getId());
+        notaRecuperada.setDescripcion(nuevaDescripcion);
+        notaService.modificarNota(notaRecuperada);
     }
 
-    @When("Actualizo el titulo con {string}")
+    @And("Actualizo el titulo con {string}")
     public void actualizoElTituloCon(String nuevoTitulo) {
-        nota.setTitulo(nuevoTitulo);
-        notaService.modificarNota(nota);
-    }
-
-    @Then("Se actualizo la descripcion con {string}")
-    public void seActualizoLaDescripcionCon(String descripcion) {
         Nota notaRecuperada = notaService.recuperarPorId(nota.getId());
-        Assert.assertEquals(notaRecuperada.getDescrpicion(), descripcion);
-    }
-
-    @Then("Se actualizo el titulo con {string}")
-    public void seActualizoElTituloCon(String titulo) {
-        Nota notaRecuperada = notaService.recuperarPorId(nota.getId());
-        Assert.assertEquals(notaRecuperada.getTitulo(), titulo);
+        notaRecuperada.setTitulo(nuevoTitulo);
+        notaService.modificarNota(notaRecuperada);
     }
 
     @When("elimino la nota")
@@ -106,4 +75,25 @@ public class NotaSetpDef {
     public void laNotaSeEliminó() {
         Assertions.assertThrows(NotFoundException.class, () -> notaService.recuperarPorId(nota.getId()));
     }
+
+    @Then("La nota se guardó con el titulo {string} y la descripcion {string}")
+    public void laNotaSeGuardóConElTituloYDescripcionLaDescripcion(String titulo, String descripcion) {
+        Nota notarecuperada = notaService.recuperarPorId(nota.getId());
+
+        Assert.assertEquals(notarecuperada.getTitulo(), titulo);
+        Assert.assertEquals(notarecuperada.getDescrpicion(), descripcion);
+    }
+    @Given("Un usuario logeado con contraseña {string} y userName {string}")
+    public void unUsuarioLogeadoConContraseñaYUserName(String contraseña, String userName) {
+        user.setUserName(userName);
+        user.setPassword(contraseña);
+        user.setEmail("email@gmail.com");
+        userService.nuevoUsuario(user);
+    }
+
+    @And("Actualizo la nota")
+    public void actualizoLaNota() {
+        notaService.modificarNota(nota);
+    }
+
 }
