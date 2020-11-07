@@ -3,6 +3,7 @@ services:
   - mysql
 jdk:
   - oraclejdk9
+dist: precise
 before_install:
   - sudo mysql -e 'CREATE DATABASE AgileTasks_DB;'
   - sudo mysql -e 'select database();'
@@ -15,7 +16,12 @@ before_install:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
   - pip install --user codecov
+test:
+  adapter: mysql2
+    database: AgileTasks_DB
+    username: root
+    encoding: utf8
 script:
-  - gradle check --warning-mode all
+  - gradle check
 after_success:
   - codecov --file coverage/lcov.info --disable search
