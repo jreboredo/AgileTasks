@@ -14,4 +14,4 @@ before_install:
 script:
   - gradle check
 after_success:
-  - codecov --file coverage/lcov.info --disable search
+  - bash <(curl -s https://codecov.io/bash)
