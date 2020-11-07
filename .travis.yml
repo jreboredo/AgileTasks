@@ -8,8 +8,6 @@ before_install:
   - sudo mysql -e 'select database();'
   - sudo mysql -e 'SHOW DATABASES;'
   - sudo mysql -e 'USE AgileTasks_DB; select database();'
-  - sudo mysql -u root -e "GRANT ALL PRIVILEGES ON AgileTasks_DB.* TO 'travis'@'localhost';";
-  - sudo mysql --version
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
   - export GRADLE_HOME=$PWD/gradle-6.6.1
@@ -17,7 +15,7 @@ before_install:
   - gradle wrapper
   - pip install --user codecov
 before_script:
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON AgileTasks_DB.* TO 'travis'@'localhost';";
+  - mysql -u root -e "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" |
 script:
   - gradle check
 after_success:
