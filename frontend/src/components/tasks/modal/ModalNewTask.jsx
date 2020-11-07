@@ -12,11 +12,11 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
     const [endDate, setEndDate] = useState('');
 
     function agregarTarea() {
+        const prio = priority==="high" ? 0 : priority==="med" ? 1 : 2
         addTask({
-            id: undefined,
             titulo: titleTask,
             descripcion: textTask,
-            prioridad: priority,
+            prioridad: prio,
             inicio: beginDate,
             fin: endDate,
         })

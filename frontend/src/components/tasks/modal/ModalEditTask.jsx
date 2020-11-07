@@ -7,16 +7,22 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
 
     const [textTask, setText] = useState(task.descripcion);
     const [titleTask, setTitle] = useState(task.titulo);
-    const [priority, setPriority] = useState(task.prioridad);
-    const [beginDate, setBeginDate] = useState(task.inicio);
+    const [priority, setPriority] = useState(numToPrio);
+    const [beginDate, setBeginDate] = useState(task.comienzo);
+
     const [endDate, setEndDate] = useState(task.fin);
 
+    function numToPrio() {
+        return task.prioridad===0 ? "high" : task.prioridad===1 ? "med": "low"
+    }
+
     function editarNota() {
+        const prio = priority==="high" ? 0 : priority==="med" ? 1 : 2
         editTask({
             id:task.id,
             titulo: titleTask,
             descripcion: textTask,
-            prioridad: priority,
+            prioridad: prio,
             inicio: beginDate,
             fin: endDate,
         })

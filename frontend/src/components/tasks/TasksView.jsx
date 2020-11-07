@@ -26,6 +26,7 @@ export default function TasksView() {
                 const newTasks = response.data
                 newTasks.reverse()
                 setTasks(newTasks)
+                console.log(response.data)
             })
             .catch(error => console.log(error))
     }
@@ -49,33 +50,17 @@ export default function TasksView() {
 
 
     const addTask = task => {
-        console.log(task)
-        let newTasks = tasks.push()
-        newTasks = [{ ...task, id: tasks.length + 1 }, ...tasks];
-        console.log(newTasks)
-        newTasks.reverse()
-        setTasks(newTasks)
-        setSelectedTask(undefined)
-        // Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
-        //     .then(() => tasksApi())
-        //     .catch(error => console.log(error))
+        Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
+            .then(() => tasksApi())
+            .catch(error => console.log(error))
         closeModalInsertar()
     }
 
     const editTask = task => {
-        console.log(task);
-        let newTasks
-        newTasks = tasks.map(t => {
-            if (t.id === task.id) {
-                return { ...task }
-            }
-            return t;
-        });
-        newTasks.reverse()
-        setTasks(newTasks)
-        // Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
-        //     .then(() => tasksApi())
-        //     .catch(error => console.log(error))
+        console.log(task)
+        Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
+            .then(() => tasksApi())
+            .catch(error => console.log(error))
         closeModalEditar();
     }
 

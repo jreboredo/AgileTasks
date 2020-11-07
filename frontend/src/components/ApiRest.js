@@ -76,12 +76,13 @@ export const getTasks = async () => {
 }
 
 export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
-    axios.post(url + '/tasks/NuevaTarea', {
+    axios.post(url + 'tasks/NuevaTarea', {
         titulo: titulo,
         descripcion: descripcion,
-        comienzo: inicio.toJSON(),
-        fin: fin.toJSON(),
-        prioridad: prioridad,
+        comienzo: "2020-11-27T18:24" /*inicio*/,
+        fin: "2020-11-27T18:24" /*fin*/,
+        prioridad: 1 /*prioridad*/,
+        vencimiento: "2020-11-27T18:24" /*fin*/,
         user: {
             id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
@@ -89,15 +90,15 @@ export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
         }
     });
 
-
 export const modifyTask = async (tareaId,titulo, descripcion, prioridad, inicio, fin) =>
-    axios.put(url + '/task/EditarTarea/' + tareaId, {
-        tareaId: tareaId,
+    axios.put(url + 'tasks/editById/' + tareaId, {
+        id: tareaId,
         titulo: titulo,
         descripcion: descripcion,
-        comienzo: inicio.toJSON(),
-        fin: fin.toJSON(),
-        prioridad: prioridad,
+        comienzo: "2020-11-27T18:24" /*inicio*/,
+        fin: "2020-11-27T18:24" /*fin*/,
+        prioridad: 1 /*prioridad*/,
+        vencimiento: "2020-11-27T18:24" /*fin*/,
         user: {
             id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
@@ -108,6 +109,6 @@ export const modifyTask = async (tareaId,titulo, descripcion, prioridad, inicio,
 
 export const deleteTask = async (taskId) => {
     const endpoint = 'tasks/DeleteTarea/';
-    return axios.delete(url + endpoint + taskId);
+    return axios.post(url + endpoint + taskId);
 }
 

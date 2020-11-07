@@ -10,7 +10,7 @@ export default function NotFound(){
                 <h1 className='text-light p-3 mx-5 '> Go to
                     <span className='logo' onClick={() => history.push('/')}> Agile Tasks</span> and log/sign in!</h1>
             </div>
-            <h1 className="text-light font-bolder">404 Not Found.</h1>
+            <h1 className="text-dark font-bolder">404 Not Found.</h1>
         </div>
     )
 }
