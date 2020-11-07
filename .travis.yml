@@ -4,6 +4,12 @@ services:
 jdk:
   - oraclejdk9
 before_install:
+  - sudo mysql -e 'CREATE DATABASE AgileTasks_DB;'
+  - sudo mysql -e 'select database();'
+  - sudo mysql -e 'SHOW DATABASES;'
+  - sudo mysql -e 'USE pianyuan;'
+  - sudo mysql -e 'select database();'
+  - sudo mysql --version
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
   - export GRADLE_HOME=$PWD/gradle-6.6.1
