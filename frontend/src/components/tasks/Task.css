@@ -7,15 +7,15 @@
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-.task--low {
+.task--2 {
   background-color: var(--color-green);
 }
 
-.task--med {
+.task--1 {
   background-color: var(--color-yellow);
 }
 
-.task--high {
+.task--0 {
   background-color: var(--color-red);
 }
 
