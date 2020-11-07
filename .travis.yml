@@ -1,11 +1,13 @@
 language: java
-services:
-  - mysql
-sudo: true
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
 jdk:
   - oraclejdk9
-before_script:
-  - bash .travis.install.mysql-5.7.sh
 before_install:
   - wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip
   - unzip gradle-6.6.1-bin.zip
