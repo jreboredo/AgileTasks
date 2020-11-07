@@ -16,6 +16,8 @@ before_install:
   - export PATH=$GRADLE_HOME/bin:$PATH
   - gradle wrapper
   - pip install --user codecov
+before_script:
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON AgileTasks_DB.* TO 'travis'@'localhost';";
 script:
   - gradle check
 after_success:
