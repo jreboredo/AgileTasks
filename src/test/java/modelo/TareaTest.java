@@ -23,7 +23,7 @@ public class TareaTest {
 
         assertEquals(tarea.getDescripcion(), "descripcion");
         assertEquals(tarea.getTitulo(), "titulo");
-        assertEquals(tarea.getPrioridad(), "high");
+        assertEquals(tarea.getPrioridad(), 1);
         assertEquals(tarea.getComienzo(), localDate);
         assertEquals(tarea.getFin(), localDate);
         assertEquals(tarea.getVencimiento(), localDate);

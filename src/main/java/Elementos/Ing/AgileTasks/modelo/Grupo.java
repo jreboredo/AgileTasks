@@ -22,9 +22,9 @@ public class Grupo {
     public Grupo() {
     }
 
-    public long getId() {
-        return id;
-    }
+//    public long getId() {
+//        return id;
+//    }
 
     public Usuario getAdministrador() {
         return administrador;
