@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { enGB } from 'date-fns/locale';
-import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates';
 import 'react-nice-dates/build/style.css';
 import * as methods from './ModalMethods';
 
@@ -38,23 +36,26 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <div className="form-group">
-                            <label className='font-weight-bolder'>Title</label>
-                            <input
-                                className="form-control"
-                                type="text" placeholder="Title"
-                                value={titleTask}
-                                onChange={(event) => methods.handleTitleChange(event, setTitle)}
-                            />
-                            <label className='font-weight-bolder'>Content</label>
-                            <textarea
-                                className="form-control"
-                                id="exampleFormControlTextarea1"
-                                rows="3" value={textTask}
-                                onChange={(event) => methods.handleContentChange(event, setText)}
-                                placeholder="Content"
-                            />
-                        </div>
+                            <Form.Group>
+                                <Form.Label as='legend'>Title</Form.Label>
+                                <Form.Control
+                                    className="title form-control"
+                                    type="text" placeholder="Title"
+                                    value={titleTask}
+                                    onChange={(event) => methods.handleTitleChange(event, setTitle)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group>
+                                <Form.Label as={'legend'}>Description</Form.Label>
+                                <textarea
+                                    className="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="3" value={textTask}
+                                    onChange={(event) => methods.handleContentChange(event, setText)}
+                                    placeholder="Describe your task (optional)"
+                                />
+                            </Form.Group>
                         <Form.Group>
                             <Form.Label as="legend">
                                 Priority
@@ -79,27 +80,26 @@ export default function ModalNote({ task, editTask, showModalEditar, closeModalE
                             Start Date
                         </Form.Label>
                         <Form.Control
-                            type='date'
+                            type='datetime-local'
                             name='start'
                             value={beginDate}
                             placeholder='Start date'
                             onChange={(ev) => {
                                 setBeginDate(ev.target.value)
                             }}
-                        >
-                        </Form.Control>
+                        />
                         <Form.Label as="legend">
                             End Date
                         </Form.Label>
                         <Form.Control
-                            type='date'
+                            type='datetime-local'
                             name='start'
                             value={endDate}
                             placeholder='Start date'
                             onChange={(ev) => {
                                 setEndDate(ev.target.value)
                             }}
-                        ></Form.Control>
+                        />
                         {/* <Form.Label as="legend">
                             Start-End Dates
                         </Form.Label>

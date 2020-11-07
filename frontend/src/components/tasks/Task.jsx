@@ -9,7 +9,7 @@ import {ModalFooter} from "react-bootstrap";
 
 
 export default function Task({task, editTask,showRemoveTask}){
-    const {titulo,descripcion,prioridad,comienzo,fin} = task;
+    const {titulo,descripcion,prioridad} = task;
     const prio = prioridad==="low" ? 2 : prioridad==="med" ? 1 : 0
     const [mostrar, setMostrar] = useState(false);
 

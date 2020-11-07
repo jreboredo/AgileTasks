@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap'
-import { enGB } from 'date-fns/locale'
-import { DateRangePicker, START_DATE, END_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 import * as methods from './ModalMethods'
 
@@ -38,23 +36,26 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <div className="form-group">
-                            <label className='font-weight-bolder'>Title</label>
-                            <input
-                                className="form-control"
-                                type="text" placeholder="Title"
-                                value={titleTask}
-                                onChange={(event) => methods.handleTitleChange(event, setTitle)}
-                            />
-                            <label className='font-weight-bolder'>Content</label>
-                            <textarea
-                                className="form-control"
-                                id="exampleFormControlTextarea1"
-                                rows="3" value={textTask}
-                                onChange={(event) => methods.handleContentChange(event, setText)}
-                                placeholder="Content"
-                            />
-                        </div>
+                            <Form.Group>
+                                <Form.Label as='legend'>Title</Form.Label>
+                                <Form.Control
+                                    className="form-control"
+                                    type="text" placeholder="Title"
+                                    value={titleTask}
+                                    onChange={(event) => methods.handleTitleChange(event, setTitle)}
+                                />
+                            </Form.Group>
+
+                            <Form.Group>
+                                <Form.Label as={'legend'}>Description</Form.Label>
+                                <textarea
+                                    className="form-control"
+                                    id="exampleFormControlTextarea1"
+                                    rows="3" value={textTask}
+                                    onChange={(event) => methods.handleContentChange(event, setText)}
+                                    placeholder="Describe your task (optional)"
+                                />
+                            </Form.Group>
                         <Form.Group>
                             <Form.Label as="legend">
                                 Priority
