@@ -9,5 +9,5 @@ interface TareaService {
     fun modificarTarea(tarea: Tarea)
     fun recuperarTodas() : List<Tarea>
     fun eliminar(tarea : Tarea)
-    fun recuperarPorUserName(string: String): List<Tarea>
+    fun recuperarPorUserName(userName: String): List<Tarea>
 }

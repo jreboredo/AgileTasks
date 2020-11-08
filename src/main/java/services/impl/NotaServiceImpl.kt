@@ -30,10 +30,6 @@ class NotaServiceImpl: NotaService {
             notaDAO.actualizar(nota)
         }
     }
-    override fun asignarNotaATarea(nota: Nota) {
-        TODO("Not yet implemented")
-    }
-
     override fun recuperarTodas(): List<Nota> {
         var ret: List<Nota> = emptyList()
         runTrx {
