@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jreboredo/AgileTasks.png?branch=master)](https://travis-ci.org/jreboredo/AgileTasks)
+[![Build Status](https://travis-ci.com/jreboredo/AgileTasks.svg?branch=master)](https://travis-ci.com/jreboredo/AgileTasks)
 [![codecov](https://codecov.io/gh/jreboredo/AgileTasks/branch/master/graph/badge.svg?token=ZTB2NKPT2R)](https://codecov.io/gh/jreboredo/AgileTasks)
 # AgileTasks
 
