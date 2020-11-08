@@ -84,13 +84,11 @@ export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
         prioridad: 1 /*prioridad*/,
         vencimiento: "2020-11-27T18:24" /*fin*/,
         user: {
-            id: localStorage.getItem('userid'),
-            userName: localStorage.getItem('userName'),
-            password: localStorage.getItem('password')
+            userName: localStorage.getItem('userName')
         }
     });
 
-export const modifyTask = async (tareaId,titulo, descripcion, prioridad, inicio, fin) =>
+export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio, fin) =>
     axios.put(url + 'tasks/editById/' + tareaId, {
         id: tareaId,
         titulo: titulo,
@@ -100,15 +98,13 @@ export const modifyTask = async (tareaId,titulo, descripcion, prioridad, inicio,
         prioridad: 1 /*prioridad*/,
         vencimiento: "2020-11-27T18:24" /*fin*/,
         user: {
-            id: localStorage.getItem('userid'),
             userName: localStorage.getItem('userName'),
-            password: localStorage.getItem('password')
         }
     });
 
 
 export const deleteTask = async (taskId) => {
     const endpoint = 'tasks/DeleteTarea/';
-    return axios.post(url + endpoint + taskId);
+    return axios.delete(url + endpoint + taskId);
 }
 

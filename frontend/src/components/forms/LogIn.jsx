@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import * as Api from "../ApiRest";
 
 export default function LogIn() {
@@ -10,7 +10,7 @@ export default function LogIn() {
 
     useEffect(() => {
         document.body.style = "background-image: var(--img-background-home);" +
-            "background-size: auto;"
+            "background-size: 145rem;"
     })
 
     const handleSubmit = (ev) => {
@@ -39,26 +39,26 @@ export default function LogIn() {
                 <div>
                     <label htmlFor="username" className='font-weight-bolder'>Username</label>
                     <input type="text"
-                           value={username}
-                           className="form-control"
-                           autoComplete="current-username"
-                           placeholder="Username"
-                           onChange={(ev) => {
-                               setUsername(ev.target.value);
-                               setError('')
-                           }}/>
+                        value={username}
+                        className="form-control"
+                        autoComplete="current-username"
+                        placeholder="Username"
+                        onChange={(ev) => {
+                            setUsername(ev.target.value);
+                            setError('')
+                        }} />
                 </div>
                 <div>
                     <label htmlFor="password" className='font-weight-bolder mt-4'>Password</label>
                     <input type="password"
-                           value={password}
-                           className="form-control mb-4"
-                           placeholder="Password"
-                           autoComplete="current-password"
-                           onChange={(ev) => {
-                               setPassword(ev.target.value);
-                               setError('')
-                           }}/>
+                        value={password}
+                        className="form-control mb-4"
+                        placeholder="Password"
+                        autoComplete="current-password"
+                        onChange={(ev) => {
+                            setPassword(ev.target.value);
+                            setError('')
+                        }} />
                 </div>
                 <Link to='/register'> Unregister Yet?</Link>
                 {error && <small className="font-weight-bolder alert alert-danger">{error}</small>}

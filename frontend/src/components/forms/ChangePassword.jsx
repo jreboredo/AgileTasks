@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import NavBar from "../NavBar";
 import {Formik} from "formik";
@@ -10,12 +10,17 @@ export default function ChangePassword() {
     const history = useHistory();
     const username = localStorage.getItem('userName')
 
+    useEffect( () => {
+        document.body.style="background-image: var(--img-background-home);" + 
+                                "background-size: 145rem;"
+    }) 
+
     return (
         <>
             {
                 (username &&
                 <div className="align-content-center">
-                    <NavBar/>
+                    <NavBar background={'bg-dark'} showTitle={true}/>
                     <Formik
                         initialValues={{oldPassword: '', newPassword: '', passwordConfirmation: ''}}
                         onSubmit={(values, {setSubmitting}) => {

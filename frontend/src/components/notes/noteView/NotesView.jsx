@@ -79,7 +79,7 @@ export default function NotesView() {
 
     return (
         <>
-                <NavBar/>
+                <NavBar background={'bg-dark'} showTitle={true}/>
                 <div className="container">
                     {notes.map((note) => (
                         <Note key={note.id} note={note} editNote={showEditNote}

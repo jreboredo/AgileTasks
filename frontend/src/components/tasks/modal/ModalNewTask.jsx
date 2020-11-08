@@ -4,7 +4,7 @@ import 'react-nice-dates/build/style.css'
 import * as methods from './ModalMethods'
 
 
-export default function ModalNote({ addTask, showModalInsertar, closeModalInsertar }) {
+export default function ModalNewTask({ addTask, showModalInsertar, closeModalInsertar }) {
     const [textTask, setText] = useState("");
     const [titleTask, setTitle] = useState("");
     const [priority, setPriority] = useState('low');
@@ -56,7 +56,7 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                                     placeholder="Describe your task (optional)"
                                 />
                             </Form.Group>
-                        <Form.Group>
+                        {/* <Form.Group>
                             <Form.Label as="legend">
                                 Priority
                             </Form.Label>
@@ -73,9 +73,9 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                                 />
                             ))}
 
-                        </Form.Group>
+                        </Form.Group> */}
                     </form>
-                    <div>
+                     {/* <div>
                         <Form.Label as="legend">
                             Start Date
                         </Form.Label>
@@ -100,32 +100,9 @@ export default function ModalNote({ addTask, showModalInsertar, closeModalInsert
                                 setEndDate(ev.target.value)
                             }}
                         >
-                        </Form.Control>
-                        {/* <DateRangePicker
-                            startDate={beginDate}
-                            endDate={endDate}
-                            onStartDateChange={setBeginDate}
-                            onEndDateChange={setEndDate}
-                            minimumDate={new Date()}
-                            minimumLength={1}
-                            format='dd MMM yyyy'
-                            locale={enGB}
-                        >
-                            {({ startDateInputProps, endDateInputProps, focus }) => (
-                                <div className='date-range'>
-                                    <input
-                                        className={'input' + (focus === START_DATE ? ' -focused' : '')} {...startDateInputProps}
-                                        placeholder='Start date'
-                                    />
-                                    <span className='date-range_arrow' />
-                                    <input
-                                        className={'input' + (focus === END_DATE ? ' -focused' : '')}{...endDateInputProps}
-                                        placeholder='End date'
-                                    />
-                                </div>
-                            )}
-                        </DateRangePicker> */}
-                    </div>
+                        </Form.Control> 
+                       
+                    </div> */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModalInsertar}>

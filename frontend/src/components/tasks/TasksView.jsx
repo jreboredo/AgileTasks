@@ -81,7 +81,7 @@ export default function TasksView() {
 
     return (
         <>
-            <NavBar />
+            <NavBar background={'bg-dark'} showTitle={true}/>
             <div className="container">
                 {tasks.map((task) => (
                     <Task key={task.id} task={task} editTask={showEditTask} showRemoveTask={showRemoveTask} />))}
