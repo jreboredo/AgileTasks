@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/jreboredo/AgileTasks.svg?branch=master)](https://travis-ci.com/jreboredo/AgileTasks)
 [![codecov](https://codecov.io/gh/jreboredo/AgileTasks/branch/master/graph/badge.svg?token=ZTB2NKPT2R)](https://codecov.io/gh/jreboredo/AgileTasks)
+
 # AgileTasks
 
 ### MVP:
@@ -28,3 +29,5 @@
 
 ### Producto:
 - Aun no se encuentra publicado
+
+
