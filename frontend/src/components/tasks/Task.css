@@ -1,0 +1,126 @@
+.task {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    height: 12rem;
+    transition: all .4s;
+    border-radius: 2%;
+    box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  }
+
+/*.task--2 {*/
+/*  background-color: var(--color-green);*/
+/*}*/
+
+/*.task--1 {*/
+/*  background-color: var(--color-yellow);*/
+/*}*/
+
+/*.task--0 {*/
+/*  background-color: var(--color-red);*/
+/*}*/
+
+/* .task:hover {
+  transform: scale(1.2);
+  box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
+} */
+
+.text {
+  font-size: 1.6rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  line-height: 16px;
+}
+
+.taskTitle{
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 18px;
+  padding-bottom: 2px;
+  transition: 0.3s;
+}
+
+.taskDescription{
+  padding-top: 10px;
+  visibility: hidden;
+  transition: all .2s;
+  font-size: 1.6rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  line-height: 16px;
+}
+
+.modal-bg{
+  background-color:  rgba(0,0,0,.8)
+}
+
+
+.icon {
+  cursor: pointer;
+  padding: .3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: opacity(.6);
+  transition: all .2s;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  grid-column-gap: 10px;
+  justify-content: end;
+  visibility: hidden;
+}
+
+.task:hover .actions {
+  visibility: visible;
+}
+
+.taskTitle:hover{
+  color: red;
+}
+
+
+.icon:hover {
+  filter: none
+}
+
+.pin{
+  padding-bottom: 1px;
+  width: 3.8rem;
+  height: auto;
+}
+
+.fin{
+  font-size: small;
+}
+
+.introDesc{
+  color:red;
+  font-style: italic;
+}
+
+/* .task:hover .taskDescription{
+  visibility: visible;
+
+}
+
+.task:hover{
+  height: 25rem;
+
+} */
+
+.visible--true{
+  visibility: visible;
+}
+
+.visible--false{
+  visibility: hidden;
+}
+
+.descVisible--true{
+  height: 25rem;
+}
+
+.descVisible--false{
+  height: 12rem;
+}

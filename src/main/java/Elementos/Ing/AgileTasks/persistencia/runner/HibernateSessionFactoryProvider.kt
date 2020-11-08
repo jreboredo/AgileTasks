@@ -40,12 +40,6 @@ class HibernateSessionFactoryProvider private constructor() {
                 return INSTANCE!!
             }
 
-        fun destroy() {
-            if (INSTANCE != null && INSTANCE!!.sessionFactory != null) {
-                INSTANCE!!.sessionFactory!!.close()
-            }
-            INSTANCE = null
-        }
     }
 
 

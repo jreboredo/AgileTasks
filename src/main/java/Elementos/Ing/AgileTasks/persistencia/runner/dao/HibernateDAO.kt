@@ -1,9 +1,7 @@
 package Elementos.Ing.AgileTasks.persistencia.runner.dao
 
-import Elementos.Ing.AgileTasks.excepciones.DuplicatedTypeException
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException
 import Elementos.Ing.AgileTasks.persistencia.runner.HibernateTransaction
-import java.sql.SQLIntegrityConstraintViolationException
 import javax.persistence.criteria.CriteriaBuilder
 import javax.persistence.criteria.CriteriaQuery
 
@@ -13,17 +11,7 @@ open class HibernateDAO<T>(private val entityType: Class<T>) {
 
     fun guardar(item: T): T {
         val session = HibernateTransaction.currentSession
-        try {
-            session.save(item)
-        }catch (e: Exception){
-            var cause = e.cause
-            when(cause) {
-                is SQLIntegrityConstraintViolationException ->
-                    throw DuplicatedTypeException("Tipo duplicado")
-                else ->
-                    throw e
-            }
-        }
+        session.save(item)
         return item
     }
 

@@ -79,8 +79,7 @@ export default function NotesView() {
 
     return (
         <>
-            <div className={`body background--notes`}>
-                <NavBar/>
+                <NavBar background={'bg-dark'} showTitle={true}/>
                 <div className="container">
                     {notes.map((note) => (
                         <Note key={note.id} note={note} editNote={showEditNote}
@@ -113,7 +112,6 @@ export default function NotesView() {
                         </button>
                     </ModalFooter>
                 </Modal>
-            </div>
         </>
     )
 }

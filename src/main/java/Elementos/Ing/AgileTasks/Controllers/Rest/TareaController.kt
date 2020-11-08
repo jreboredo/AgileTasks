@@ -47,7 +47,7 @@ class TareaController {
     }
 
     //Te permite eliminar una tarea
-    @PostMapping("/DeleteTarea/{id}")
+    @DeleteMapping("/DeleteTarea/{id}")
     fun borrarTarea(@PathVariable id: Int) {
         val tarea: Tarea = this.getTareaId(id)
         tareaService.eliminar(tarea)

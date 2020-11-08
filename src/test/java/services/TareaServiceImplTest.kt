@@ -25,7 +25,7 @@ class TareaServiceImplTest {
         usuario.password = "1234"
         userService.nuevoUsuario(usuario)
 
-        val localDate = LocalDateTime.now()
+        val localDate = LocalDateTime.of(2020,11,7,22,22)
         tarea.comienzo = localDate
         tarea.fin = localDate
         tarea.prioridad = 1
@@ -75,7 +75,7 @@ class TareaServiceImplTest {
         nuevaTarea.descripcion = "descripcion"
         nuevaTarea.titulo = "titulo"
         nuevaTarea.user = usuario
-        val localDate = LocalDateTime.now()
+        val localDate = LocalDateTime.of(2020,11,7,22,22)
         nuevaTarea.comienzo = localDate
         nuevaTarea.fin = localDate
         nuevaTarea.prioridad = 1

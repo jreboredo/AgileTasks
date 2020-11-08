@@ -7,8 +7,7 @@ interface NotaService {
     fun recuperarPorId(id : Int): Nota
     fun recuperarPorUserId(id : Int) : List<Nota>
     fun modificarNota(nota: Nota)
-    fun asignarNotaATarea(nota: Nota)
     fun recuperarTodas() : List<Nota>
     fun eliminar(nota : Nota)
-    fun recuperarPorUserName(string: String): List<Nota>
+    fun recuperarPorUserName(userName: String): List<Nota>
 }
