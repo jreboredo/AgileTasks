@@ -14,7 +14,7 @@
 #### Sprint 3:
 - https://docs.google.com/document/d/1dVDYLyzLYkBhCQcga3708huUqDgHtKvFyR8k0tghEWc/edit?usp=sharing
 #### Sprint 4:
-- Sin Comenzar
+- En desarrollo
 #### Sprint 5:
 - Sin Comenzar
 
