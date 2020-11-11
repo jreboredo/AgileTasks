@@ -25,8 +25,9 @@ export default function TasksView() {
             .then(response => {
                 const newTasks = response.data
                 newTasks.reverse()
+                newTasks.sort(function (prev, next) {return prev.prioridad - next.prioridad})
+
                 setTasks(newTasks)
-                console.log(response.data)
             })
             .catch(error => console.log(error))
     }
