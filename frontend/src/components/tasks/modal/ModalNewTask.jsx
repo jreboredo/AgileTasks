@@ -5,11 +5,18 @@ import * as methods from './ModalMethods'
 
 
 export default function ModalNewTask({addTask, showModalInsertar, closeModalInsertar}) {
+    const now = new Date()
+    const tomorrow = new Date(now)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const getNow = now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate()+"T"+now.getHours()+":"+now.getMinutes()
+    const getTomorrow = tomorrow.getFullYear()+"-"+tomorrow.getMonth()+"-"+tomorrow.getDate()+"T"+tomorrow.getHours()+":"+tomorrow.getMinutes()
+
+
     const [textTask, setText] = useState("");
     const [titleTask, setTitle] = useState("");
     const [priority, setPriority] = useState('low');
-    const [beginDate, setBeginDate] = useState('');
-    const [endDate, setEndDate] = useState('');
+    const [beginDate, setBeginDate] = useState(getNow);
+    const [endDate, setEndDate] = useState(getTomorrow);
 
     function agregarTarea() {
         const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
@@ -83,7 +90,6 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                                 type='datetime-local'
                                 name='start'
                                 value={beginDate}
-                                placeholder='Start date'
                                 onChange={(ev) => {
                                     setBeginDate(ev.target.value)
                                 }}
@@ -95,7 +101,7 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                             <Form.Control
                                 type='datetime-local'
                                 name='start'
-                                placeholder='Start date'
+                                value={endDate}
                                 onChange={(ev) => {
                                     setEndDate(ev.target.value)
                                 }}
