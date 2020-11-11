@@ -11,7 +11,7 @@ class HibernateSessionFactoryProvider private constructor() {
     init {
         val env = System.getenv()
         val user = env.getOrDefault("USER", "root")
-        val password = env.getOrDefault("PASSWORD", "")
+        val password = env.getOrDefault("PASSWORD", "root")
         val dataBase = env.getOrDefault("DATA_BASE", "AgileTasks_DB")
         val host = env.getOrDefault("HOST", "localhost")
 
