@@ -1,5 +1,4 @@
 .task {
-    background-color: #ffffff;
     padding: 1.5rem;
     height: 12rem;
     transition: all .4s;
@@ -7,22 +6,22 @@
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-/*.task--2 {*/
-/*  background-color: var(--color-green);*/
-/*}*/
+.task--2 {
+  background-color: var(--color-green);
+}
 
-/*.task--1 {*/
-/*  background-color: var(--color-yellow);*/
-/*}*/
+.task--1 {
+  background-color: var(--color-yellow);
+}
 
-/*.task--0 {*/
-/*  background-color: var(--color-red);*/
-/*}*/
+.task--0 {
+ background-color: var(--color-red);
+}
 
-/* .task:hover {
+.task:hover {
   transform: scale(1.2);
   box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
-} */
+}
 
 .text {
   font-size: 1.6rem;
@@ -41,8 +40,6 @@
 
 .taskDescription{
   padding-top: 10px;
-  visibility: hidden;
-  transition: all .2s;
   font-size: 1.6rem;
   text-align: justify;
   overflow-wrap: break-word;
@@ -76,7 +73,7 @@
 }
 
 .taskTitle:hover{
-  color: red;
+  color: ghostwhite;
 }
 
 
