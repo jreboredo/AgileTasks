@@ -23,6 +23,8 @@ public class Tarea {
     private Integer prioridad;
     @Column(name="vencimiento")
     private LocalDateTime vencimiento;
+    @Column(name="completada")
+    private boolean completada;
     @ManyToOne(optional = false)
     private Usuario user;
 
@@ -40,6 +42,14 @@ public class Tarea {
 
     public long getId() {
         return id;
+    }
+
+    public boolean isCompletada() {
+        return completada;
+    }
+
+    public void setCompletada(boolean completada) {
+        this.completada = completada;
     }
 
     public String getTitulo() {
