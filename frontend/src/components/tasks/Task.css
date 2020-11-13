@@ -7,15 +7,15 @@
   }
 
 .task--2 {
-  background-color: var(--color-green);
+  background-color: lightpink;
 }
 
 .task--1 {
-  background-color: var(--color-yellow);
+  background-color: hotpink;
 }
 
 .task--0 {
- background-color: var(--color-red);
+ background-color: deeppink;
 }
 
 .task:hover {
@@ -76,6 +76,13 @@
   color: ghostwhite;
 }
 
+.fondo-true{
+  background-color: greenyellow;
+}
+
+.fondo-false{
+  background-color: #FF3333;
+}
 
 .icon:hover {
   filter: none

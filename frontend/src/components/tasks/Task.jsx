@@ -11,6 +11,12 @@ import {ModalFooter} from "react-bootstrap";
 export default function Task({task, editTask,showRemoveTask}){
     const {titulo,descripcion,prioridad, comienzo, fin} = task;
     const [mostrar, setMostrar] = useState(false);
+    const [cumplida, setCumplida] = useState(false);
+    const cumplidaInicial = false;
+
+    function actualizarTarea(){
+        console.log({...task,cumplida: cumplida});
+    }
 
     return (
         <div className={`task task--${prioridad}`}>
@@ -21,12 +27,20 @@ export default function Task({task, editTask,showRemoveTask}){
             </div>
             <p className="taskTitle pointer text-truncate" onClick={()=> setMostrar(!mostrar)}>{titulo}</p>
 
-            <Modal className="modal-bg" show={mostrar}>
-                <ModalHeader><h1 className='taskTitle'>{titulo}</h1></ModalHeader>
+            <Modal className="modal-bg" show={mostrar} onHide={() => setMostrar(false)}>
+                    <ModalHeader className={`fondo-${cumplida}`}>
+
+                    <h1 className='taskTitle'>{titulo}</h1>
+                    <div className="form-check">
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1"
+                               onClick={()=>{ setCumplida(!cumplida) }}/>
+                    </div>
+                </ModalHeader>
                 <div className='px-3'>
                     <h3>- Prioridad: {prioridad===0 ? "Alta!" : prioridad===1 ? "Normal" : "Baja"}</h3>
                     <h3>- ¿Qué tengo que hacer?</h3>
-                    <p className='taskDescription'>{descripcion}</p>
+                    {(descripcion && <p className='taskDescription'>{descripcion}</p>) ||
+                    <p className='font-italic'>(no hay una descripción provista)</p>}
                     <h3>- Tiempos</h3>
                     <h5> + Desde: {comienzo.toString().replace("T", ", ") + "hs"}</h5>
                     <h5> + Hasta: {fin.toString().replace("T", ", ") + "hs"}</h5>
@@ -34,9 +48,14 @@ export default function Task({task, editTask,showRemoveTask}){
                 <ModalFooter>
                     <button
                         className="btn btn-secondary"
-                        onClick={() => setMostrar(false)}
+                        onClick={() => {
+                            if(cumplidaInicial!==cumplida){
+                                actualizarTarea()
+                            }
+                            setMostrar(false)
+                        }}
                     >
-                        Fine!
+                        Genial!
                     </button>
                 </ModalFooter>
             </Modal>
