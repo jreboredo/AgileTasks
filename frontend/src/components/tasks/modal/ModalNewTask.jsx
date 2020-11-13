@@ -1,33 +1,37 @@
 import React, {useState} from 'react';
 import {Modal, Button, Form} from 'react-bootstrap'
-import 'react-nice-dates/build/style.css'
 import * as methods from './ModalMethods'
 
 
 export default function ModalNewTask({addTask, showModalInsertar, closeModalInsertar}) {
     const now = new Date()
     const tomorrow = new Date(now)
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    const getNow = now.getFullYear()+"-"+now.getMonth()+"-"+now.getDate()+"T"+now.getHours()+":00"
-    const getTomorrow = tomorrow.getFullYear()+"-"+tomorrow.getMonth()+"-"+tomorrow.getDate()+"T"+tomorrow.getHours()+":00"
-
+    tomorrow.setDate(tomorrow.getDate()+1)
+    const getNow = now.toJSON().toString().slice(0,16)
+    const getTomorrow = tomorrow.toJSON().toString().slice(0,16)
 
     const [textTask, setText] = useState("");
     const [titleTask, setTitle] = useState("");
-    const [priority, setPriority] = useState('low');
+    const [priority, setPriority] = useState('baja');
     const [beginDate, setBeginDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [error, setError] = useState('');
 
     function agregarTarea() {
-        const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
-        addTask({
-            titulo: titleTask,
-            descripcion: textTask,
-            prioridad: prio,
-            inicio: beginDate || getNow,
-            fin: endDate || getTomorrow,
-        })
-        methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)
+        if(titleTask===''){
+            setError('Titulo requerido!');
+            console.log(error)
+        }else {
+            const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
+            addTask({
+                titulo: titleTask,
+                descripcion: textTask,
+                prioridad: prio,
+                inicio: beginDate || getNow,
+                fin: endDate || getTomorrow,
+            })
+            methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)
+        }
     }
 
     return (
@@ -44,29 +48,33 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                 <Modal.Body>
                     <form>
                         <Form.Group>
-                            <Form.Label as='legend'>Title</Form.Label>
+                            <Form.Label as='legend'>Título</Form.Label>
                             <Form.Control
                                 className="form-control"
-                                type="text" placeholder="Title"
+                                type="text" placeholder="Título"
                                 value={titleTask}
-                                onChange={(event) => methods.handleTitleChange(event, setTitle)}
+                                onChange={(event) => {
+                                    setError('');
+                                    methods.handleTitleChange(event, setTitle)
+                                }}
                             />
                         </Form.Group>
+                        {error && <small className="font-weight-bolder alert alert-danger">{error}</small>}
 
-                        <Form.Group>
-                            <Form.Label as={'legend'}>Description</Form.Label>
+                        <Form.Group className={'mt-2'}>
+                            <Form.Label as={'legend'}>Descripción</Form.Label>
                             <textarea
                                 className="form-control"
                                 id="exampleFormControlTextarea1"
                                 rows="3" value={textTask}
                                 onChange={(event) => methods.handleContentChange(event, setText)}
-                                placeholder="Describe your task (optional)"
+                                placeholder="Describe tu tarea (opcional)"
                             />
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label as="legend">
-                                Priority
+                                Prioridad
                             </Form.Label>
                             {['low', 'med', 'high'].map((prio) => (
                                 <Form.Check
@@ -75,8 +83,8 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                                     inline
                                     checked={methods.isAPriority(prio, priority)}
                                     name="formHorizontalRadios"
-                                    id="formHorizontalRadios1"
-                                    onClick={() => setPriority(prio)}
+                                    key={prio}
+                                    onChange={() => setPriority(prio)}
                                     selected={() => priority === prio}
                                 />
                             ))}
@@ -84,7 +92,7 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                         </Form.Group>
                         <div>
                             <Form.Label as="legend">
-                                Start Date
+                                Fecha de comienzo
                             </Form.Label>
                             <Form.Control
                                 type='datetime-local'
@@ -96,7 +104,7 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                             >
                             </Form.Control>
                             <Form.Label as="legend">
-                                End Date
+                                Fecha de Fin
                             </Form.Label>
                             <Form.Control
                                 type='datetime-local'
@@ -113,11 +121,14 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModalInsertar}>
-                        Close
+                    <Button variant="secondary" onClick={() => {
+                        setError('');
+                        closeModalInsertar()
+                    }}>
+                        Cerrar
                     </Button>
                     <Button variant="primary" onClick={agregarTarea}>
-                        Save Changes
+                        Guardar Cambios
                     </Button>
                 </Modal.Footer>
             </Modal>

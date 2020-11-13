@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Modal, Button, Form} from 'react-bootstrap';
-import 'react-nice-dates/build/style.css';
 import * as methods from './ModalMethods';
 
 export default function ModalEditTask({task, editTask, showModalEditar, closeModalEditar}) {
@@ -9,24 +8,31 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
     const [titleTask, setTitle] = useState(task.titulo);
     const [priority, setPriority] = useState(numToPrio);
     const [beginDate, setBeginDate] = useState(task.comienzo);
-
     const [endDate, setEndDate] = useState(task.fin);
+    const [error, setError] = useState('');
+
 
     function numToPrio() {
         return task.prioridad === 0 ? "high" : task.prioridad === 1 ? "med" : "low"
     }
 
     function editarNota() {
-        const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
-        editTask({
-            id: task.id,
-            titulo: titleTask,
-            descripcion: textTask,
-            prioridad: prio,
-            inicio: beginDate,
-            fin: endDate,
-        })
-        methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)
+        if(titleTask===''){
+            setError('Titulo requerido!');
+            console.log(error)
+        }else {
+            const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
+            editTask({
+                id: task.id,
+                titulo: titleTask,
+                descripcion: textTask,
+                prioridad: prio,
+                inicio: beginDate,
+                fin: endDate,
+            })
+            methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)
+
+        }
     }
 
     return (
@@ -44,29 +50,33 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
                 <Modal.Body>
                     <form>
                         <Form.Group>
-                            <Form.Label as='legend'>Title</Form.Label>
+                            <Form.Label as='legend'>Título</Form.Label>
                             <Form.Control
                                 className="title form-control"
-                                type="text" placeholder="Title"
+                                type="text" placeholder="Título"
                                 value={titleTask}
-                                onChange={(event) => methods.handleTitleChange(event, setTitle)}
+                                onChange={(event) => {
+                                    setError('');
+                                    methods.handleTitleChange(event, setTitle)
+                                }}
                             />
                         </Form.Group>
+                        {error && <small className="font-weight-bolder alert alert-danger">{error}</small>}
 
-                        <Form.Group>
-                            <Form.Label as={'legend'}>Description</Form.Label>
+                        <Form.Group className={'mt-2'}>
+                            <Form.Label as={'legend'}>Descripción</Form.Label>
                             <textarea
                                 className="form-control"
                                 id="exampleFormControlTextarea1"
                                 rows="3" value={textTask}
                                 onChange={(event) => methods.handleContentChange(event, setText)}
-                                placeholder="Describe your task (optional)"
+                                placeholder="Describe tu tarea (opcional)"
                             />
                         </Form.Group>
 
                         <Form.Group>
                             <Form.Label as="legend">
-                                Priority
+                                Prioridad
                             </Form.Label>
                             {['low', 'med', 'high'].map((prio) => (
                                 <Form.Check
@@ -76,7 +86,7 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
                                     checked={methods.isAPriority(prio, priority)}
                                     name="formHorizontalRadios"
                                     id="formHorizontalRadios1"
-                                    onClick={() => setPriority(prio)}
+                                    onChange={() => setPriority(prio)}
                                     selected={() => priority === prio}
                                 />
                             ))}
@@ -84,7 +94,7 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
                         </Form.Group>
                         <div>
                             <Form.Label as="legend">
-                                Start Date
+                                Fecha de comienzo
                             </Form.Label>
                             <Form.Control
                                 type='datetime-local'
@@ -96,7 +106,7 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
                                 }}
                             />
                             <Form.Label as="legend">
-                                Expire Date
+                                Fecha de Fin
                             </Form.Label>
                             <Form.Control
                                 type='datetime-local'
@@ -111,11 +121,14 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={closeModalEditar}>
-                        Close
+                    <Button variant="secondary" onClick={() => {
+                        setError('');
+                        closeModalEditar()
+                    }}>
+                        Cerrar
                     </Button>
                     <Button variant="primary" onClick={editarNota}>
-                        Save Changes
+                        Guardar Cambios
                     </Button>
                 </Modal.Footer>
             </Modal>
