@@ -1,7 +1,6 @@
 package gradle.cucumber;
 
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException;
-import Elementos.Ing.AgileTasks.modelo.Nota;
 import Elementos.Ing.AgileTasks.modelo.Tarea;
 import Elementos.Ing.AgileTasks.modelo.Usuario;
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO;
@@ -11,14 +10,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
-import services.NotaService;
 import services.UsuarioService;
-import services.impl.NotaServiceImpl;
 import services.impl.TareaServiceImpl;
 import services.impl.UsuarioServiceImpl;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class TareaStepDef {
 
@@ -97,6 +93,75 @@ public class TareaStepDef {
     @Then("la tarea se eliminó")
     public void laTareaSeEliminó() {
         Assertions.assertThrows(NotFoundException.class, () -> tareaService.recuperarTareaPorId((int) tarea.getId()));
+
+    }
+
+    @When("Seteo la prioridad de la tarea en {string}")
+    public void seteoLaPrioridadDeLaTareaEn(String prioridad) {
+        if(prioridad.equals("Alta")){
+            tarea.setPrioridad(1);
+        } else if (prioridad.equals("Media")){
+            tarea.setPrioridad(2);
+        } else {
+            tarea.setPrioridad(3);
+        }
+    }
+
+    @Then("La tarea se guardó con la prioridad Alta")
+    public void laTareaSeGuardóConLaPrioridad() {
+        Tarea tareaRecuperada = tareaService.recuperarTareaPorId((int) tarea.getId());
+        Assert.assertEquals(tareaRecuperada.getPrioridad().intValue(), 1);
+    }
+
+    @Then("La tarea se guardó con la prioridad Media")
+    public void laTareaSeGuardóConLaPrioridadMedia() {
+        Tarea tareaRecuperada = tareaService.recuperarTareaPorId((int) tarea.getId());
+        Assert.assertEquals(tareaRecuperada.getPrioridad().intValue(), 2);
+    }
+
+    @Then("La tarea se guardó con la prioridad Baja")
+    public void laTareaSeGuardóConLaPrioridadBaja() {
+        Tarea tareaRecuperada = tareaService.recuperarTareaPorId((int) tarea.getId());
+        Assert.assertEquals(tareaRecuperada.getPrioridad().intValue(), 3);
+    }
+
+    @When("Seteo el estado de la tarea a {string}")
+    public void seteoElEstadoDeLaTareaA(String estado) {
+        if(estado.equals("Hecho")){
+            tarea.setCompletada(true);
+        } else {
+            tarea.setCompletada(false);
+        }
+    }
+
+    @Then("La tarea está completada")
+    public void laTareaEstáCompletada() {
+        Assert.assertTrue(tareaService.recuperarTareaPorId((int) tarea.getId()).isCompletada());
+    }
+
+    @Then("La tarea no está completada")
+    public void laTareaNoEstáCompletada() {
+        Assert.assertFalse(tareaService.recuperarTareaPorId((int) tarea.getId()).isCompletada());
+    }
+
+    @And("Seteo el comienzo de la tarea en {string}")
+    public void seteoElComienzoDeLaTareaEn(String fecha) {
+        tarea.setComienzo(LocalDateTime.parse(fecha));
+    }
+
+    @And("Seteo el vencimiento de la tarea en {string}")
+    public void seteoElVencimientoDeLaTareaEn(String fecha) {
+        tarea.setVencimiento(LocalDateTime.parse(fecha));
+    }
+
+    @And("La tarea se guardó con el comienzo {string}")
+    public void laTareaSeGuardóConElComienzo(String fecha) {
+        Assert.assertEquals(tareaService.recuperarTareaPorId((int) tarea.getId()).getComienzo(), LocalDateTime.parse(fecha));
+    }
+
+    @And("La tarea se guardó con el vencimiento {string}")
+    public void laTareaSeGuardóConElVencimiento(String fecha) {
+        Assert.assertEquals(tareaService.recuperarTareaPorId((int) tarea.getId()).getVencimiento(), LocalDateTime.parse(fecha));
 
     }
 }

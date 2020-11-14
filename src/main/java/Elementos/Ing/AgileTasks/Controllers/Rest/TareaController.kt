@@ -29,6 +29,7 @@ class TareaController {
         tarea.fin = tareaNueva.fin
         tarea.prioridad = tareaNueva.prioridad
         tarea.fin = tareaNueva.fin
+        tarea.isCompletada = tareaNueva.isCompletada
 
         tareaService.modificarTarea(tarea)
     }

@@ -20,6 +20,8 @@ public class TareaTest {
         tarea.setTitulo("titulo");
         tarea.setPrioridad(1);
         tarea.setVencimiento(localDate);
+        tarea.setCompletada(true);
+
 
         assertEquals(tarea.getDescripcion(), "descripcion");
         assertEquals(tarea.getTitulo(), "titulo");
@@ -27,6 +29,7 @@ public class TareaTest {
         assertEquals(tarea.getComienzo(), localDate);
         assertEquals(tarea.getFin(), localDate);
         assertEquals(tarea.getVencimiento(), localDate);
+        assertEquals(tarea.isCompletada(), true);
     }
 
 }
