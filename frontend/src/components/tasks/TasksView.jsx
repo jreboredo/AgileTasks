@@ -26,7 +26,6 @@ export default function TasksView() {
                 const newTasks = response.data
                 newTasks.reverse()
                 newTasks.sort(function (prev, next) {return prev.prioridad - next.prioridad})
-
                 setTasks(newTasks)
             })
             .catch(error => console.log(error))
@@ -54,12 +53,12 @@ export default function TasksView() {
         Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
             .then(() => tasksApi())
             .catch(error => console.log(error))
+        console.log(task)
         closeModalInsertar()
     }
 
     const editTask = task => {
-        console.log(task)
-        Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
+        Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin, task.isCompletada)
             .then(() => tasksApi())
             .catch(error => console.log(error))
         closeModalEditar();
@@ -85,7 +84,7 @@ export default function TasksView() {
             <NavBar background={'bg-dark'} showTitle={true}/>
             <div className="container">
                 {tasks.map((task) => (
-                    <Task key={task.id} task={task} editTask={showEditTask} showRemoveTask={showRemoveTask} />))}
+                    <Task key={task.id} task={task} editTask={showEditTask} actualizar={editTask} showRemoveTask={showRemoveTask} />))}
             </div>
             <div className="btn-add-note pointer" onClick={() => setModalAgregar(true)}>
                 <img src={add} alt="add new note" className="icon--add" />

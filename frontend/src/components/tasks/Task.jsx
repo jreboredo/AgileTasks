@@ -8,18 +8,27 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import {ModalFooter} from "react-bootstrap";
 
 
-export default function Task({task, editTask,showRemoveTask}){
+export default function Task({task, editTask, actualizar, showRemoveTask}){
     const {titulo,descripcion,prioridad, comienzo, fin} = task;
     const [mostrar, setMostrar] = useState(false);
-    const [cumplida, setCumplida] = useState(false);
-    const cumplidaInicial = false;
+    const [cumplida, setCumplida] = useState(task.completada);
+    const [cumplidaInicial, setCumplidaInicial] = useState(task.completada);
 
     function actualizarTarea(){
-        console.log({...task,cumplida: cumplida});
+        actualizar({
+            id: task.id,
+            titulo: titulo,
+            descripcion: descripcion,
+            prioridad: prioridad,
+            inicio: comienzo,
+            fin: fin,
+            isCompletada: cumplida
+        })
+        setCumplidaInicial(cumplida);
     }
 
     return (
-        <div className={`task task--${prioridad}`}>
+        <div className={`task task--${prioridad}${cumplidaInicial} `}>
             <img src={pin} className="pin" alt='pin'/>
             <div className="actions">
                 <img src={edit} alt="edit" className="icon" onClick={() => editTask(task)}/>
@@ -32,8 +41,8 @@ export default function Task({task, editTask,showRemoveTask}){
 
                     <h1 className='taskTitle'>{titulo}</h1>
                     <div className="form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1"
-                               onClick={()=>{ setCumplida(!cumplida) }}/>
+                        <input type="checkbox" className="form-check-input" defaultChecked={cumplida}
+                               onChange={()=>{ setCumplida(!cumplida) }}/>
                     </div>
                 </ModalHeader>
                 <div className='px-3'>
@@ -50,9 +59,9 @@ export default function Task({task, editTask,showRemoveTask}){
                         className="btn btn-secondary"
                         onClick={() => {
                             if(cumplidaInicial!==cumplida){
-                                actualizarTarea()
+                                actualizarTarea();
                             }
-                            setMostrar(false)
+                            setMostrar(false);
                         }}
                     >
                         Genial!

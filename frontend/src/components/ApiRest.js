@@ -47,12 +47,13 @@ export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
         fin: fin,
         prioridad: prioridad,
         vencimiento: fin,
+        completada: false,
         user: {
             userName: localStorage.getItem('userName'),
         }
     });
 
-export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio, fin) =>
+export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio, fin, isCompletada) =>
     axios.put(url + 'tasks/editById/' + tareaId, {
         id: tareaId,
         titulo: titulo,
@@ -61,6 +62,7 @@ export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio
         fin: fin,
         prioridad: prioridad,
         vencimiento: fin,
+        completada: isCompletada,
         user: {
             userName: localStorage.getItem('userName'),
         }

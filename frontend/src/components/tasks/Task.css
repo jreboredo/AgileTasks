@@ -3,21 +3,21 @@
     height: 12rem;
     transition: all .4s;
     border-radius: 2%;
+    background-color: greenyellow;
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-.task--2 {
-  background-color: lightpink;
+.task--2false {
+  background-color: lightblue;
 }
 
-.task--1 {
-  background-color: hotpink;
+.task--1false {
+  background-color: cornflowerblue;
 }
 
-.task--0 {
- background-color: deeppink;
+.task--0false {
+ background-color: dodgerblue;
 }
-
 .task:hover {
   transform: scale(1.2);
   box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
