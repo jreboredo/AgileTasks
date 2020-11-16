@@ -1,28 +1,31 @@
 .task {
-    background-color: #ffffff;
     padding: 1.5rem;
     height: 12rem;
     transition: all .4s;
     border-radius: 2%;
+    background-color: transparent;
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-/*.task--2 {*/
-/*  background-color: var(--color-green);*/
-/*}*/
+.task--2{
+  background-color:  #e59866 ;
+}
 
-/*.task--1 {*/
-/*  background-color: var(--color-yellow);*/
-/*}*/
+.task--1{
+  background-color: #dc7633;
+}
 
-/*.task--0 {*/
-/*  background-color: var(--color-red);*/
-/*}*/
-
+.task--0{
+ background-color: #d35400 ;
+}
 /* .task:hover {
   transform: scale(1.2);
   box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
 } */
+
+.task--complete--true{
+  filter: grayscale(100%)
+}
 
 .text {
   font-size: 1.6rem;
@@ -41,8 +44,6 @@
 
 .taskDescription{
   padding-top: 10px;
-  visibility: hidden;
-  transition: all .2s;
   font-size: 1.6rem;
   text-align: justify;
   overflow-wrap: break-word;
@@ -76,9 +77,16 @@
 }
 
 .taskTitle:hover{
-  color: red;
+  color: ghostwhite;
 }
 
+.fondo-true{
+  background-color: greenyellow;
+}
+
+.fondo-false{
+  background-color: #FF3333;
+}
 
 .icon:hover {
   filter: none

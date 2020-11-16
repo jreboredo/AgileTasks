@@ -33,6 +33,48 @@ export const changePassword = async (newPassword) => {
         });
 }
 
+/* TASK */
+export const getTasks = async () => {
+    const endpoint = 'tasks/getByUser/'
+    return axios.get(url + endpoint + localStorage.getItem('userid'));
+}
+
+export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
+    axios.post(url + 'tasks/NuevaTarea', {
+        titulo: titulo,
+        descripcion: descripcion,
+        comienzo: inicio,
+        fin: fin,
+        prioridad: prioridad,
+        vencimiento: fin,
+        completada: false,
+        user: {
+            userName: localStorage.getItem('userName'),
+        }
+    });
+
+export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio, fin, isCompletada) =>
+    axios.put(url + 'tasks/editById/' + tareaId, {
+        id: tareaId,
+        titulo: titulo,
+        descripcion: descripcion,
+        comienzo: inicio,
+        fin: fin,
+        prioridad: prioridad,
+        vencimiento: fin,
+        completada: isCompletada,
+        user: {
+            userName: localStorage.getItem('userName'),
+        }
+    });
+
+
+export const deleteTask = async (taskId) => {
+    const endpoint = 'tasks/DeleteTarea/';
+    return axios.delete(url + endpoint + taskId);
+}
+
+
 /* NOTES */
 export const getNotes = async () => {
     const endpoint = 'notes/getByUser/'
@@ -68,43 +110,3 @@ export const deleteNote = async (noteId) => {
     const endpoint = 'notes/DeleteNota/';
     return axios.delete(url + endpoint + noteId);
 }
-
-/* TASK */
-export const getTasks = async () => {
-    const endpoint = 'tasks/getByUser/'
-    return axios.get(url + endpoint + localStorage.getItem('userid'));
-}
-
-export const createTask = async (titulo, descripcion, prioridad, inicio, fin) =>
-    axios.post(url + 'tasks/NuevaTarea', {
-        titulo: titulo,
-        descripcion: descripcion,
-        comienzo: "2020-11-27T18:24" /*inicio*/,
-        fin: "2020-11-27T18:24" /*fin*/,
-        prioridad: 1 /*prioridad*/,
-        vencimiento: "2020-11-27T18:24" /*fin*/,
-        user: {
-            userName: localStorage.getItem('userName')
-        }
-    });
-
-export const modifyTask = async (tareaId, titulo, descripcion, prioridad, inicio, fin) =>
-    axios.put(url + 'tasks/editById/' + tareaId, {
-        id: tareaId,
-        titulo: titulo,
-        descripcion: descripcion,
-        comienzo: "2020-11-27T18:24" /*inicio*/,
-        fin: "2020-11-27T18:24" /*fin*/,
-        prioridad: 1 /*prioridad*/,
-        vencimiento: "2020-11-27T18:24" /*fin*/,
-        user: {
-            userName: localStorage.getItem('userName'),
-        }
-    });
-
-
-export const deleteTask = async (taskId) => {
-    const endpoint = 'tasks/DeleteTarea/';
-    return axios.delete(url + endpoint + taskId);
-}
-

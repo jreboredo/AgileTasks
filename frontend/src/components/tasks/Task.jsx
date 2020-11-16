@@ -3,41 +3,71 @@ import './Task.css'
 import edit from '../../img/edit.svg'
 import remove from '../../img/delete.svg'
 import pin from '../../img/pin.png'
-// import Modal from "react-bootstrap/Modal";
-// import ModalHeader from "react-bootstrap/ModalHeader";
-// import {ModalFooter} from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import {ModalFooter} from "react-bootstrap";
 
 
-export default function Task({task, editTask,showRemoveTask}){
-    const {titulo,descripcion,prioridad} = task;
-    const prio = prioridad==="low" ? 2 : prioridad==="med" ? 1 : 0
+export default function Task({task, editTask, actualizar, showRemoveTask}){
+    const {titulo,descripcion,prioridad, comienzo, fin} = task;
     const [mostrar, setMostrar] = useState(false);
+    const [cumplida, setCumplida] = useState(task.completada);
+    const [cumplidaInicial, setCumplidaInicial] = useState(task.completada);
+
+    function actualizarTarea(){
+        actualizar({
+            id: task.id,
+            titulo: titulo,
+            descripcion: descripcion,
+            prioridad: prioridad,
+            inicio: comienzo,
+            fin: fin,
+            isCompletada: cumplida
+        })
+        setCumplidaInicial(cumplida);
+    }
 
     return (
-        <div className={`task task--${prio} descVisible--${mostrar}`}>
+        <div className={`task task--${prioridad} task--complete--${cumplidaInicial} `}>
             <img src={pin} className="pin" alt='pin'/>
             <div className="actions">
                 <img src={edit} alt="edit" className="icon" onClick={() => editTask(task)}/>
                 <img src={remove} alt="edit" className="icon" onClick={() => showRemoveTask(task)}/>
             </div>
             <p className="taskTitle pointer text-truncate" onClick={()=> setMostrar(!mostrar)}>{titulo}</p>
-            <p className={`taskDescription visible--${mostrar}`}>{descripcion}</p>
-            
-            {/* <Modal className="modal-bg" show={mostrar}>
-                <ModalHeader><h1 className='taskTitle'>{titulo}</h1></ModalHeader>
-                <div>
-                    <h3 className='introDesc'>Who I need to do?</h3>
-                    <p className='taskDescription'>{descripcion}</p>
+
+            <Modal className="modal-bg" show={mostrar} onHide={() => setMostrar(false)}>
+                    <ModalHeader className={`fondo-${cumplida}`}>
+
+                    <h1 className='taskTitle'>{titulo}</h1>
+                    <div className="form-check">
+                        <input type="checkbox" className="form-check-input" defaultChecked={cumplida}
+                               onChange={()=>{ setCumplida(!cumplida) }}/>
+                    </div>
+                </ModalHeader>
+                <div className='px-3'>
+                    <h3>- Prioridad: {prioridad===0 ? "Alta!" : prioridad===1 ? "Normal" : "Baja"}</h3>
+                    <h3>- ¿Qué tengo que hacer?</h3>
+                    {(descripcion && <p className='taskDescription'>{descripcion}</p>) ||
+                    <p className='font-italic'>(no hay una descripción provista)</p>}
+                    <h3>- Tiempos</h3>
+                    <h5> + Desde: {comienzo.toString().replace("T", ", ") + "hs"}</h5>
+                    <h5> + Hasta: {fin.toString().replace("T", ", ") + "hs"}</h5>
                 </div>
                 <ModalFooter>
                     <button
                         className="btn btn-secondary"
-                        onClick={() => setMostrar(false)}
+                        onClick={() => {
+                            if(cumplidaInicial!==cumplida){
+                                actualizarTarea();
+                            }
+                            setMostrar(false);
+                        }}
                     >
-                        Fine!
+                        Genial!
                     </button>
                 </ModalFooter>
-            </Modal> */}
+            </Modal>
 
         </div>
     );
