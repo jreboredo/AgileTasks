@@ -3,24 +3,28 @@
     height: 12rem;
     transition: all .4s;
     border-radius: 2%;
-    background-color: greenyellow;
+    background-color: transparent;
     box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
   }
 
-.task--2false {
-  background-color: lightblue;
+.task--2{
+  background-color:  #e59866 ;
 }
 
-.task--1false {
-  background-color: cornflowerblue;
+.task--1{
+  background-color: #dc7633;
 }
 
-.task--0false {
- background-color: dodgerblue;
+.task--0{
+ background-color: #d35400 ;
 }
-.task:hover {
+/* .task:hover {
   transform: scale(1.2);
   box-shadow: 10px 15px 15px 0 rgba(0, 0, 0, 0.5);
+} */
+
+.task--complete--true{
+  filter: grayscale(100%)
 }
 
 .text {

@@ -28,7 +28,7 @@ export default function Task({task, editTask, actualizar, showRemoveTask}){
     }
 
     return (
-        <div className={`task task--${prioridad}${cumplidaInicial} `}>
+        <div className={`task task--${prioridad} task--complete--${cumplidaInicial} `}>
             <img src={pin} className="pin" alt='pin'/>
             <div className="actions">
                 <img src={edit} alt="edit" className="icon" onClick={() => editTask(task)}/>
