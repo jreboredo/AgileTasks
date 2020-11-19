@@ -1,17 +1,7 @@
-.calendar{
-    margin: 90px;
-    box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
-  }
+.calender{
+}
+
+.dateClass{
+  font-size: xx-large;
+}
   
-  .nice-dates-navigation{
-    background-color:  #DAF7A6;
-    font-style: oblique;
-  } 
-  
-  .nice-dates-day {
-    background-color: white;
-  
-  }
-  .nice-dates-week-header{
-    background-color: white;
-  }

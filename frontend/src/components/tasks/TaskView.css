@@ -1,0 +1,20 @@
+.btn-calendar-task {
+position: fixed;
+bottom: 14rem;
+right: 6rem;
+background-color: #fff;
+padding: 3rem;
+border-radius: 50%;
+box-shadow: 2px 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.icon--calendar {
+cursor: pointer;
+padding: .3rem;
+width: 2.1rem;
+height: 2.1rem;
+filter: opacity(.6);
+transition: all .2s;
+position: absolute;
+transform: translate(-50%, -50%);
+}
