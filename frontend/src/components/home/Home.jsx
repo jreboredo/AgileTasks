@@ -4,7 +4,6 @@ import { Figure } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import Notes from '../../img/Notes.jpg'
 import Tasks from '../../img/Tasks.jpg'
-import Calender from '../../img/Calender.jpg'
 import NavBar from '../NavBar'
 
 export default function Home() {
