@@ -10,6 +10,7 @@ import { Modal, ModalBody, ModalFooter } from "react-bootstrap";
 import ModalNewTask from './modal/ModalNewTask';
 import ModalEditTask from './modal/ModalEditTask';
 import * as Api from '../ApiRest'
+import CalendarApp from '../calendar/CalendarApp';
 
 export default function TasksView() {
     const [tasks, setTasks] = useState([]);
@@ -17,11 +18,11 @@ export default function TasksView() {
     const [modalAgregar, setModalAgregar] = useState(false);
     const [modalEditar, setModalEditar] = useState(false);
     const [modalEliminar, setModalEliminar] = useState(false);
+    const [showModalCalender,setShowModalCalender] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
         document.body.style = "background-image: var(--img-background-notes)"
-
         tasksApi();
     }, []);
 
@@ -34,6 +35,14 @@ export default function TasksView() {
                 setTasks(newTasks)
             })
             .catch(error => console.log(error))
+    }
+
+    function showCalender() {
+        setShowModalCalender(true)
+    }
+
+    function closeModalCalender() {
+        setShowModalCalender(false)
     }
 
     function showRemoveTask(task) {
@@ -94,7 +103,7 @@ export default function TasksView() {
             <div className="btn-add-note pointer" onClick={() => setModalAgregar(true)}>
                 <img src={add} alt="add new note" className="icon--add" />
             </div>
-            <div className="btn-calendar-task" onClick={() => history.push('/calender')}>
+            <div className="btn-calendar-task" onClick={() => showCalender()}>
                 <img src={calendar} alt="calendar" className="icon--calendar" />
             </div>
 
@@ -104,6 +113,9 @@ export default function TasksView() {
             {selectedTask &&
                 <ModalEditTask task={selectedTask} editTask={editTask} showModalEditar={modalEditar}
                     closeModalEditar={closeModalEditar} />}
+            
+            <CalendarApp show={showModalCalender} close={closeModalCalender}/>
+
 
             <Modal show={modalEliminar}>
                 <ModalBody>

@@ -1,59 +1,70 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Paper from '@material-ui/core/Paper';
-import {ViewState} from '@devexpress/dx-react-scheduler';
+import { ViewState } from '@devexpress/dx-react-scheduler';
 import './Calendar.css'
 import * as Api from '../ApiRest'
 import {
-    Scheduler,
-    MonthView,
-    Toolbar,
-    Appointments,
+  Scheduler,
+  MonthView,
+  Appointments,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import {useHistory} from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 
-export default function CalendarApp() {
-    const [mydates, setMyDates] = useState([]);
-    const history = useHistory();
-    const now = new Date()
-    const today = now.toJSON()
+export default function CalendarApp({ show, close }) {
+  const currentDate = new Date();
+  const [tasks, setTasks] = useState([]);
 
-    useEffect(() => {
-        document.body.style = "background-color: grey";
-        Api.getTasks()
-            .then(response => {
-                const newDates = response.data.map(function (task) {
-                    return {
-                        title: task.titulo,
-                        startDate: task.comienzo,
-                        endDate: task.vencimiento,
-                    }
-                });
-                setMyDates(newDates);
-            })
-            .catch(error => console.log(error))
-    }, []);
+  function changeTasksFormatAndSet(dataTasks) {
+    let newTasks = [];
+    dataTasks.map(task => {
+      const { titulo, comienzo, fin } = task;
+      newTasks.push({
+        title: titulo,
+        startDate: new Date(comienzo),
+        endDate: new Date(fin)
+      })
+    })
+    setTasks(newTasks)
+  }
 
-    return (
-        <>
-            <nav className={`bg-dark navbar navbar-expand-lg rounded justify-content-between`}>
-                <span className="col-2"/>
-                <button className='btn btn-outline-light' onClick={() => history.push('/tasks')}>Volver a tareas</button>
-                <span
-                    className={'text-light font-italic'}>Hoy es {today.slice(8, 10) + '/' + today.slice(5, 7) + '/' + today.slice(0, 4)}</span>
-                <div className={` col-3 mb-3`}>
-                    <h1 className='text-light p-3 mx-5 '>
-                        <span className='logo' onClick={() => history.push('/home')}> Agile Tasks</span></h1>
-                </div>
-            </nav>
-            <Paper>
-                <Scheduler data={mydates}>
-                    <ViewState currentDate={today}/>
-                    <MonthView/>
-                    <Toolbar/>
-                    <Appointments/>
-                </Scheduler>
-            </Paper>
-        </>
-    );
+  function tasksApi() {
+    Api.getTasks()
+      .then(response => {
+        changeTasksFormatAndSet(response.data)
+      })
+      .catch(error => console.log(error))
+  }
+
+  return (
+    <Modal show={show} onHide={() => close()} size='lg' onEntered={() => tasksApi()}>
+      <Modal.Header closeButton>
+        <Modal.Title>My Calender</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Paper>
+          <Scheduler
+            data={tasks}
+            height={500}
+          >
+            <ViewState
+              defaultCurrentDate={currentDate}
+            />
+            <MonthView />
+            <Appointments />
+          </Scheduler>
+        </Paper>
+      </Modal.Body>
+      <Modal.Footer>
+        <p className="modalFooterText">
+          Today is {currentDate.toJSON().slice(8, 10) +
+            '/' + currentDate.toJSON().slice(5, 7) +
+            '/' + currentDate.toJSON().slice(0, 4)}
+        </p>
+        <Button variant="secondary" onClick={() => close()}>
+          Close
+      </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
