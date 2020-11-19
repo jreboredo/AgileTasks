@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import './Calendar.css'
 import * as Api from '../ApiRest'
 import {
-  Scheduler,
-  MonthView,
-  Appointments,
+    Scheduler,
+    MonthView,
+    Appointments, AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Modal, Button } from "react-bootstrap";
 
@@ -16,15 +16,14 @@ export default function CalendarApp({ show, close }) {
   const [tasks, setTasks] = useState([]);
 
   function changeTasksFormatAndSet(dataTasks) {
-    let newTasks = [];
-    dataTasks.map(task => {
+    const newTasks = dataTasks.map(function (task) {
       const { titulo, comienzo, fin } = task;
-      newTasks.push({
+      return {
         title: titulo,
         startDate: new Date(comienzo),
         endDate: new Date(fin)
-      })
-    })
+      }
+    });
     setTasks(newTasks)
   }
 
@@ -39,7 +38,7 @@ export default function CalendarApp({ show, close }) {
   return (
     <Modal show={show} onHide={() => close()} size='lg' onEntered={() => tasksApi()}>
       <Modal.Header closeButton>
-        <Modal.Title>My Calender</Modal.Title>
+        <Modal.Title>Mi calendario</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Paper>
@@ -52,6 +51,7 @@ export default function CalendarApp({ show, close }) {
             />
             <MonthView />
             <Appointments />
+            <AppointmentTooltip/>
           </Scheduler>
         </Paper>
       </Modal.Body>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8181/'
+const url = 'http://localhost:8080/'
 
 /* USER */
 export const login = async (userName, password) => {
