@@ -1,6 +1,5 @@
 import Task from './Task'
 import React, { useState, useEffect} from 'react';
-import { useHistory } from 'react-router-dom';
 import add from '../../img/add.svg'
 import calendar from '../../img/calendario.svg'
 import './TaskView.css'
@@ -19,7 +18,6 @@ export default function TasksView() {
     const [modalEditar, setModalEditar] = useState(false);
     const [modalEliminar, setModalEliminar] = useState(false);
     const [showModalCalender,setShowModalCalender] = useState(false);
-    const history = useHistory();
 
     useEffect(() => {
         document.body.style = "background-image: var(--img-background-notes)"
@@ -65,9 +63,27 @@ export default function TasksView() {
 
     const addTask = task => {
         Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
-            .then(() => tasksApi())
+            .then(() => {
+                tasksApi();
+                const descripcion = task.descripcion || 'no has provisto una descripción!'
+                const prioridad = task.prioridad===0 ? "Alta!" : task.prioridad===1 ? "Normal" : "Baja"
+                const inicio = `${task.inicio.slice(8, 10)}/${task.inicio.slice(5, 7)}/${task.inicio.slice(0, 4)}, ${task.inicio.slice(11)}hs.`;
+                const fin = `${task.fin.slice(8, 10)}/${task.fin.slice(5, 7)}/${task.fin.slice(0, 4)}, ${task.fin.slice(11)}hs.`;
+
+                const asunto = "Has creado una nueva tarea!"
+                const texto = `Estimado ${localStorage.getItem('userName')}:
+                Este es un correo para notificarte acerca de una nueva tarea creada con la siguiente informacion:
+                - Titulo: ${task.titulo}
+                - Prioridad: ${prioridad}
+                - Descripcion: ${descripcion}
+                - Fecha de inicio: ${inicio}
+                - Fecha de fin: ${fin}`
+
+                Api.sendMail(asunto, texto)
+                    .then(r => console.log(r.status))
+                    .catch(e => console.log(e));
+            })
             .catch(error => console.log(error))
-        console.log(task)
         closeModalInsertar()
     }
 
