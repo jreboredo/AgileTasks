@@ -20,7 +20,7 @@ export default function Task({task, editTask, actualizar, showRemoveTask}){
             titulo: titulo,
             descripcion: descripcion,
             prioridad: prioridad,
-            inicio: comienzo,
+            comienzo: comienzo,
             fin: fin,
             isCompletada: cumplida
         })

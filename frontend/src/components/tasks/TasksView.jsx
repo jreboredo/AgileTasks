@@ -10,6 +10,7 @@ import ModalNewTask from './modal/ModalNewTask';
 import ModalEditTask from './modal/ModalEditTask';
 import * as Api from '../ApiRest'
 import CalendarApp from '../calendar/CalendarApp';
+import { Check } from '@material-ui/icons';
 
 export default function TasksView() {
     const [tasks, setTasks] = useState([]);
@@ -60,24 +61,54 @@ export default function TasksView() {
         closeModalEliminar()
     }
 
+    const editFormatTask = task => {
+        const descripcion = task.descripcion || 'no has provisto una descripción!'
+        const prioridad = task.prioridad===0 ? "Alta!" : task.prioridad===1 ? "Normal" : "Baja"
+        const comienzo = `${task.comienzo.slice(8, 10)}/${task.comienzo.slice(5, 7)}/${task.comienzo.slice(0, 4)}, ${task.comienzo.slice(11)}hs.`;
+        const fin = `${task.fin.slice(8, 10)}/${task.fin.slice(5, 7)}/${task.fin.slice(0, 4)}, ${task.fin.slice(11)}hs.`;
 
-    const addTask = task => {
-        Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
+        return {titulo: task.titulo, descripcion: descripcion, prioridad: prioridad,comienzo:comienzo,fin:fin}
+    }
+
+    // const editFormatTaskToEditMail = (oldTask,newTask) => {
+    //     const oldTaskChangedFormat = editFormatTask(oldTask)
+    //     const newTaskChangedFormat = editFormatTask(newTask)
+
+    //     const task = {
+    //         titulo: check(oldTaskChangedFormat.titulo,newTaskChangedFormat.titulo),
+    //         descripcion: check(oldTaskChangedFormat.descripcion,newTaskChangedFormat.descripcion),
+    //         prioridad: check(oldTaskChangedFormat.prioridad,newTaskChangedFormat.prioridad),
+    //         comienzo: check(oldTaskChangedFormat.comienzo,newTaskChangedFormat.inicio),
+    //         fin: check(oldTaskChangedFormat.fin,newTaskChangedFormat.fin)
+    //     }
+    //      return newTask
+    // }
+
+    // const check = (oldValue, newValue) => {
+    //     let value;
+    //     if(oldValue === newValue) {
+    //         value = undefined
+    //     } else {
+    //         value = newValue
+    //     }
+    // }
+
+
+    const addTask = newTask => {
+        Api.createTask(newTask.titulo, newTask.descripcion, newTask.prioridad, newTask.comienzo, newTask.fin)
             .then(() => {
                 tasksApi();
-                const descripcion = task.descripcion || 'no has provisto una descripción!'
-                const prioridad = task.prioridad===0 ? "Alta!" : task.prioridad===1 ? "Normal" : "Baja"
-                const inicio = `${task.inicio.slice(8, 10)}/${task.inicio.slice(5, 7)}/${task.inicio.slice(0, 4)}, ${task.inicio.slice(11)}hs.`;
-                const fin = `${task.fin.slice(8, 10)}/${task.fin.slice(5, 7)}/${task.fin.slice(0, 4)}, ${task.fin.slice(11)}hs.`;
+
+                let task= editFormatTask(newTask)
 
                 const asunto = "Has creado una nueva tarea!"
                 const texto = `Estimado ${localStorage.getItem('userName')}:
                 Este es un correo para notificarte acerca de una nueva tarea creada con la siguiente informacion:
                 - Titulo: ${task.titulo}
-                - Prioridad: ${prioridad}
-                - Descripcion: ${descripcion}
-                - Fecha de inicio: ${inicio}
-                - Fecha de fin: ${fin}`
+                - Prioridad: ${task.prioridad}
+                - Descripcion: ${task.descripcion}
+                - Fecha de inicio: ${task.comienzo}
+                - Fecha de fin: ${task.fin}`
 
                 Api.sendMail(asunto, texto)
                     .then(r => console.log(r.status))
@@ -87,9 +118,32 @@ export default function TasksView() {
         closeModalInsertar()
     }
 
-    const editTask = task => {
-        Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin, task.isCompletada)
-            .then(() => tasksApi())
+    const editTask = (oldTask,task) => {
+        Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.comienzo, task.fin, task.isCompletada)
+            .then(() => {
+                tasksApi()
+                
+                const newTask = editFormatTask(task)
+                const aviseText = 'No changes'
+
+
+                const asunto = "Has editado una tarea!"
+                const texto = `Estimado ${localStorage.getItem('userName')}:
+                Este es un correo para notificarte acerca de una modificacion en la tarea "${newTask.titulo}" con la siguiente informacion:
+                -Titulo: ${newTask.titulo || aviseText} 
+                - Prioridad: ${newTask.prioridad || aviseText}
+                - Descripcion: ${newTask.descripcion || aviseText}
+                - Fecha de inicio: ${newTask.comienzo || aviseText}
+                - Fecha de fin: ${newTask.fin  || aviseText}`
+                
+                console.log(texto)
+
+                Api.sendMail(asunto, texto)
+                    .then(r => console.log(r.status))
+                    .catch(e => console.log(e));
+            
+            
+            })
             .catch(error => console.log(error))
         closeModalEditar();
     }

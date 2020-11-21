@@ -27,7 +27,7 @@ export default function ModalNewTask({addTask, showModalInsertar, closeModalInse
                 titulo: titleTask,
                 descripcion: textTask,
                 prioridad: prio,
-                inicio: beginDate || getNow,
+                comienzo: beginDate || getNow,
                 fin: endDate || getTomorrow,
             })
             methods.clearFields(setTitle,setText,setPriority,setBeginDate,setEndDate)
