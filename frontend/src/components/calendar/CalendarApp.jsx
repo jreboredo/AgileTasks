@@ -1,44 +1,70 @@
-import React, { useState } from 'react'
-import { Calendar } from 'react-nice-dates'
-import 'react-nice-dates/build/style.css'
-import ModalNewTask from '../tasks/modal/ModalNewTask'
-import NavBar from '../NavBar'
+import React, { useState } from 'react';
+import Paper from '@material-ui/core/Paper';
+import { ViewState } from '@devexpress/dx-react-scheduler';
 import './Calendar.css'
+import * as Api from '../ApiRest'
+import {
+    Scheduler,
+    MonthView,
+    Appointments, AppointmentTooltip,
+} from '@devexpress/dx-react-scheduler-material-ui';
+import { Modal, Button } from "react-bootstrap";
 
 
-export default function CalendarApp(){
-    const [date, setDate] = useState();
-    const [show,setShow] = useState(false);
-    const [tasks,setTasks] = useState([])
+export default function CalendarApp({ show, close }) {
+  const currentDate = new Date();
+  const [tasks, setTasks] = useState([]);
 
-    const handleShow = date =>{
-        setShow(true);
-        setDate(date);
-    }
+  function changeTasksFormatAndSet(dataTasks) {
+    const newTasks = dataTasks.map(function (task) {
+      const { titulo, comienzo, fin } = task;
+      return {
+        title: titulo,
+        startDate: new Date(comienzo),
+        endDate: new Date(fin)
+      }
+    });
+    setTasks(newTasks)
+  }
 
-    const addTask = task => {
-        console.log(task)
-        let newTasks = tasks.push()
-        newTasks = [{ ...task, id: tasks.length + 1 }, ...tasks];
-        console.log(newTasks)
-        newTasks.reverse()
-        setTasks(newTasks)
-        // Api.createTask(task.titulo, task.descripcion, task.prioridad, task.inicio, task.fin)
-        //     .then(() => tasksApi())
-        //     .catch(error => console.log(error))
-        handleClose()
-    }
+  function tasksApi() {
+    Api.getTasks()
+      .then(response => {
+        changeTasksFormatAndSet(response.data)
+      })
+      .catch(error => console.log(error))
+  }
 
-    const handleClose = () => setShow(false);
-    
-    return(
-        <> 
-        <NavBar/>
-        <div className="calendar">
-            <Calendar date={date} onDayClick={handleShow}/>
-      </div>
-        <ModalNewTask addTask={addTask} showModalInsertar={show} closeModalInsertar={handleClose}/>
-        </>
-
-    )
+  return (
+    <Modal show={show} onHide={() => close()} size='lg' onEntered={() => tasksApi()}>
+      <Modal.Header closeButton>
+        <Modal.Title>Mi calendario</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Paper>
+          <Scheduler
+            data={tasks}
+            height={500}
+          >
+            <ViewState
+              defaultCurrentDate={currentDate}
+            />
+            <MonthView />
+            <Appointments />
+            <AppointmentTooltip/>
+          </Scheduler>
+        </Paper>
+      </Modal.Body>
+      <Modal.Footer>
+        <p className="modalFooterText">
+          Today is {currentDate.toJSON().slice(8, 10) +
+            '/' + currentDate.toJSON().slice(5, 7) +
+            '/' + currentDate.toJSON().slice(0, 4)}
+        </p>
+        <Button variant="secondary" onClick={() => close()}>
+          Close
+      </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }

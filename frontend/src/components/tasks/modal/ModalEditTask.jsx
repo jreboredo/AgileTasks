@@ -22,12 +22,12 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
             console.log(error)
         }else {
             const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
-            editTask({
+            editTask(task,{
                 id: task.id,
                 titulo: titleTask,
                 descripcion: textTask,
                 prioridad: prio,
-                inicio: beginDate,
+                comienzo: beginDate,
                 fin: endDate,
             })
             methods.clearFields(setTitle, setText, setPriority, setBeginDate, setEndDate)

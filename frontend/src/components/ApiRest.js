@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+export function sendMail(asunto, texto) {
+    return axios.post(url + 'mail/SendMail',
+        {
+            stringTo: localStorage.getItem('email'),
+            stringMessage: texto,
+            stringSubject: asunto
+        })
+}
+
+
 const url = 'http://localhost:8181/'
 
 /* USER */
