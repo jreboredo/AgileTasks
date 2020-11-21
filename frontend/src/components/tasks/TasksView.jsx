@@ -108,7 +108,9 @@ export default function TasksView() {
                 - Prioridad: ${task.prioridad}
                 - Descripcion: ${task.descripcion}
                 - Fecha de inicio: ${task.comienzo}
-                - Fecha de fin: ${task.fin}`
+                - Fecha de fin: ${task.fin}
+
+                Nota: Si usted no creo esta tarea, por favor cambie su contraseña para mayor seguridad`
 
                 Api.sendMail(asunto, texto)
                     .then(r => console.log(r.status))
@@ -129,12 +131,14 @@ export default function TasksView() {
 
                 const asunto = "Has editado una tarea!"
                 const texto = `Estimado ${localStorage.getItem('userName')}:
-                Este es un correo para notificarte acerca de una modificacion en la tarea "${newTask.titulo}" con la siguiente informacion:
+                Este es un correo para notificarle acerca de una modificacion realizada en la tarea "${newTask.titulo}" con la siguiente informacion:
                 -Titulo: ${newTask.titulo || aviseText} 
                 - Prioridad: ${newTask.prioridad || aviseText}
                 - Descripcion: ${newTask.descripcion || aviseText}
                 - Fecha de inicio: ${newTask.comienzo || aviseText}
-                - Fecha de fin: ${newTask.fin  || aviseText}`
+                - Fecha de fin: ${newTask.fin  || aviseText}
+
+                Nota: Si usted no hizo este cambio, por favor cambie su contraseña para mayor seguridad`
                 
                 console.log(texto)
 
