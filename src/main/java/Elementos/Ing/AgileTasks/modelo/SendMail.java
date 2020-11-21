@@ -11,9 +11,9 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
     //set host, message, from and to
-    String SendTo;
-    String from = "InfoAgileTasks@gmail.com";
-    String host = "smtp.gmail.com";
+    public String SendTo;
+    public String from = "InfoAgileTasks@gmail.com";
+    public String host = "smtp.gmail.com";
     Properties properties = System.getProperties();
 
     public Session settingMail(String to) {
@@ -33,7 +33,7 @@ public class SendMail {
         return session;
     }
 
-    public void sendingEmail(String to, String messageString, String subjectMail) {
+    public String sendingEmail(String to, String messageString, String subjectMail) {
         Session session = this.settingMail(to);
         try {
             //Create an email message body
@@ -45,9 +45,11 @@ public class SendMail {
 
             //Send message
             Transport.send(message);
-            System.out.println("Sent message Successfully...");
+            return "Sent message Successfully...";
         } catch (MessagingException mex) {
             mex.printStackTrace();
+            return "Something went wrong :(";
         }
+
     }
 }

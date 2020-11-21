@@ -65,5 +65,22 @@ Feature: Tarea
     Then La tarea se guardó con el comienzo "2020-11-13T21:15:00"
     And La tarea se guardó con el vencimiento "2020-11-13T22:00:00"
 
+  Scenario: envio de mail
+    Given Un usuario logeado con contraseña "asdbqwerty", userName "Admin20" y email "joge@gmail.com"
+    And una tarea vacia
+    When Seteo el titulo de la tarea con "Estudiar matemática"
+    And Seteo la descripcion de la tarea con "Estudiar enteros, matrices y ecuaciones lineales"
+    And Seteo la prioridad de la tarea en "Alta"
+    And Seteo el comienzo de la tarea en "2020-11-13T21:15:00"
+    And Seteo el vencimiento de la tarea en "2020-11-14T01:00:00"
+    And Guardo la tarea
+    And Se enviá el mail
+    Then El mail se envió correctamente
+    When Seteo el titulo de la tarea con "Estudiar Matemática"
+    And Se enviá el mail
+    And Actualizo la tarea
+    Then El mail se envió correctamente
+
+
 
 

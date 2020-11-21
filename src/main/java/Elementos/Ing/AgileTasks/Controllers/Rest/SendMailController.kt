@@ -13,7 +13,7 @@ class SendMailController() {
     val sendMailImpl : SendMailImpl = SendMailImpl()
 
     @PostMapping("/SendMail")
-    fun sendMail(@RequestBody dataMail: DataMail) {
-        sendMailImpl.sendMail(dataMail.stringTo, dataMail.stringMessage, dataMail.stringSubject)
+    fun sendMail(@RequestBody dataMail: DataMail) : String{
+        return sendMailImpl.sendMail(dataMail.stringTo, dataMail.stringMessage, dataMail.stringSubject)
     }
 }

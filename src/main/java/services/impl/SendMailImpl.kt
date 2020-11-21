@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMessage
 class SendMailImpl : SendMailService {
     @Autowired
     private val sendMail : SendMail = SendMail()
-    override fun sendMail(stringTo : String, stringMessage : String, stringSubject : String) {
-        sendMail.sendingEmail(stringTo, stringMessage, stringSubject)
+    override fun sendMail(stringTo : String, stringMessage : String, stringSubject : String) : String{
+        return sendMail.sendingEmail(stringTo, stringMessage, stringSubject)
     }
 }

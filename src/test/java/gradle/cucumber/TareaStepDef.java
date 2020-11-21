@@ -1,6 +1,7 @@
 package gradle.cucumber;
 
 import Elementos.Ing.AgileTasks.excepciones.NotFoundException;
+import Elementos.Ing.AgileTasks.modelo.SendMail;
 import Elementos.Ing.AgileTasks.modelo.Tarea;
 import Elementos.Ing.AgileTasks.modelo.Usuario;
 import Elementos.Ing.AgileTasks.persistencia.runner.dao.UserDAO;
@@ -11,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import services.UsuarioService;
+import services.impl.SendMailImpl;
 import services.impl.TareaServiceImpl;
 import services.impl.UsuarioServiceImpl;
 import java.time.LocalDateTime;
@@ -23,6 +25,8 @@ public class TareaStepDef {
     private UsuarioService userService = new UsuarioServiceImpl();
     private UserDAO userDAO = new UserDAO();
     private Usuario user = new Usuario();
+    private SendMail sendMail = new SendMail();
+    private String res = "";
 
     @And("una tarea vacia")
     public void unaTareaVacia() {
@@ -163,5 +167,24 @@ public class TareaStepDef {
     public void laTareaSeGuardóConElVencimiento(String fecha) {
         Assert.assertEquals(tareaService.recuperarTareaPorId((int) tarea.getId()).getVencimiento(), LocalDateTime.parse(fecha));
 
+    }
+
+    @Given("Un usuario logeado con contraseña {string}, userName {string} y email {string}")
+    public void unUsuarioLogeadoConContraseñaUserNameYEmail(String contraseña, String userName, String email) {
+        user.setUserName(userName);
+        user.setPassword(contraseña);
+        user.setEmail(email);
+        userService.nuevoUsuario(user);
+    }
+
+    @Then("El mail se envió correctamente")
+    public void elMailSeEnvióCorrectamente() {
+        Assert.assertEquals(sendMail.SendTo, user.getEmail());
+        Assert.assertEquals(res, "Sent message Successfully...");
+    }
+
+    @And("Se enviá el mail")
+    public void seEnviáElMail() {
+        res = sendMail.sendingEmail(user.getEmail(), tarea.getTitulo(), tarea.getDescripcion());
     }
 }
