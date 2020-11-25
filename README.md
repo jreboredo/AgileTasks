@@ -18,7 +18,7 @@
 #### Sprint 5:
 - https://docs.google.com/document/d/1vK8gHzMXu8phC3os2o-aAF_4FZVNFuIhQi9pJGNI3io/edit?usp=sharing
 #### Sprint 6:
-- Sin comenzar
+- En desarrollo
 
 ### Kanban con Planificacion de Proyecto
 - https://trello.com/b/aUIRPgbv
