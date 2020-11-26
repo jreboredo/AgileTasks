@@ -6,9 +6,30 @@ import * as Api from '../ApiRest'
 import {
     Scheduler,
     MonthView,
+    DateNavigator,
+    Toolbar,
+    TodayButton,
+    EditRecurrenceMenu,
     Appointments, AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Modal, Button } from "react-bootstrap";
+
+
+const Appointment = ({
+  children, style, ...restProps
+}) => (
+  <Appointments.Appointment
+    {...restProps}
+    style={{
+      ...style,
+      backgroundColor: '#52be80',
+      borderRadius: '8px',
+    }}
+  >
+    {children}
+  </Appointments.Appointment>
+);
+
 
 
 export default function CalendarApp({ show, close }) {
@@ -50,8 +71,15 @@ export default function CalendarApp({ show, close }) {
               defaultCurrentDate={currentDate}
             />
             <MonthView />
-            <Appointments />
-            <AppointmentTooltip/>
+            <Toolbar />
+            <DateNavigator />
+            <TodayButton />
+            <Appointments
+              appointmentComponent={Appointment}
+            />
+            <AppointmentTooltip
+              showCloseButton
+            />
           </Scheduler>
         </Paper>
       </Modal.Body>
