@@ -69,4 +69,16 @@ public class UsuarioStepdefs {
     public void seLogeaElUsuarioConUserNamePassword(String userName, String password) {
         usuarioService.validateUser(userName, password);
     }
+
+    @When("cambio el email del usuario a {string}")
+    public void cambioElEmailDelUsuarioA(String nuevoEmail) {
+        usuario.setEmail(nuevoEmail);
+        usuarioService.modificarUsuario(usuario);
+    }
+
+    @Then("el usuario tiene como email {string}")
+    public void elUsuarioTieneComoEmail(String email) {
+        assertEquals(usuario.getEmail(), email);
+
+    }
 }
