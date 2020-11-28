@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound";
 import CalendarApp from './components/calendar/CalendarApp'
 import TasksView from './components/tasks/TasksView';
 import ChangePassword from "./components/forms/ChangePassword";
+import ChangeEmail from "./components/forms/ChangeEmail";
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
             <Route path="/notes" component={NotesView}/>
             <Route path="/tasks" component={TasksView}/>
             <Route path="/changePassword" component={ChangePassword}/>
+            <Route path="/changeEmail" component={ChangeEmail}/>
             <Route path="/calender" component={CalendarApp}/>
             <Route path='/successful/:username' component={RegistrationSuccessful} />
             <Route path="*" component={NotFound} />
