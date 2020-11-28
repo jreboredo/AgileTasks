@@ -22,7 +22,7 @@ export default function ChangeEmail() {
                     <div className="align-content-center">
                         <NavBar background={'bg-dark'} showTitle={true}/>
                         <Formik
-                            initialValues={{newEmail: '', newPassword: '', passwordConfirmation: ''}}
+                            initialValues={{newEmail: '', password: '', passwordConfirmation: ''}}
                             onSubmit={(values, {setSubmitting}) => {
                                 setTimeout(() => {
                                     const {newEmail} = values
@@ -40,14 +40,12 @@ export default function ChangeEmail() {
                                 }, 500);
                             }}
                             validationSchema={Yup.object().shape({
-                                oldPassword: Yup.string()
-                                    .required("Old password required.")
-                                    .matches(localStorage.getItem('password'), 'Old password does not match'),
-                                newPassword: Yup.string()
-                                    .required("No new password provided.")
-                                    .min(8, "Password is too short - should be 8 chars minimum.")
-                                    .max(256, 'Password cannot have more than 256 characters')
-                                    .matches(/(?=.*[0-9])/, "Password must contain a number."),
+                                newEmail: Yup.string()
+                                    .email('Please, insert a valid email')
+                                    .required("New email is required."),
+                                password: Yup.string()
+                                    .required("Password is required.")
+                                    .matches(localStorage.getItem('password'), 'Password does not match'),
                                 passwordConfirmation: Yup.string()
                                     .required('Password confirmation is required')
                                     .oneOf([Yup.ref('newPassword'), null], 'Password confirmation does not match')
@@ -68,30 +66,30 @@ export default function ChangeEmail() {
                                         <h1 className='text-center font-italic font-weight-bold'>Change password!</h1>
                                         <div className="form-group">
                                             <input
-                                                name="oldPassword"
-                                                type="password"
-                                                placeholder="Enter your old password"
-                                                value={values.oldPassword}
+                                                name="email"
+                                                type="email"
+                                                placeholder="Enter your new email"
+                                                value={values.newEmail}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 className='form-control'
                                             />
-                                            {errors.oldPassword && touched.oldPassword && (
-                                                <div className="input-feedback text-danger">{errors.oldPassword}</div>
+                                            {errors.newEmail && touched.newEmail && (
+                                                <div className="input-feedback text-danger">{errors.newEmail}</div>
                                             )}
                                         </div>
                                         <div className="form-group">
                                             <input
-                                                name="newPassword"
+                                                name="password"
                                                 type="password"
-                                                placeholder="Enter your new password"
-                                                value={values.newPassword}
+                                                placeholder="Enter your password"
+                                                value={values.password}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 className='form-control'
                                             />
-                                            {errors.newPassword && touched.newPassword && (
-                                                <div className="input-feedback text-danger">{errors.newPassword}</div>
+                                            {errors.password && touched.password && (
+                                                <div className="input-feedback text-danger">{errors.password}</div>
                                             )}
                                         </div>
                                         <div className="form-group">
