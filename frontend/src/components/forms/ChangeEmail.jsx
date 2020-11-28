@@ -48,7 +48,7 @@ export default function ChangeEmail() {
                                     .matches(localStorage.getItem('password'), 'Password does not match'),
                                 passwordConfirmation: Yup.string()
                                     .required('Password confirmation is required')
-                                    .oneOf([Yup.ref('newPassword'), null], 'Password confirmation does not match')
+                                    .oneOf([Yup.ref('password'), null], 'Password confirmation does not match')
                             })}
                         >
                             {props => {
@@ -66,8 +66,8 @@ export default function ChangeEmail() {
                                         <h1 className='text-center font-italic font-weight-bold'>Change password!</h1>
                                         <div className="form-group">
                                             <input
-                                                name="email"
-                                                type="email"
+                                                name="newEmail"
+                                                type="newEmail"
                                                 placeholder="Enter your new email"
                                                 value={values.newEmail}
                                                 onChange={handleChange}
