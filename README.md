@@ -19,7 +19,7 @@
 - https://docs.google.com/document/d/1vK8gHzMXu8phC3os2o-aAF_4FZVNFuIhQi9pJGNI3io/edit?usp=sharing
 #### Sprint 6:
 - https://docs.google.com/document/d/1nD2fkZ3Vq5isJO-vQy_mrpSeNkO7i3TvBb1MKQTjXX0/edit?usp=sharing
-### Métricas y entrega finalÑ
+### Métricas y entrega final
 - https://docs.google.com/document/d/1hiDp1FIIk9deYbaW1a2Jyh5ilSDdfuqDlY0yIFfGoPs/edit?usp=sharing
 
 
