@@ -43,6 +43,18 @@ export const changePassword = async (newPassword) => {
         });
 }
 
+export const changeEmail = async (newEmail) => {
+    const endpoint = 'users/modificarUser';
+    const username = localStorage.getItem('userName')
+    return axios.put(url + endpoint + `/${username}`,
+        {
+            id: localStorage.getItem('userid'),
+            userName: username,
+            password: localStorage.getItem('password'),
+            email: newEmail,
+        });
+}
+
 /* TASK */
 export const getTasks = async () => {
     const endpoint = 'tasks/getByUser/'
