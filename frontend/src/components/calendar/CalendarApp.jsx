@@ -9,7 +9,6 @@ import {
     DateNavigator,
     Toolbar,
     TodayButton,
-    EditRecurrenceMenu,
     Appointments, AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { Modal, Button } from "react-bootstrap";

@@ -10,7 +10,6 @@ import ModalNewTask from './modal/ModalNewTask';
 import ModalEditTask from './modal/ModalEditTask';
 import * as Api from '../ApiRest'
 import CalendarApp from '../calendar/CalendarApp';
-import { Check } from '@material-ui/icons';
 
 export default function TasksView() {
     const [tasks, setTasks] = useState([]);
@@ -69,30 +68,6 @@ export default function TasksView() {
 
         return {titulo: task.titulo, descripcion: descripcion, prioridad: prioridad,comienzo:comienzo,fin:fin}
     }
-
-    // const editFormatTaskToEditMail = (oldTask,newTask) => {
-    //     const oldTaskChangedFormat = editFormatTask(oldTask)
-    //     const newTaskChangedFormat = editFormatTask(newTask)
-
-    //     const task = {
-    //         titulo: check(oldTaskChangedFormat.titulo,newTaskChangedFormat.titulo),
-    //         descripcion: check(oldTaskChangedFormat.descripcion,newTaskChangedFormat.descripcion),
-    //         prioridad: check(oldTaskChangedFormat.prioridad,newTaskChangedFormat.prioridad),
-    //         comienzo: check(oldTaskChangedFormat.comienzo,newTaskChangedFormat.inicio),
-    //         fin: check(oldTaskChangedFormat.fin,newTaskChangedFormat.fin)
-    //     }
-    //      return newTask
-    // }
-
-    // const check = (oldValue, newValue) => {
-    //     let value;
-    //     if(oldValue === newValue) {
-    //         value = undefined
-    //     } else {
-    //         value = newValue
-    //     }
-    // }
-
 
     const addTask = newTask => {
         Api.createTask(newTask.titulo, newTask.descripcion, newTask.prioridad, newTask.comienzo, newTask.fin)

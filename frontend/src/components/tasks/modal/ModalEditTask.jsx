@@ -22,7 +22,7 @@ export default function ModalEditTask({task, editTask, showModalEditar, closeMod
             console.log(error)
         }else {
             const prio = priority === "high" ? 0 : priority === "med" ? 1 : 2
-            editTask(task,{
+            editTask({
                 id: task.id,
                 titulo: titleTask,
                 descripcion: textTask,
