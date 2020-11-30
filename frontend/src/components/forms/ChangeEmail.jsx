@@ -63,7 +63,7 @@ export default function ChangeEmail() {
                                 } = props;
                                 return (
                                     <form className="formulario card m-5 p-3 bg-light " onSubmit={handleSubmit}>
-                                        <h1 className='text-center font-italic font-weight-bold'>Change password!</h1>
+                                        <h1 className='text-center font-italic font-weight-bold'>Change email!</h1>
                                         <div className="form-group">
                                             <input
                                                 name="newEmail"
