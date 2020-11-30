@@ -120,7 +120,7 @@ export default function TasksView() {
         closeModalInsertar()
     }
 
-    const editTask = (oldTask,task) => {
+    const editTask = task => {
         Api.modifyTask(task.id, task.titulo, task.descripcion, task.prioridad, task.comienzo, task.fin, task.isCompletada)
             .then(() => {
                 tasksApi()
